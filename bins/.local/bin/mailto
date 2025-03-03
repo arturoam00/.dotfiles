@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Extract the mailto URL and format it for Gmail
+
+mailto_url="$1"
+mailto_url="${mailto_url#mailto:}" # Remove the mailto: prefix
+
+# Open Gmail in the browser with the pre-filled email address
+xdg-open "https://mail.google.com/mail/?view=cm&to=${mailto_url}"
+

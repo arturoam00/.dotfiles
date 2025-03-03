@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Get the list of enabled extensions
+enabled_ext=$(gnome-extensions list --enabled)
+
+# Disable each extension one by one
+for ext in $enabled_ext; do
+    gnome-extensions disable "$ext"
+done
+
+# Enable each extension again
+for ext in $enabled_ext; do
+    gnome-extensions enable "$ext"
+done
+

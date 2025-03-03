@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Gmail Mailto Handler
+Exec=sh -c "$HOME/.local/bin/mailto %u"
+NoDisplay=true
+MimeType=x-scheme-handler/mailto

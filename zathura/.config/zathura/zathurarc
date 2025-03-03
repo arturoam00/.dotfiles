@@ -1,0 +1,7 @@
+map <C-f> navigate next
+map <Space> navigate next
+map <C-Space> navigate previous
+map <C-b> navigate previous
+
+set selection-clipboard clipboard
+set sandbox none

@@ -1,0 +1,49 @@
+# Enable color support for ls and add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    eval "$(dircolors -b ~/.dircolors 2>/dev/null || dircolors -b)"
+    alias ls='ls --color=auto --hide=__pycache__ --hide=snap' \
+          grep='grep --color=auto' \
+          fgrep='fgrep --color=auto' \
+          egrep='egrep --color=auto'
+else
+    alias ls='ls --hide=__pycache__ --hide=snap' \
+	
+fi
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Some more ls aliases
+alias ll='ls -alF' \
+      la='ls -A' \
+      l='ls -CF' \
+      lt='ls -rlt1h' \
+      ltt='ls -rt1h --group'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Use neovim for vim if present.
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+alias cp="cp -iv" \
+      mv="mv -iv" \
+      rm="rm -vI" \
+      mkdir='mkdir -p' \
+      r='Rscript' \
+      cls='clear' \
+      bye='poweroff' \
+      ..='cd ..' \
+      apt='~/.local/bin/install-packages/apt-manage' \
+      py='python3 -q' \
+      R='R --vanilla --quiet' \
+      tmux='tmux -f ~/.config/tmux/tmux.conf' \
+      blth='bluetoothctl' \
+      up='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo snap refresh' \
+      lf='lfub' \
+      buildenv='python3 -m venv .venv && echo "source .venv/bin/activate" > .envrc && direnv allow 2>/dev/null && mkdir .vscode && cp ~/docs/templates/vscode/settings.json .vscode/settings.json' \
+      tlmgr='tlmgr --usermode' \
+      firefox='librewolf'
+

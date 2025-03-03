@@ -1,0 +1,35 @@
+[Default Applications]
+application/postscript=pdf.desktop;
+application/pdf=pdf.desktop;
+video/x-matroska=video.desktop;
+video/mp4=video.desktop;
+text/plain=nvim.desktop;
+inode/directory=file.desktop;
+x-scheme-handler/mailto=mail.desktop;
+x-scheme-handler/http=browser.desktop
+x-scheme-handler/https=browser.desktop
+x-scheme-handler/about=browser.desktop;
+x-scheme-handler/unknown=browser.desktop;
+text/html=browser.desktop
+image/jpeg=feh.desktop
+image/png=feh.desktop
+image/gif=feh.desktop
+image/tiff=feh.desktop
+image/bmp=feh.desktop
+image/x-icon=feh.desktop
+image/x-xpixmap=feh.desktop
+image/x-xbitmap=feh.desktop
+image/webp=feh.desktop
+
+[Added Associations]
+image/png=display-im6.q16.desktop;feh.desktop;
+text/html=browser.desktop;
+x-scheme-handler/http=browser.desktop;
+x-scheme-handler/https=browser.desktop;
+image/gif=feh.desktop;
+image/tiff=feh.desktop;
+image/bmp=feh.desktop;
+image/x-icon=feh.desktop;
+image/x-xpixmap=feh.desktop;
+image/x-xbitmap=feh.desktop;
+image/webp=feh.desktop;

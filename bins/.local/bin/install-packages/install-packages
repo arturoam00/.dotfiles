@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+# install packages
+sudo xargs -a ~/.config/install-packages/packages.txt apt install -y 
+	
+# install ueberzugpp
+sh ~/.local/bin/install-packages/install-ueberzugpp
+
+# post installation script
+sh ~/.local/bin/install-packages/post-install

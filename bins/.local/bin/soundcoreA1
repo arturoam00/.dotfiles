@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if bluetoothctl connect E8:EE:CC:7B:88:43; then
+	notify-send "Soundcore A1 sucessfully connected 🎧"
+else
+	notify-send "Couldn't connect Soundcore A1 😕"
+fi
+
+
