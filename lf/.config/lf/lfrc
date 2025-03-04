@@ -43,9 +43,9 @@ map . set hidden!
 
 
 map <c-f> :fzf_jump
-map gd cd "dls"
-map gc cd ".config"
-map gl cd ".local"
+map gd cd "~/dls"
+map gc cd "~/.config"
+map gl cd "~/.local"
 map gb ${{
     lf -remote "send $id cd $OLDPWD"
 }}
