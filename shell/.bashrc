@@ -30,6 +30,3 @@ done
 
 # Prompt needs to see __git_ps1 fun just loaded
 [[ -f $XDG_CONFIG_HOME/shell/prompt.sh ]] && source $XDG_CONFIG_HOME/shell/prompt.sh
-
-# Load environment-specific conf. last
-[[ -f $XDG_CONFIG_HOME/shell/envrc.sh ]] && source $XDG_CONFIG_HOME/shell/envrc.sh
