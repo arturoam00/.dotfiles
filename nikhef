@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -e 
+
+stow -v fzf nvim python shell wget
