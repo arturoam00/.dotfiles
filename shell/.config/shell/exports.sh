@@ -10,6 +10,7 @@ export TEXMFVAR="$TEXMFHOME/var"
 export TEXMFCONFIG="$XDG_CONFIG_HOME/texmf"
 
 export HISTFILE="$XDG_DATA_HOME/history"
+export LESSHISTFILE=-
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --color='pointer:209'"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
