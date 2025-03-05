@@ -1,5 +1,4 @@
-ROOT="~/.local/src/root/bin/thisroot.sh"
-if [ -e "$(realpath "$ROOT")" ]; then
-    source "$(realpath "$ROOT")"
+ROOT="$HOME/.local/src/root/bin/thisroot.sh"
+if [ -f "$ROOT" ] || { [ -L "$ROOT" ] && [ -e "$ROOT" ]; }; then
+    source "$ROOT"
 fi
-
