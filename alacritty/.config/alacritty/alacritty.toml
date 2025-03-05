@@ -12,11 +12,11 @@ mods = "Control|Shift"
 hide_when_typing = false
 
 [selection]
-save_to_clipboard = false
+save_to_clipboard = true
 semantic_escape_chars = ''',│`|:"' ()[]{}<>	'''
 
 [window]
-opacity = 0.7
+opacity = 0.8
 
 [env]
 TERM = "xterm-256color"
@@ -45,4 +45,29 @@ magenta = "0xf5c2e7"
 cyan    = "0x94e2d5"
 white   = "0xffffff"
 
+[colors.cursor]
+cursor = "0xcdd6f4"
+text = "0x1e1e2e"
+
+[font]
+size = 13
+
+[font.bold]
+family = "RobotoMono Nerd Font"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "RobotoMono Nerd Font"
+
+[font.normal]
+family = "RobotoMono Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
 
