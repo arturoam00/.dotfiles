@@ -10,3 +10,15 @@ addToPathFront() {
     fi
 }
 
+ssh_fzf() {
+  local host
+  host=$(awk '/^Host / {for (i=2; i<=NF; i++) if ($i != "*") print $i}' ~/.ssh/config | fzf --prompt="Select SSH host: ")
+
+  if [[ -n "$host" ]]; then
+    stty echo
+    ssh "$host"
+  else
+    echo "No host selected."
+  fi
+}
+
