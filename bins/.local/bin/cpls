@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Check if the argument is provided
+if [ -z "$1" ]; then
+  echo "Usage: $0 <destination_path>"
+  exit 1
+fi
+
+# Define the source directory
+SOURCE_DIR=~/Pics/Screenshots
+
+# Find the most recent screenshot file
+LATEST_SCREENSHOT=$(ls -t $SOURCE_DIR/*.png | head -n 1)
+
+# Check if a screenshot exists
+if [ -z "$LATEST_SCREENSHOT" ]; then
+  echo "No screenshots found in $SOURCE_DIR"
+  exit 1
+fi
+
+# Copy the latest screenshot to the destination provided in the argument
+cp "$LATEST_SCREENSHOT" "$1"
+
+# Notify the user
+echo "Copied $LATEST_SCREENSHOT to $1"
+

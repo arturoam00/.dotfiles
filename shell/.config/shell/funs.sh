@@ -22,3 +22,6 @@ ssh_fzf() {
   fi
 }
 
+export -f addToPath
+export -f addToPathFront
+export -f ssh_fzf

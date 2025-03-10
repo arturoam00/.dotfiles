@@ -22,7 +22,7 @@ set scrolloff 10
 
 # appearance settings
 set icons true
-set promptfmt "\033[38;5;153m%u@%h\033[0m \033[38;5;209m%d\033[0m\033[1m%f\033[0m"
+set promptfmt "\033[38;5;111m%u@%h\033[0m \033[38;5;114m%d\033[0m\033[1m%f\033[0m"
 set hiddenfiles .*:__pycache__:*.egg-info:~/snap
 set previewer "~/.config/lf/preview"
 set cleaner "~/.config/lf/cleaner"
@@ -43,7 +43,7 @@ map . set hidden!
 
 
 map <c-f> :fzf_jump
-map gd cd "~/dls"
+map gd cd "~/Dls"
 map gc cd "~/.config"
 map gl cd "~/.local"
 map gb ${{
