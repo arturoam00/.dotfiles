@@ -45,5 +45,6 @@ alias cp="cp -iv" \
       lf='lfub' \
       buildenv='python3 -m venv .venv && echo "source .venv/bin/activate" > .envrc && direnv allow 2>/dev/null && mkdir .vscode && cp ~/docs/templates/vscode/settings.json .vscode/settings.json' \
       tlmgr='tlmgr --usermode' \
-      firefox='librewolf'
+      firefox='librewolf' \
+      zz='zathura'
 
