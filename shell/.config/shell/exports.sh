@@ -1,5 +1,10 @@
 export EDITOR="nvim"
-# export TERM="xterm-256color"
+
+export XDG_DOWNLOAD_DIR="$HOME/Dls"
+export XDG_DOCUMENTS_DIR="$HOME/Docs"
+export XDG_PICTURES_DIR="$HOME/Pics"
+export XDG_DESKTOP_DIR="$HOME/Dsktp"
+export XDG_VIDEOS_DIR="$HOME/Vids"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
