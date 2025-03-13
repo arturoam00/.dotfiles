@@ -6,8 +6,10 @@ if [ -x /usr/bin/dircolors ]; then
           fgrep='fgrep --color=auto' \
           egrep='egrep --color=auto'
 else
-    alias ls='ls --hide=__pycache__ --hide=snap' \
-	
+    alias ls='ls --hide=__pycache__ \ 
+          --hide=snap  \
+          --hide=build \
+          '
 fi
 
 # Add an "alert" alias for long running commands.  Use like so:
