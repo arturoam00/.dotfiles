@@ -5,7 +5,7 @@ if [ -x /usr/bin/dircolors ]; then
           diff='diff --color=auto' \
           grep='grep --color=auto' \
           fgrep='fgrep --color=auto' \
-          egrep='egrep --color=auto' \ 
+          egrep='egrep --color=auto'
 else
     alias ls='ls --hide=__pycache__ \ 
           --hide=snap  \
