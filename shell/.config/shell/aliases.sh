@@ -2,9 +2,10 @@
 if [ -x /usr/bin/dircolors ]; then
     eval "$(dircolors -b ~/.dircolors 2>/dev/null || dircolors -b)"
     alias ls='ls --color=auto --hide=__pycache__ --hide=snap' \
+          diff='diff --color=auto' \
           grep='grep --color=auto' \
           fgrep='fgrep --color=auto' \
-          egrep='egrep --color=auto'
+          egrep='egrep --color=auto' \ 
 else
     alias ls='ls --hide=__pycache__ \ 
           --hide=snap  \
@@ -48,5 +49,6 @@ alias cp="cp -iv" \
       buildenv='python3 -m venv .venv && echo "source .venv/bin/activate" > .envrc && direnv allow 2>/dev/null && mkdir .vscode && cp $XDG_DOCUMENTS_DIR/templates/vscode/settings.json .vscode/settings.json' \
       tlmgr='tlmgr --usermode' \
       firefox='librewolf' \
-      zz='zathura'
+      zz='zathura' \
+      feh='feh -xF'
 
