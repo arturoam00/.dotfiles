@@ -58,7 +58,7 @@ map Y $echo $f | xclip -selection clipboard
 map <enter> :push $
 map a :push %mkdir<space>
 map E :extract
-map <c-x> $chmod +x $fx
+map <c-x> $chmod u+x $fx
 map <a-x> $chmod -x $fx
 # execute current file (must be executable)
 map x $$f
