@@ -1,0 +1,95 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} % For inserting images
+\usepackage{minted}   % For typesetting code
+\usepackage{eulervm}  % We suggest the Euler typeface for math, but feel free to 
+\usepackage{charter}  % This typeface works well with Euler
+\usepackage{xcolor}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{bm}
+
+\usepackage[T1]{fontenc}       % Use T1 encoding
+
+\title{Assignment X}
+
+% Single author assignments
+\author{FirstName LastName (Student number)}
+
+% Group  assignments
+% \author{FirstName1 LastName2 (Student Number) \\ FirstName2 LastName2 (Student number)\\ FirstName3 LastName3 (Student number)}
+
+\date{October 2023}
+
+\input{commands} 
+
+\begin{document}
+
+\maketitle
+
+\noindent Your report should contain two sections. The first contains \emph{only} your answers to the questions in the assignment, each highlighted by a \texttt{\\paragraph\{\}} tag indicating the questin number. The second, the \emph{appendix}, contains anything else you feel like showing us. You may structure this however you like.
+
+The rest of this document shows an example of this layout, and some details on how to format math and code.
+
+\section{Answers}
+
+\paragraph{question 1} A short answer to a simple question.
+
+\paragraph{question 2} A longer answer to a more complicated question. Possibly containing several paragraphs.
+
+Yes, see, there it is. A second paragraph. You could even add a little math: $e^{i\pi} + 1 = 0$.  Or a lot of math.
+
+$$
+KL(p, q) = - {E}_{x \sim p} \log \frac{ q(x) }{ p(x) }
+$$
+
+We've added a few commands to help you add, for instance, bold symbols and colors. Have a look at the file \texttt{commands.tex} to see what's available.
+
+$$
+KL(\cc{p}, \co{q}) = - {\E}_{\x \sim \cc{p}} \log \frac{ \co{q}(\x) }{ \cb{p}(\x) }
+$$
+
+You don't have to use these, but it's much appreciated if you take the time to make things easier to read (don't overdo it on the colors, though).
+
+\pagebreak % Add a new page so the codeblock isn't broken up.
+
+\paragraph{question 3} If your answer contains code, please use the \texttt{minted} package, which is included by default.
+
+\begin{minted}{python}
+def load_synth(num_train=60_000, num_val=10_000, seed=0):
+    """
+    Load synthetic data.
+    """
+    
+    np.random.seed(seed)
+
+    THRESHOLD = 0.6
+    quad = np.asarray([[1, -0.05], [1, .4]])
+
+    ntotal = num_train + num_val
+
+    x = np.random.randn(ntotal, 2)
+
+    # compute the quadratic form
+    q = np.einsum('bf, fk, bk -> b', x, quad, x)
+    y = (q > THRESHOLD).astype(np.int)
+
+    return (x[:num_train, :], y[:num_train]), \\
+           (x[num_train:, :], y[num_train:]), 2
+\end{minted}
+
+\noindent When adding code, make sure to take a snippet of the relevant part. Make it \emph{readable} for your TA. Do not simply copy paste hundreds of lines of code.
+
+Feel free to add packages and to tweak the environment to your needs. However, please maintain the basic set-up of two sections, paragraph-labels for the questions, and add nothing except your answers to the first section.
+
+\appendix
+\section{Appendix}
+
+We appreciate brevity. Cut your answers down to the very minimum length that still shows your work. Doing this, of course, you run the risk of cutting to much, and looking like you didn't do anything at all. To avoid this risk, you can add an appendix. Here, you can include more complete code snippets, mathematical derivations with all the extra steps, any extra experiments you ran, and so on. 
+
+The TA will skim this, but is not required to mark it in detail. If there is a lot of extra work, they may award some bonus points at their discretion. Don't put in the extra work for the sake of the bonus points, though, because the result may be disappointing.
+
+\end{document}
