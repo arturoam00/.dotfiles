@@ -60,14 +60,6 @@ map a :push %mkdir<space>
 map E :extract
 map <c-x> $chmod u+x $fx
 map <a-x> $chmod -x $fx
-# execute current file (must be executable)
-map x $$f
-map X !$f
-# dedicated keys for file opener actions
-map o &mimeopen $f
-map O $mimeopen --ask $f
-# set keybind to show hidden files
-map . set hidden!
 
 # unmap the default rename keybinding
 map r
