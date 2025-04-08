@@ -15,7 +15,7 @@ shopt -s histappend
 
 [[ -f $XDG_CONFIG_HOME/shell/aliases.sh ]] && source $XDG_CONFIG_HOME/shell/aliases.sh
 [[ -f $XDG_CONFIG_HOME/shell/inputrc.sh ]] && source $XDG_CONFIG_HOME/shell/inputrc.sh
-# [[ -f $XDG_CONFIG_HOME/shell/funs.sh ]] && source $XDG_CONFIG_HOME/shell/funs.sh
+ [[ -f $XDG_CONFIG_HOME/shell/funs.sh ]] && source $XDG_CONFIG_HOME/shell/funs.sh  # funs are apparently not exported as i want
 
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
