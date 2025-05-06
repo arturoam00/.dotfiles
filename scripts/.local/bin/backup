@@ -6,7 +6,7 @@ SOURCE="/home"
 DEST="$(find /media /mnt -maxdepth 2 -mindepth 1 | fzf)"
 
 # Back up
-sudo rsync -anrPv --delete \
+sudo rsync -arPv --delete \
     --exclude='.*' \
     --exclude='snap' \
     --exclude='build' \
