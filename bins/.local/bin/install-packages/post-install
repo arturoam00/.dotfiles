@@ -1,7 +1,0 @@
-#!/bin/sh
-
-set -e
-
-if [ ! -e ~/.local/bin/bat ]; then
-    ln -s /usr/bin/batcat ~/.local/bin/bat
-fi

@@ -1,0 +1,5 @@
+[Unit]
+Description=Backup dconf to text file
+
+[Service]
+ExecStart=%h/.local/bin/dconf-backup.sh
