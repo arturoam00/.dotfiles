@@ -1,6 +1,7 @@
 {
     "files.exclude": {
        "**/.git": true,
+       "**/build": true,
        "**/__pycache__": true,
        "**/.venv": true,
        "**/.vscode": true,
