@@ -28,6 +28,9 @@ export TMUX_PLUGIN_MANAGER_PATH="$XDG_CONFIG_HOME/tmux/plugins"
 export NLTK_DATA="$XDG_DATA_HOME/nltk_data"
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
+export MAMBARC="$XDG_CONFIG_HOME/mamba/mambarc"
+export MAMBA_EXE="$HOME/.local/bin/micromamba"
+export MAMBA_ROOT_PREFIX="$XDG_DATA_HOME/micromamba"
 
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
 mkdir -p $__GL_SHADER_DISK_CACHE_PATH && export __GL_SHADER_DISK_CACHE=1

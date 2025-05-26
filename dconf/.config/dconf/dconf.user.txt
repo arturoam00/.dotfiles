@@ -7,8 +7,8 @@ width=600
 
 [apps/update-manager]
 first-run=false
-launch-count=79
-launch-time=int64 1746631302
+launch-count=81
+launch-time=int64 1747932673
 show-details=true
 window-height=400
 window-width=1176
@@ -22,13 +22,13 @@ window-is-maximized=true
 window-width=577
 
 [com/ubuntu/update-notifier]
-release-check-time=uint32 1746539589
+release-check-time=uint32 1747750180
 
 [desktop/ibus/panel/emoji]
 favorites=['😢']
 
 [org/gnome/Characters]
-recent-characters=['🎓', '𝛄', '👩\u200d🔬', '😕', '🎧', '☀️', '📁', '🐦', '🛶', '📬', '🪄', '🦊', '🐨', '🦔', '💿', '🔒', '🤔', '❌', '🌟', '📒', '📜', '📝', '📷', '🎞', '📙', '📖', '📑', '🍁', '🌻', '🐁', '💻']
+recent-characters=['👨\u200d💼', '🎓', '𝛄', '👩\u200d🔬', '😕', '🎧', '☀️', '📁', '🐦', '🛶', '📬', '🪄', '🦊', '🐨', '🦔', '💿', '🔒', '🤔', '❌', '🌟', '📒', '📜', '📝', '📷', '🎞', '📙', '📖', '📑', '🍁', '🌻', '🐁', '💻']
 
 [org/gnome/Extensions]
 window-height=1541
@@ -48,9 +48,9 @@ number-format='automatic'
 show-thousands=false
 show-zeroes=false
 source-currency=''
-source-units='degree'
+source-units='radian'
 target-currency=''
-target-units='radian'
+target-units='degree'
 window-maximized=false
 window-position=(26, 23)
 window-size=(680, 653)
@@ -67,12 +67,12 @@ video-y-resolution=720
 
 [org/gnome/clocks]
 alarms=[{'name': <''>, 'id': <'20122fce8d2548efee99e54b67a89df7'>, 'hour': <14>, 'minute': <0>, 'days': <@ai []>, 'snooze_minutes': <10>, 'ring_minutes': <5>}]
-timers=[{'duration': <240>, 'name': <''>}]
+timers=[{'duration': <1200>, 'name': <''>}]
 
 [org/gnome/clocks/state/window]
 maximized=true
 panel-id='timer'
-size=(687, 204)
+size=(809, 326)
 
 [org/gnome/control-center]
 last-panel='bluetooth'
@@ -136,7 +136,7 @@ gtk-theme='Yaru-dark'
 icon-theme='Yaru'
 overlay-scrolling=true
 show-battery-percentage=true
-text-scaling-factor=0.9500000000000004
+text-scaling-factor=1.2500000000000007
 toolkit-accessibility=false
 
 [org/gnome/desktop/media-handling]
@@ -393,6 +393,7 @@ file-states=['GOffice_gnumeric|66306:42212899:6705:1711865762|/usr/lib/goffice/0
 
 [org/gnome/mutter]
 dynamic-workspaces=false
+edge-tiling=false
 experimental-features=@as []
 workspaces-only-on-primary=true
 
@@ -457,10 +458,10 @@ ignore-ca-cert=true
 ignore-phase2-ca-cert=false
 
 [org/gnome/portal/filechooser/mattermost-desktop]
-last-folder-path='/home/aabril/Dls'
+last-folder-path='/home/aabril/Docs/phy/nikhef/thesis'
 
 [org/gnome/portal/filechooser/snap.firefox]
-last-folder-path='/home/aabril/dls'
+last-folder-path='/home/aabril/Dls'
 
 [org/gnome/power-manager]
 info-history-type='charge'
@@ -668,6 +669,7 @@ enable-tiling-popup=false
 import-layout-examples=false
 last-version-installed=46
 maximize-with-gap=true
+overridden-settings={'org.gnome.mutter.edge-tiling': <@mb nothing>}
 restore-window=@as []
 search-popup-layout=@as []
 single-screen-gap=14
@@ -776,5 +778,5 @@ sort-column='modified'
 sort-directories-first=true
 sort-order='descending'
 type-format='category'
-window-position=(679, 214)
+window-position=(679, 215)
 window-size=(1203, 996)

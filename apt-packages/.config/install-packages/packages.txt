@@ -111,3 +111,4 @@ containerd.io
 docker-buildx-plugin
 docker-compose-plugin
 urlview
+texlive-font-utils
