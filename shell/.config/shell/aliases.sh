@@ -50,5 +50,6 @@ alias cp="cp -iv" \
       tlmgr='tlmgr --usermode' \
       firefox='librewolf' \
       zz='zathura' \
-      feh='feh -xF'
+      feh='feh -xF' \
+      mm='micromamba'
 

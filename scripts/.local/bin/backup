@@ -21,4 +21,5 @@ sudo rsync -arPv --delete \
     --exclude='.ipynb_checkpoints' \
     --exclude='*.aux' \
     --exclude='*.log' \
+    --exclude='*.csv' \
     $SOURCE $DEST
