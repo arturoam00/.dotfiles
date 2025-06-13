@@ -112,3 +112,4 @@ docker-buildx-plugin
 docker-compose-plugin
 urlview
 texlive-font-utils
+rss2email
