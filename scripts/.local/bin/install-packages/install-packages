@@ -5,8 +5,32 @@ set -e
 # install packages
 sudo xargs -a ~/.config/install-packages/packages.txt apt install -y 
 	
-# install ueberzugpp
-sh ~/.local/bin/install-packages/install-ueberzugpp
+# batcat symlink
+if [ -f /usr/bin/batcat ]; then
+    ln -s /usr/bin/batcat ~/.local/bin/bat
+fi
 
-# post installation script
-sh ~/.local/bin/install-packages/post-install
+## install ueberzugpp
+echo 'deb http://download.opensuse.org/repositories/home:/justkidding/xUbuntu_24.04/ /' | sudo tee /etc/apt/sources.list.d/home:justkidding.list
+sudo apt install -y curl
+curl -fsSL https://download.opensuse.org/repositories/home:justkidding/xUbuntu_24.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_justkidding.gpg > /dev/null
+sudo apt update
+
+# optional packages for ueberzugpp
+sudo apt install -y \
+	ffmpegthumbnailer \
+	imagemagick \
+	gnumeric \
+	poppler-utils
+
+# lf installs an `ueberzug` that we don't want
+sudo apt remove -y ueberzug
+sudo apt install --reinstall -y ueberzugpp
+
+# edu-vpn
+sudo apt update
+sudo apt install -y apt-transport-https wget
+wget -O- https://app.eduvpn.org/linux/v4/deb/app+linux@eduvpn.org.asc | gpg --dearmor | sudo tee /usr/share/keyrings/eduvpn-v4.gpg >/dev/null
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/eduvpn-v4.gpg] https://app.eduvpn.org/linux/v4/deb/ noble main" | sudo tee /etc/apt/sources.list.d/eduvpn-v4.list
+sudo apt update
+sudo apt install -y eduvpn-client

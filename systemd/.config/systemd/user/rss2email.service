@@ -1,0 +1,6 @@
+[Unit]
+Description=Run rss2email
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/rss2email

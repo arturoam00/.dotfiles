@@ -51,5 +51,7 @@ alias cp="cp -iv" \
       firefox='librewolf' \
       zz='zathura' \
       feh='feh -xF' \
-      mm='micromamba'
+      mm='micromamba' \
+      r2e='r2e -c $XDG_CONFIG_HOME/rss2email/rss2email.cfg -d $XDG_DATA_HOME/rss2email/rss2email.json'
+    
 

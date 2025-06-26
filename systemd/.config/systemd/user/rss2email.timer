@@ -1,0 +1,9 @@
+[Unit]
+Description=Run rss2email daily 
+
+[Timer]
+OnCalendar=01:23
+Persistent=true
+
+[Install]
+WantedBy=timers.target
