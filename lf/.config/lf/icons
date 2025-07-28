@@ -334,6 +334,7 @@ Vagrantfile             
 *.emf   📷
 *.ogv   📷
 *.ogx   📷
+*.heic  📷
 
 # audio formats (extensions from dircolors defaults)
 *.aac   
