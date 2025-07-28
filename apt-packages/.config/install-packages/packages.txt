@@ -113,3 +113,5 @@ docker-compose-plugin
 urlview
 texlive-font-utils
 rss2email
+graphviz
+libimage-exiftool-perl

@@ -1,5 +1,6 @@
 export EDITOR="nvim"
 export BROWSER="librewolf"
+export OPENER="mimeopen"
 
 export XDG_DOWNLOAD_DIR="$HOME/Dls"
 export XDG_DOCUMENTS_DIR="$HOME/Docs"

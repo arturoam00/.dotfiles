@@ -1,0 +1,4 @@
+#!/bin/bash
+
+/home/aabril/.local/src/icloud-photo-downloader/.venv/bin/icloudpd --username arturoabrilm@gmail.com --cookie-directory $XDG_CACHE_HOME/pyicloud "$@"
+
