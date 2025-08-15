@@ -1,0 +1,5 @@
+#! /bin/bash
+
+set -euo pipefail
+
+systemctl --user enable --now *.timer

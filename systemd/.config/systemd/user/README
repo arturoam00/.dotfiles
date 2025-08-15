@@ -1,3 +1,0 @@
-From inside this folder, run
-
-`ls *.timer | xargs systemctl --user enable --now`
