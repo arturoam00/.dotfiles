@@ -1,4 +1,4 @@
 tmux/.config/tmux/plugins
 scripts/.local/bin/micromamba
-systemd/.config/systemd/user/timers.target.wants/*.timer
+systemd/.config/systemd/user/*.wants
 

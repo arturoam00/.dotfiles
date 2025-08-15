@@ -7,8 +7,8 @@ width=600
 
 [apps/update-manager]
 first-run=false
-launch-count=88
-launch-time=int64 1752867241
+launch-count=91
+launch-time=int64 1755168562
 show-details=true
 window-height=400
 window-width=1176
@@ -22,7 +22,7 @@ window-is-maximized=true
 window-width=577
 
 [com/ubuntu/update-notifier]
-release-check-time=uint32 1752657340
+release-check-time=uint32 1755076759
 
 [desktop/ibus/panel/emoji]
 favorites=['😢']
@@ -53,7 +53,7 @@ target-currency=''
 target-units='degree'
 window-maximized=false
 window-position=(26, 23)
-window-size=(680, 661)
+window-size=(680, 673)
 word-size=64
 
 [org/gnome/cheese]
@@ -67,15 +67,15 @@ video-y-resolution=720
 
 [org/gnome/clocks]
 alarms=@aa{sv} []
-timers=[{'duration': <1800>, 'name': <''>}]
+timers=[{'duration': <900>, 'name': <''>}]
 
 [org/gnome/clocks/state/window]
 maximized=true
-panel-id='stopwatch'
-size=(687, 294)
+panel-id='timer'
+size=(875, 294)
 
 [org/gnome/control-center]
-last-panel='display'
+last-panel='network'
 window-state=(1920, 1026, true)
 
 [org/gnome/desktop/a11y/applications]
@@ -136,18 +136,21 @@ gtk-theme='Yaru-dark'
 icon-theme='Yaru'
 overlay-scrolling=true
 show-battery-percentage=true
-text-scaling-factor=1.600000000000001
+text-scaling-factor=1.650000000000001
 toolkit-accessibility=false
 
 [org/gnome/desktop/media-handling]
 autorun-never=true
 
 [org/gnome/desktop/notifications]
-application-children=['gnome-network-panel', 'org-gnome-nautilus', 'firefox-firefox', 'snap-store-ubuntu-software', 'gnome-power-panel', 'gnome-control-center', 'apport-gtk', 'io-snapcraft-sessionagent', 'code-code', 'update-manager', 'org-gnome-terminal', 'org-gnome-eog', 'org-gnome-gedit', 'org-gnome-fileroller', 'org-gnome-shell-extensions', 'org-gnome-extensions', 'org-gnome-characters', 'org-gnome-clocks', 'firefox', 'zoom', 'librewolf', 'code', 'org-gnome-settings', 'org-gnome-systemmonitor', 'gnome-printers-panel', 'mattermost-desktop', 'alacritty', 'gnome-session-properties']
+application-children=['gnome-network-panel', 'org-gnome-nautilus', 'firefox-firefox', 'snap-store-ubuntu-software', 'gnome-power-panel', 'gnome-control-center', 'apport-gtk', 'io-snapcraft-sessionagent', 'code-code', 'update-manager', 'org-gnome-terminal', 'org-gnome-eog', 'org-gnome-gedit', 'org-gnome-fileroller', 'org-gnome-shell-extensions', 'org-gnome-extensions', 'org-gnome-characters', 'org-gnome-clocks', 'firefox', 'zoom', 'librewolf', 'code', 'org-gnome-settings', 'org-gnome-systemmonitor', 'gnome-printers-panel', 'mattermost-desktop', 'alacritty', 'gnome-session-properties', 'anki']
 show-banners=true
 
 [org/gnome/desktop/notifications/application/alacritty]
 application-id='Alacritty.desktop'
+
+[org/gnome/desktop/notifications/application/anki]
+application-id='anki.desktop'
 
 [org/gnome/desktop/notifications/application/apport-gtk]
 application-id='apport-gtk.desktop'
@@ -231,7 +234,7 @@ application-id='update-manager.desktop'
 application-id='Zoom.desktop'
 
 [org/gnome/desktop/peripherals/keyboard]
-numlock-state=true
+numlock-state=false
 repeat=true
 
 [org/gnome/desktop/peripherals/mouse]
@@ -394,7 +397,6 @@ file-states=['GOffice_gnumeric|66306:42212899:6705:1711865762|/usr/lib/goffice/0
 
 [org/gnome/mutter]
 dynamic-workspaces=false
-edge-tiling=false
 experimental-features=@as []
 workspaces-only-on-primary=true
 
@@ -678,7 +680,6 @@ enable-tiling-popup=false
 import-layout-examples=false
 last-version-installed=46
 maximize-with-gap=true
-overridden-settings={'org.gnome.mutter.edge-tiling': <@mb nothing>}
 restore-window=@as []
 search-popup-layout=@as []
 single-screen-gap=14
@@ -761,7 +762,7 @@ inspector-warning=true
 [org/gtk/gtk4/settings/file-chooser]
 date-format='with-time'
 location-mode='path-bar'
-show-hidden=true
+show-hidden=false
 show-size-column=true
 show-type-column=true
 sidebar-width=200
@@ -779,7 +780,7 @@ selected-color=(true, 0.6705882352941176, 0.094117647058823528, 0.32156862745098
 [org/gtk/settings/file-chooser]
 date-format='regular'
 location-mode='path-bar'
-show-hidden=false
+show-hidden=true
 show-size-column=true
 show-type-column=true
 sidebar-width=287
@@ -787,5 +788,5 @@ sort-column='modified'
 sort-directories-first=true
 sort-order='descending'
 type-format='category'
-window-position=(679, 301)
+window-position=(1319, 582)
 window-size=(1203, 996)
