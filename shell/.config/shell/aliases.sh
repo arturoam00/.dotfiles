@@ -52,6 +52,7 @@ alias cp="cp -iv" \
       zz='zathura' \
       feh='feh -xF' \
       mm='micromamba' \
-      r2e='r2e -c $XDG_CONFIG_HOME/rss2email/rss2email.cfg -d $XDG_DATA_HOME/rss2email/rss2email.json'
+      r2e='r2e -c $XDG_CONFIG_HOME/rss2email/rss2email.cfg -d $XDG_DATA_HOME/rss2email/rss2email.json' \
+      icloudpdx='icloudpd --directory ~/Pics/Photos/icloud --set-exif-datetime --folder-structure {:%Y/%m/}'
     
 

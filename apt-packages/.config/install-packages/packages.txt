@@ -115,3 +115,6 @@ texlive-font-utils
 rss2email
 graphviz
 libimage-exiftool-perl
+libxcb-xinerama0
+libxcb-cursor0
+libnss3
