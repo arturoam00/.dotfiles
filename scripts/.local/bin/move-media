@@ -1,0 +1,61 @@
+#!/bin/bash
+#
+# move-media.sh — Sort photos and videos into YYYY/MM folders
+# based on EXIF metadata (DateTimeOriginal, MediaCreateDate, FileModifyDate).
+#
+# Usage: ./move-media.sh [source_dir]
+#
+
+set -e
+
+usage() {
+  echo "Usage: $0 [source_dir]"
+  exit 1
+}
+
+if [ "$#" -gt 1 ]; then
+  usage
+fi
+
+src_dir="${1:-.}"
+
+config_file="$XDG_CONFIG_HOME/exiftool/ExifTool_config"
+[[ -e "$config_file" ]] || { echo "Config file not found!"; exit 1; }
+
+logdir="${XDG_STATE_HOME:-$HOME/.local/state}/move-media"
+[ ! -d "$logdir" ] && mkdir -p "$logdir"
+
+logfile="$logdir/log"
+rm -f $logfile
+
+echo "=== Media sort started at $(date) ===" | tee -a "$logfile"
+
+echo "$config_file"
+########################################
+# Photos
+########################################
+exiftool -config "$config_file" -r -progress \
+  "-FileName<$HOME/Pics/Photos/\${BestDateTime}" \
+  -d %Y/%m/%d%H%M%S%%-c.%%e \
+  -if "\$mimetype =~ /^image\//" \
+  "$src_dir" 2>&1 | tee -a "$logfile" 
+
+########################################
+# Videos
+########################################
+exiftool -config "$config_file" -r -progress \
+  "-FileName<$HOME/Vids/Videos/\${BestDateTime}" \
+  -d %Y/%m/%d%H%M%S%%-c.%%e \
+  -if "\$mimetype =~ /^video\//" \
+  "$src_dir" 2>&1 | tee -a "$logfile" 
+
+# ########################################
+# # Unsorted (files without usable metadata)
+# ########################################
+# exiftool -config "$config_file" -r -progress \
+#   "-Directory=$HOME/Unsorted" \
+#   -d %Y/%m/%d%H%M.%%e \
+#   -if "not \$DateTimeOriginal and not \$CreateDate and not \$MediaCreateDate and \$mimetype =~ /^(image|video)\//" \
+#   "$src_dir" 2>&1 | tee -a "$logfile" 
+
+echo "=== Media sort finished at $(date) ===" | tee -a "$logfile"

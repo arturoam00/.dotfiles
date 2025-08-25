@@ -1,0 +1,85 @@
+#------------------------------------------------------------------------------
+# File:         example.config  -->  ~/.ExifTool_config
+#
+# Description:  Example user configuration file for Image::ExifTool
+#
+# Notes:        This example file shows how to define your own shortcuts and
+#               add new EXIF, IPTC, XMP, PNG, MIE and Composite tags, as well
+#               as how to specify preferred lenses for the LensID tag, and
+#               define new file types and default ExifTool API options and
+#               command-line arguments.
+#
+#               Note that unknown tags may be extracted even if they aren't
+#               defined, but tags must be defined to be written.  Also note
+#               that it is possible to override an existing tag definition
+#               with a user-defined tag.
+#
+#               To activate this file, rename it to ".ExifTool_config" and
+#               place it in your home directory or the exiftool application
+#               directory.  (On Mac and some Windows systems this must be done
+#               via the command line since the GUI's may not allow filenames to
+#               begin with a dot.  Use the "rename" command in Windows or "mv"
+#               on the Mac.)  This causes ExifTool to automatically load the
+#               file when run.  Your home directory is determined by the first
+#               defined of the following environment variables:
+#
+#                   1.  EXIFTOOL_HOME
+#                   2.  HOME
+#                   3.  HOMEDRIVE + HOMEPATH
+#                   4.  (the current directory)
+#
+#               Alternatively, the -config option of the exiftool application
+#               may be used to load a specific configuration file (note that
+#               this must be the first option on the command line):
+#
+#                   exiftool -config example.config ...
+#
+#               This example file defines the following 16 new tags as well as
+#               a number of Shortcut and Composite tags:
+#
+#                   1.  EXIF:NewEXIFTag
+#                   2.  GPS:GPSPitch
+#                   3.  GPS:GPSRoll
+#                   4.  IPTC:NewIPTCTag
+#                   5.  XMP-xmp:NewXMPxmpTag
+#                   6.  XMP-exif:GPSPitch
+#                   7.  XMP-exif:GPSRoll
+#                   8.  XMP-xxx:NewXMPxxxTag1
+#                   9.  XMP-xxx:NewXMPxxxTag2
+#                  10.  XMP-xxx:NewXMPxxxTag3
+#                  11.  XMP-xxx:NewXMPxxxStruct
+#                  12.  PNG:NewPngTag1
+#                  13.  PNG:NewPngTag2
+#                  14.  PNG:NewPngTag3
+#                  15.  MIE-Meta:NewMieTag1
+#                  16.  MIE-Test:NewMieTag2
+#
+#               For detailed information on the definition of tag tables and
+#               tag information hashes, see lib/Image/ExifTool/README.
+#------------------------------------------------------------------------------
+
+%Image::ExifTool::UserDefined::FileTypes = (
+    AVI => { BaseType => 'MOV', Description => 'Old AVI video' },
+);
+
+# The %Image::ExifTool::UserDefined hash defines new tags to be added
+# to existing tables.
+%Image::ExifTool::UserDefined = (
+    # Composite tag for best available date/time for photos
+    'Image::ExifTool::Composite' => {
+        BestDateTime => {
+            Desire => {
+                0 => 'DateTimeOriginal',
+                1 => 'CreateDate',
+                2 => 'FileModifyDate',
+            },
+            ValueConv => sub {
+            # Return the first defined, non-empty value
+            my $val = shift;
+            foreach my $v (@$val) { return $v if defined $v and $v ne ''; }
+            return undef;
+            },
+            PrintConv => '$self->ConvertDateTime($val)',
+        },
+    },
+);

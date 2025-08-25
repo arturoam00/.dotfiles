@@ -53,6 +53,7 @@ alias cp="cp -iv" \
       feh='feh -xF' \
       mm='micromamba' \
       r2e='r2e -c $XDG_CONFIG_HOME/rss2email/rss2email.cfg -d $XDG_DATA_HOME/rss2email/rss2email.json' \
-      icloudpdx='icloudpd --directory ~/Pics/Photos/icloud --set-exif-datetime --folder-structure {:%Y/%m/}'
+      icloudpdx='icloudpd --directory ~/Pics/Photos/icloud --set-exif-datetime --folder-structure {:%Y/%m/}' \
+      exiftool='exiftool -config $XDG_CONFIG_HOME/exiftool/ExifTool_config'
     
 
