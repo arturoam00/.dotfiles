@@ -16,3 +16,6 @@ fi
 # Load local env
 [[ -f $HOME/.env ]] && source $HOME/.env
 
+# Load secrets
+[[ -f $HOME/.secrets ]] && source $HOME/.secrets
+

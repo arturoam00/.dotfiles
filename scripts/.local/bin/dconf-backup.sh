@@ -1,3 +1,3 @@
 #!/bin/bash
 
-dconf dump / > $XDG_CONFIG_HOME/dconf/dconf.user.txt
+dconf dump / > $XDG_DOCUMENTS_DIR/msc/dconf/dconf.user.txt

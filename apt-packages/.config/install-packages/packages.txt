@@ -118,3 +118,4 @@ libimage-exiftool-perl
 libxcb-xinerama0
 libxcb-cursor0
 libnss3
+borgbackup
