@@ -2,5 +2,7 @@
 Description=Run rss2email
 
 [Service]
+Environment="XDG_DATA_HOME=%h/.local/share"
+Environment="XDG_CONFIG_HOME=%h/.config"
 Type=oneshot
 ExecStart=%h/.local/bin/rss2email

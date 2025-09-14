@@ -1,0 +1,61 @@
+P sh
+
+# Include
++ pf:home/aabril/.ssh/config
+
+# Hidden files and folders
+- **/.*
+- **/Thumbs.db
+
+# Build, dist, data and cache directories
+- **/build
+- **/dist
+- **/__pycache__
+- **/node_modules
+- **/.venv
+- **/env
+- **/venv
+- **/__pypackages__
+- **/[Dd]ata/
+
+# Shared libraries and executables
+- fm:*.jar
+- fm:*.exe
+- fm:*.so
+
+# Temporary / log files
+- fm:*.log
+- fm:*.aux
+- fm:*.toc
+- fm:*.out
+- fm:*.bak
+- fm:*.old
+- fm:*.tmp
+- fm:*.swp
+- fm:*.swo
+- fm:*.err
+- fm:*.snm
+- fm:*.nav
+- fm:*.fls
+- fm:*.fdb_latexmk
+
+# Python data files
+- fm:*.pkl
+- fm:*.npy
+- fm:*.egg-info
+- fm:*.egg
+
+# Downloads / large files
+- fm:home/aabril/Dls/
+
+# Media (optional, can comment out if you want to keep)
+- fm:*.tar
+- fm:*.tar.gz
+- fm:*.zip
+- fm:*.bin
+- fm:*.img
+- fm:*.gz
+
+# Misc
+- **/snap
+- fm:home/aabril/Code/watch/

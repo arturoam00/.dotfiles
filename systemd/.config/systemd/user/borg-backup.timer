@@ -1,0 +1,9 @@
+[Unit]
+Description=Run Borg backup 3 times daily
+
+[Timer]
+OnCalendar=*-*-* 00,12,18:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

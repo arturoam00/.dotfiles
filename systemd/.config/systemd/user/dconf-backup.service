@@ -2,4 +2,5 @@
 Description=Backup dconf to text file
 
 [Service]
+Environment="XDG_DOCUMENTS_DIR=%h/Docs"
 ExecStart=%h/.local/bin/dconf-backup.sh

@@ -1,0 +1,8 @@
+[Unit]
+Description=Borg backup job
+
+[Service]
+Environment="BORG_REPO=rsync.net:Backup"
+Environment="XDG_CONFIG_HOME=%h/.config"
+ExecStart=%h/.local/bin/borg-backup
+Type=oneshot
