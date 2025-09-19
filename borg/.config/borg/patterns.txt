@@ -17,6 +17,8 @@ P sh
 - **/venv
 - **/__pypackages__
 - **/[Dd]ata/
+- **/[Tt]emp
+- **/[Tt]mp
 
 # Shared libraries and executables
 - fm:*.jar
@@ -44,6 +46,11 @@ P sh
 - fm:*.npy
 - fm:*.egg-info
 - fm:*.egg
+
+# Pytorch model checkpoints
+- fm:*.pt
+- fm:*.pth
+- fm:*.safetensors
 
 # Downloads / large files
 - fm:home/aabril/Dls/

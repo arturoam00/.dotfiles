@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 # Load passphrase
-SECRETS_FILE="$XDG_CONFIG_HOME/borg/.secrets"
+export BORG_PASSCOMMAND="cat $XDG_CONFIG_HOME/borg/.secrets"
 [ -f "$SECRETS_FILE" ] && . "$SECRETS_FILE"
 
 # some helpers and error handling:
