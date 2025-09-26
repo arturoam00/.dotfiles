@@ -1,7 +1,7 @@
 # Enable color support for ls and add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     eval "$(dircolors -b ~/.dircolors 2>/dev/null || dircolors -b)"
-    alias ls='ls --color=auto --hide=__pycache__ --hide=snap' \
+    alias ls='ls --color=auto --hide=__pycache__ --hide=snap --hide=*.egg-info' \
           diff='diff --color=auto' \
           grep='grep --color=auto' \
           fgrep='fgrep --color=auto' \
@@ -54,6 +54,7 @@ alias cp="cp -iv" \
       mm='micromamba' \
       r2e='r2e -c $XDG_CONFIG_HOME/rss2email/rss2email.cfg -d $XDG_DATA_HOME/rss2email/rss2email.json' \
       icloudpdx='icloudpd --directory ~/Pics/Photos/icloud --set-exif-datetime --folder-structure {:%Y/%m/}' \
-      exiftool='exiftool -config $XDG_CONFIG_HOME/exiftool/ExifTool_config'
+      exiftool='exiftool -config $XDG_CONFIG_HOME/exiftool/ExifTool_config' \
+      bb='BORG_REPO=rsync.net:Backup borg-backup'
     
 
