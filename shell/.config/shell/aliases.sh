@@ -55,6 +55,8 @@ alias cp="cp -iv" \
       r2e='r2e -c $XDG_CONFIG_HOME/rss2email/rss2email.cfg -d $XDG_DATA_HOME/rss2email/rss2email.json' \
       icloudpdx='icloudpd --directory ~/Pics/Photos/icloud --set-exif-datetime --folder-structure {:%Y/%m/}' \
       exiftool='exiftool -config $XDG_CONFIG_HOME/exiftool/ExifTool_config' \
-      bb='BORG_REPO=rsync.net:Backup borg-backup'
+      bb='BORG_REPO=rsync.net:Backup borg-backup' \
+      music='soundcoreA1-mode music' \
+      call='soundcoreA1-mode call'
     
 

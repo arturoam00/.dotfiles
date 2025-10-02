@@ -1,0 +1,19 @@
+#!/bin/bash
+
+CARD="bluez_card.E8_EE_CC_7B_88_43"
+
+case "$1" in
+  music)
+    pactl set-card-profile "$CARD" a2dp-sink-sbc_xq
+    notify-send "🎶 Switched SoundcoreA1 to music mode"
+    ;;
+  call)
+    pactl set-card-profile "$CARD" headset-head-unit-msbc
+    notify-send "🎤 Switched SoundcoreA1 to call mode"
+    ;;
+  *)
+    echo "Usage: $0 {music|call}"
+    exit 1
+    ;;
+esac
+

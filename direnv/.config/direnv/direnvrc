@@ -1,0 +1,8 @@
+use_micromamba() {
+  local env_name=$1
+  eval "$("$MAMBA_EXE" shell hook --shell bash --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+  micromamba activate "$env_name"
+
+  export VIRTUAL_ENV_PROMPT="$CONDA_PROMPT_MODIFIER"
+}
+
