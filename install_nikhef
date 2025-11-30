@@ -2,4 +2,4 @@
 
 set -e 
 
-stow -v fzf nvim python shell wget lf nikhef mamba R
+stow -v fzf nvim python shell wget lf nikhef mamba R direnv
