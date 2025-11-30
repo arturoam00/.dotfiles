@@ -4,12 +4,18 @@ CARD="bluez_card.E8_EE_CC_7B_88_43"
 
 case "$1" in
   music)
-    pactl set-card-profile "$CARD" a2dp-sink-sbc_xq
-    notify-send "🎶 Switched SoundcoreA1 to music mode"
+    if pactl set-card-profile "$CARD" a2dp-sink-sbc_xq; then
+      notify-send "🎶 Switched SoundcoreA1 to music mode"
+    else
+      notify-send "❌ Failed. Is SoundcoreA1 connected?"
+    fi
     ;;
   call)
-    pactl set-card-profile "$CARD" headset-head-unit-msbc
-    notify-send "🎤 Switched SoundcoreA1 to call mode"
+    if pactl set-card-profile "$CARD" headset-head-unit-msbc; then
+      notify-send "🎤 Switched SoundcoreA1 to call mode"
+    else
+      notify-send "❌ Failed. Is SoundcoreA1 connected?"
+    fi
     ;;
   *)
     echo "Usage: $0 {music|call}"
