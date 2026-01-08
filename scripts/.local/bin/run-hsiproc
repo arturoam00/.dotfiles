@@ -1,0 +1,10 @@
+#!/bin/bash
+
+HSIPROC="$HOME/Code/dev/GrwNxt/hsiproc"
+HSIPROC_ENV="$HSIPROC/.venv/bin/activate"
+
+# export PATH="$HSIPROC${PATH:+:$PATH}"
+source $HSIPROC_ENV
+
+hsiproc "$@"
+

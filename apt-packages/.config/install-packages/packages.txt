@@ -128,3 +128,6 @@ python3-llfuse
 python3-tk
 gimp
 pdftk
+traceroute
+dvipng
+imagemagick

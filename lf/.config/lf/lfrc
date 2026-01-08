@@ -67,6 +67,7 @@ map a :push %mkdir<space>
 map E :extract
 map <c-x> $chmod u+x $fx
 map <a-x> $chmod -x $fx
+map <c-k> $killall ueberzugpp
 
 # unmap the default rename keybinding
 map r
