@@ -1,8 +1,5 @@
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+[[ $- != *i* ]] && return
 
 # Bash history stuff
 HISTCONTROL=ignoreboth
@@ -11,19 +8,14 @@ HISTFILESIZE=2000
 
 shopt -s histappend
 
-[[ -f /etc/bashrc ]] && source /etc/bashrc
+# Automatically cd to typed dir
+shopt -s autocd
 
 [[ -f $XDG_CONFIG_HOME/shell/aliases.sh ]] && source $XDG_CONFIG_HOME/shell/aliases.sh
 [[ -f $XDG_CONFIG_HOME/shell/inputrc.sh ]] && source $XDG_CONFIG_HOME/shell/inputrc.sh
-[[ -f $XDG_CONFIG_HOME/shell/funs.sh ]] && source $XDG_CONFIG_HOME/shell/funs.sh  # funs are apparently not exported as i want
 
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+# funs are apparently not exported in profile as i want
+[[ -f $XDG_CONFIG_HOME/shell/funs.sh ]] && source $XDG_CONFIG_HOME/shell/funs.sh  
 
 for file in $XDG_CONFIG_HOME/shell/bashrc.d/*.sh; do
     [[ -r "$file" ]] && source "$file"

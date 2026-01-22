@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Check if the argument is provided
 if [ -z "$1" ]; then
@@ -7,7 +7,7 @@ if [ -z "$1" ]; then
 fi
 
 # Define the source directory
-SOURCE_DIR=~/Pics/Screenshots
+SOURCE_DIR=$(xdg-user-dir PICTURES)
 
 # Find the most recent screenshot file
 LATEST_SCREENSHOT=$(ls -t $SOURCE_DIR/*.png | head -n 1)

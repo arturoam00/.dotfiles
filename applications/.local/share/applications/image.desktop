@@ -1,4 +1,6 @@
 [Desktop Entry]
 Type=Application
 Name=Image viewer
-Exec=/usr/bin/feh -xF %f
+Terminal=false
+Exec=swayimg %f
+NoDisplay=true

@@ -1,6 +1,0 @@
-[MIME Cache]
-text/html=browser.desktop;
-text/markdown=markdown.desktop;
-x-scheme-handler/http=browser.desktop;
-x-scheme-handler/https=browser.desktop;
-x-scheme-handler/mailto=mail.desktop;

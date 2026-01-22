@@ -1,33 +1,9 @@
 [Default Applications]
-application/postscript=pdf.desktop;
 application/pdf=pdf.desktop;
-video/x-matroska=video.desktop;
-video/mp4=video.desktop;
-video/quicktime=video.desktop;
-video/x-msvideo=video.desktop;
-video/vnd.avi=video.desktop;
+audio/*=video.desktop;
+image/*=image.desktop;
 inode/directory=file.desktop;
-x-scheme-handler/mailto=mail.desktop;
-x-scheme-handler/http=browser.desktop;
-x-scheme-handler/https=browser.desktop;
-x-scheme-handler/about=browser.desktop;
-x-scheme-handler/unknown=browser.desktop;
+text/*=editor.desktop;
 text/html=browser.desktop;
-text/plain=editor.desktop;
-text/markdown=editor.desktop;
-image/jpeg=image.desktop;
-image/png=image.desktop;
-image/gif=image.desktop;
-image/tiff=image.desktop;
-image/bmp=image.desktop;
-image/x-icon=image.desktop;
-image/x-xpixmap=image.desktop;
-image/x-xbitmap=image.desktop;
-image/webp=image.desktop;
-image/heif=image.desktop;
+video/*=video.desktop;
 x-scheme-handler/terminal=terminal.desktop;
-
-[Added Associations]
-text/html=browser.desktop;
-x-scheme-handler/http=browser.desktop;
-x-scheme-handler/https=browser.desktop;

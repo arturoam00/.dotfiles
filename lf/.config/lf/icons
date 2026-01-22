@@ -25,7 +25,7 @@ or             # ORPHAN
 tw      t       # STICKY_OTHER_WRITABLE
 ow             # OTHER_WRITABLE
 st      t       # STICKY
-di     📁       # DIR
+di              # DIR
 pi      p       # FIFO
 so      s       # SOCK
 bd      b       # BLK
@@ -285,77 +285,77 @@ Vagrantfile             
 *.esd   
 
 # image formats (extensions from dircolors defaults)
-*.jpg   📷
-*.jpeg  📷
-*.mjpg  📷
-*.mjpeg 📷
-*.gif   📷
-*.bmp   📷
-*.pbm   📷
-*.pgm   📷
-*.ppm   📷
-*.tga   📷
-*.xbm   📷
-*.xpm   📷
-*.tif   📷
-*.tiff  📷
-*.png   📷
-*.svg   📷
-*.svgz  📷
-*.mng   📷
-*.pcx   📷
-*.mov   📷
-*.mpg   📷
-*.mpeg  📷
-*.m2v   📷
-*.mkv   📷
-*.webm  📷
-*.ogm   📷
-*.mp4   📷
-*.m4v   📷
-*.mp4v  📷
-*.vob   📷
-*.qt    📷
-*.nuv   📷
-*.wmv   📷
-*.asf   📷
-*.rm    📷
-*.rmvb  📷
-*.flc   📷
-*.avi   📷
-*.fli   📷
-*.flv   📷
-*.gl    📷
-*.dl    📷
-*.xcf   📷
-*.xwd   📷
-*.yuv   📷
-*.cgm   📷
-*.emf   📷
-*.ogv   📷
-*.ogx   📷
-*.heic  📷
+*.jpg   
+*.jpeg  
+*.mjpg  
+*.mjpeg 
+*.gif   
+*.bmp   
+*.pbm   
+*.pgm   
+*.ppm   
+*.tga   
+*.xbm   
+*.xpm   
+*.tif   
+*.tiff  
+*.png   
+*.svg   
+*.svgz  
+*.mng   
+*.pcx   
+*.mov   
+*.mpg   
+*.mpeg  
+*.m2v   
+*.mkv   
+*.webm  
+*.ogm   
+*.mp4   
+*.m4v   
+*.mp4v  
+*.vob   
+*.qt    
+*.nuv   
+*.wmv   
+*.asf   
+*.rm    
+*.rmvb  
+*.flc   
+*.avi   
+*.fli   
+*.flv   
+*.gl    
+*.dl    
+*.xcf   
+*.xwd   
+*.yuv   
+*.cgm   
+*.emf   
+*.ogv   
+*.ogx   
+*.heic  
 
 # audio formats (extensions from dircolors defaults)
-*.aac   
-*.au    
-*.flac  
-*.m4a   
-*.mid   
-*.midi  
-*.mka   
-*.mp3   
-*.mpc   
-*.ogg   
-*.ra    
-*.wav   
-*.oga   
-*.opus  
-*.spx   
-*.xspf  
+*.aac   
+*.au    
+*.flac  
+*.m4a   
+*.mid   
+*.midi  
+*.mka   
+*.mp3   
+*.mpc   
+*.ogg   
+*.ra    
+*.wav   
+*.oga   
+*.opus  
+*.spx   
+*.xspf  
 
 # other formats
-*.txt   📝
-*.pdf   📜
-*.epub  📙
-*.ipynb 📒
+*.txt   
+*.pdf   
+*.epub  
+*.ipynb 

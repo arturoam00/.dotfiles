@@ -20,11 +20,14 @@ set ifs "\n"
 # leave some space at the top and the bottom of the screen
 set scrolloff 10
 
+# Use the `dim` attribute instead of underline for the cursor in the preview pane
+set cursorpreviewfmt "\033[7;2m"
+
 # appearance settings
 set icons true
-set promptfmt "\033[38;5;111m%u@%h\033[0m \033[38;5;114m%d\033[0m\033[1m%f\033[0m"
-set hiddenfiles .*:__pycache__:*.egg-info:~/snap:build
-set previewer "~/.config/lf/preview"
+set promptfmt "%d"
+set hiddenfiles .*:__pycache__:*.egg-info:build
+set previewer "~/.config/lf/previewer"
 set cleaner "~/.config/lf/cleaner"
 
 # use enter for shell commands
@@ -33,11 +36,58 @@ map <enter> shell
 # execute current file (must be executable)
 map x $$f
 map X !$f
+map o &xdg-open $f
 
-# dedicated keys for file opener actions
-map o &mimeopen $f
-map O $code $f
+# Hidden files
+map . set hidden!
 
+# Move around
+map gd cd "~/Dls"
+map gc cd "~/.config"
+map gl cd "~/.local"
+map gb ${{
+    lf -remote "send $id cd $OLDPWD"
+}}
+map <c-f> :fzf_jump
+
+map <enter> :push $
+map <esc> :quit
+map <c-c> :clear
+
+# Change modes of files
+map <c-x> $chmod u+x $fx
+map <a-x> $chmod -x $fx
+
+# Misc mappings
+map D :delete
+map E :extract
+map Y $echo $f | wl-copy 
+map a :push %mkdir<space>
+map T :push %touch<space>
+
+# Custom rename mappings
+map r
+map i rename
+map I :rename; cmd-home
+map A :rename; cmd-end
+map c :rename; cmd-delete-home
+map C :rename; cmd-end; cmd-delete-home
+
+# extract the current file with the right command
+cmd extract ${{
+    set -f
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.zip) unzip $f -d "${f%%.*}";;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+	*.gz) gunzip -k $f;;
+    esac
+}}
+
+# Custom opener
 cmd open &{{
     case $(file --mime-type -Lb $f) in
         text/*) lf -remote "send $id \$$EDITOR \$fx";;
@@ -45,45 +95,21 @@ cmd open &{{
     esac
 }}
 
-# set keybind to show hidden files
-map . set hidden!
-
-
-map <c-f> :fzf_jump
-map gd cd "~/Dls"
-map gc cd "~/.config"
-map gl cd "~/.local"
-map gb ${{
-    lf -remote "send $id cd $OLDPWD"
-}}
-map <esc> :quit
-map D :delete
-map <c-c> :clear
-map <a-c> $code .
-map T :push %touch<space>
-map Y $echo $f | xclip -selection clipboard
-map <enter> :push $
-map a :push %mkdir<space>
-map E :extract
-map <c-x> $chmod u+x $fx
-map <a-x> $chmod -x $fx
-map <c-k> $killall ueberzugpp
-
-# unmap the default rename keybinding
-map r
-
-map i rename
-map I :rename; cmd-home
-map A :rename; cmd-end
-map c :rename; cmd-delete-home
-map C :rename; cmd-end; cmd-delete-home
-
 # compress current file or selected files with tar and gunzip
 cmd tar ${{
     set -f
     mkdir $1
     cp -r $fx $1
     tar czf $1.tar.gz $1
+    rm -rf $1
+}}
+
+# compress current file or selected files with zip
+cmd zip ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    zip -r $1.zip $1
     rm -rf $1
 }}
 
@@ -105,25 +131,3 @@ cmd edit-config ${{
     lf -remote "send $id source ~/.config/lf/lfrc"
 }}
 
-# extract the current file with the right command
-cmd extract ${{
-    set -f
-    case $f in
-        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
-        *.tar.gz|*.tgz) tar xzvf $f;;
-        *.tar.xz|*.txz) tar xJvf $f;;
-        *.zip) unzip $f -d "${f%%.*}";;
-        *.rar) unrar x $f;;
-        *.7z) 7z x $f;;
-	*.gz) gunzip -k $f;;
-    esac
-}}
-
-# compress current file or selected files with zip
-cmd zip ${{
-    set -f
-    mkdir $1
-    cp -r $fx $1
-    zip -r $1.zip $1
-    rm -rf $1
-}}

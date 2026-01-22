@@ -3,6 +3,4 @@ scripts/.local/bin/micromamba
 systemd/.config/systemd/user/*.wants
 borg/**/security
 borg/**/keys
-
-# Borg backup
 .secrets

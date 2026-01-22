@@ -1,0 +1,39 @@
+#!/bin/sh
+
+set -euo pipefail
+
+# This will prevent stow to symlink the whole user dir
+mkdir -p "$XDG_CONFIG_HOME/systemd/user/"
+
+# I want the ~/.local/bin dir to be symlinked to my scripts
+[[ -d ~/.local/bin ]] && [[ ! -L ~/.local/bin ]] && mv ~/.local/bin/ ~/.local/bin-backup
+
+stow -v \
+  alacritty \
+  applications \
+  bkgs \
+  borg \
+  direnv \
+  dunst \
+  exiftool \
+  gammastep \
+  handlr \
+  lf \
+  librewolf \
+  mamba \
+  nvim \
+  personal \
+  python \
+  R \
+  scripts \
+  shell \
+  sway \
+  swaynag \
+  systemd \
+  tmux \
+  tofi \
+  wget \
+  xdg-user-dirs \
+  zathura
+
+echo 'done!'

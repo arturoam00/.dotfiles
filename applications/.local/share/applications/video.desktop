@@ -2,3 +2,5 @@
 Type=Application
 Name=Video viewer
 Exec=/usr/bin/mpv -quiet %f
+Terminal=false
+NoDisplay=true

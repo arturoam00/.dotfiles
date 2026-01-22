@@ -2,9 +2,7 @@
 # This is better done in either `.env` or `.profile`, the first always takes precedence.
 
 if [ -z "$MAMBA_EXE" ] || [ -z "$MAMBA_ROOT_PREFIX" ]; then
-    echo "Error: Required environment variables MAMBA_EXE and/or MAMBA_ROOT_PREFIX are not set."
-    echo "Please define them in your .env or .profile file."
-    return 1 2>/dev/null || exit 1
+    exit 0
 fi
 
 # >>> mamba initialize >>>

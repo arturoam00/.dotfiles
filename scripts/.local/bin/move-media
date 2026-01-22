@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # move-media.sh — Sort photos and videos into YYYY/MM folders
 # based on EXIF metadata (DateTimeOriginal, MediaCreateDate, FileModifyDate).
@@ -35,7 +35,7 @@ echo "$config_file"
 # Photos
 ########################################
 exiftool -config "$config_file" -r -progress \
-  "-FileName<$HOME/Pics/Photos/\${BestDateTime}" \
+  "-FileName<$XDG_PICTURES_DIR/Photos/\${BestDateTime}" \
   -d %Y/%m/%d%H%M%S%%-c.%%e \
   -if "\$mimetype =~ /^image\//" \
   "$src_dir" 2>&1 | tee -a "$logfile" 
@@ -44,7 +44,7 @@ exiftool -config "$config_file" -r -progress \
 # Videos
 ########################################
 exiftool -config "$config_file" -r -progress \
-  "-FileName<$HOME/Vids/Videos/\${BestDateTime}" \
+  "-FileName<$XDG_VIDEOS_DIR/Videos/\${BestDateTime}" \
   -d %Y/%m/%d%H%M%S%%-c.%%e \
   -if "\$mimetype =~ /^video\//" \
   "$src_dir" 2>&1 | tee -a "$logfile" 

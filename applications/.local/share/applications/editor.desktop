@@ -1,5 +1,7 @@
 [Desktop Entry]
+Type=Application
 Name=Text Editor
+Terminal=true
 Exec=/usr/bin/nvim %f
 NoDisplay=true
 

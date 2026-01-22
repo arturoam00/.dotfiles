@@ -1,4 +1,5 @@
 BORG_SECRETS="$XDG_CONFIG_HOME/borg/.secrets"
-if [ -f "$BORG_SECRETS" ]; then
-	export BORG_PASSCOMMAND="cat $BORG_SECRETS"
-fi
+
+[[ -f $BORG_SECRETS ]] && export BORG_PASSCOMMAND="cat $BORG_SECRETS"
+
+unset BORG_SECRETS

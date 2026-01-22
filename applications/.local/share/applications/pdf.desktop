@@ -2,3 +2,5 @@
 Type=Application
 Name=PDF reader
 Exec=/usr/bin/zathura %u
+Terminal=false
+NoDisplay=true

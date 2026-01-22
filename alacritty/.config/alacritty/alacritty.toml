@@ -16,64 +16,35 @@ save_to_clipboard = true
 semantic_escape_chars = ''',│`|:"' ()[]{}<>	'''
 
 [window]
-opacity = 0.95
+opacity = 1
 decorations = "none"
 
 [window.padding]
-x = 20
-y = 20
+x = 10
+y = 10
 
 [env]
 TERM = "xterm-256color"
 
-[colors.primary]
-background = "0x1e1e2e"
-foreground = "0xcdd6f4"
-
-[colors.normal]
-black   = "0x45475a"
-red     = "0xf38ba8"
-green   = "0xa6e3a1"
-yellow  = "0xf9e2af"
-blue    = "0x89b4fa"
-magenta = "0xf5c2e7"
-cyan    = "0x94e2d5"
-white   = "0xcdd6f4"
-
-[colors.bright]
-black   = "0x585b70"
-red     = "0xf38ba8"
-green   = "0xa6e3a1"
-yellow  = "0xf9e2af"
-blue    = "0x89b4fa"
-magenta = "0xf5c2e7"
-cyan    = "0x94e2d5"
-white   = "0xffffff"
-
-[colors.cursor]
-cursor = "0xcdd6f4"
-text = "0x1e1e2e"
-
 [font]
-size = 13
+size = 16
 
 [font.bold]
-family = "Roboto Mono Nerd Font"
-style = "SemiBold Italic"
+family = "JetBrains Mono Nerd Font"
+style = "Bold"
 
 [font.glyph_offset]
 x = 0
 y = 0
 
 [font.italic]
-family = "RobotoMono Nerd Font Mono"
-style = "Light Italic" 
+family = "JetBrains Mono Nerd Font"
+style = "Italic" 
 
 [font.normal]
-family = "RobotoMono Nerd Font Mono"
-style = "SemiBold"
+family = "JetBrains Mono Nerd Font"
+style = "Regular"
 
 [font.offset]
 x = 1
 y = 0
-

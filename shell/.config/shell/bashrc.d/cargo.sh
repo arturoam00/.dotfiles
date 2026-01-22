@@ -10,4 +10,4 @@ if [ -f "$CARGO" ]; then
     esac
 fi
 
-
+unset CARGO

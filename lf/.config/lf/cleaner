@@ -1,4 +1,4 @@
 #!/bin/sh
 
-ueberzugpp cmd -s $UB_SOCKET -a remove -i PREVIEW
+[ -p "$FIFO_UEBERZUG" ] && printf '{"action":"remove","identifier":"preview"}\n' >"$FIFO_UEBERZUG"
 
