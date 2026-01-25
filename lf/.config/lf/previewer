@@ -49,7 +49,7 @@ case "$(file -Lb --mime-type -- "$file")" in
     fi
     ;;
   text/*)
-    exec bat "$file"
+    exec bat --color=always --style=plain --paging=never -- "$file"
     ;;
   audio/*)
     exec exiftool "$file"

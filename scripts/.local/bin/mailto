@@ -1,10 +1,13 @@
-#!/bin/bash
+#!/bin/env python3
 
-# Extract the mailto URL and format it for Gmail
+import sys
+import os
 
-mailto_url="$1"
-mailto_url="${mailto_url#mailto:}" # Remove the mailto: prefix
+def main(url):
+    to, _, params = url.partition("?")
+    to = to.replace("mailto:", "")
+    params = params.replace("subject=","su=")
+    os.system(f"xdg-open 'https://mail.google.com/mail/?view=cm&fs=1&to={to}&{params}'")
 
-# Open Gmail in the browser with the pre-filled email address
-xdg-open "https://mail.google.com/mail/?view=cm&to=${mailto_url}"
-
+if __name__ == "__main__":
+    main(sys.argv[1])

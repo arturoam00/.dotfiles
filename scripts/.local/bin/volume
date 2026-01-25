@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+[[ "$#" -ne 1 ]] && echo 'provide one argument' && exit 1
+
+tag="volume_tag"
+step=5
+
+read -r vol muted < <(
+    wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '/Volume/ {print $2, ($3 == "[MUTED]")}'
+)
+vol=$(awk -v vol=$vol 'BEGIN { print vol * 100 }')
+
+case $1 in
+  up)
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ "$step"%+ --limit 1.5
+    icon="audio-volume-high"
+    vol=$(($vol + $step))
+    ;;
+  down)
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ "$step"%- --limit 1.5
+    icon="audio-volume-low"
+    vol=$(($vol - $step))
+    ;;
+  mute)
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    muted=$(( 1 - $muted ))
+    if [[ $muted == 1 ]]; then
+        icon="audio-volume-muted"
+        msg="Volume muted"
+    else
+        icon="audio-volume-medium"
+        msg="Volume unmuted"
+    fi
+    dunstify -a "volume" -i $icon -h string:x-dunst-stack-tag:$tag "$msg"
+    exit 0
+    ;;
+  *)
+    echo 'unrecognized argument'
+    exit 1
+esac
+
+if [[ $vol -eq 0 || $muted -eq 1 ]]; then
+    icon="audio-volume-muted"
+fi
+
+vol=$(awk -v vol=$vol 'BEGIN {
+    if (vol < 0) vol = 0
+    if (vol > 150) vol = 150
+    print vol
+}')
+
+dunstify \
+    -a "volume" \
+    -u normal \
+    -i $icon \
+    -h string:x-dunst-stack-tag:$tag \
+    "Volume: $vol"%
+

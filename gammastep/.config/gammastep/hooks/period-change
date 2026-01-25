@@ -4,15 +4,18 @@ case $1 in
         case $3 in 
             daytime)
                 emoji=
+                icon="gammastep-status-off"
                 ;;
             transition)
                 emoji=󰤖
+                icon="gammastep-status-on"
                 ;;
             night)
                 emoji=
+                icon="gammastep-status-on"
                 ;;
             *)
                 emoji=""
         esac
-        exec dunstify "Gammastep" "Period changed to $3 $emoji"
+        exec dunstify -i "$icon" "Gammastep" "Period changed to $3 $emoji"
 esac

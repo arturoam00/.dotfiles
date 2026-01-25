@@ -1,21 +1,16 @@
 # Enable color support for ls and add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     eval "$(dircolors -b ~/.dircolors 2>/dev/null || dircolors -b)"
-    alias ls='ls --color=auto --hide=__pycache__ --hide=snap --hide=*.egg-info' \
+    alias ls='ls --color=auto --hide=__pycache__ --hide=*.egg-info' \
           diff='diff --color=auto' \
           grep='grep --color=auto' \
           fgrep='fgrep --color=auto' \
           egrep='egrep --color=auto'
 else
     alias ls='ls --hide=__pycache__ \ 
-          --hide=snap  \
           --hide=build \
           '
 fi
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Some more ls aliases
 alias ll='ls -alF' \
@@ -24,32 +19,35 @@ alias ll='ls -alF' \
       lt='ls -rlt1h' \
       ltt='ls -rt1h --group'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Use neovim for vim if present.
 [ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
 
+# Common utilities
 alias cp="cp -iv" \
       mv="mv -iv" \
       rm="rm -vI" \
       mkdir='mkdir -p' \
-      r='Rscript' \
-      cls='clear' \
-      bye='poweroff' \
       ..='cd ..' \
+      cls='clear' \
+      bye='systemctl poweroff'
+
+# Programs
+alias r='Rscript' \
       py='python3 -q' \
       R='R --vanilla --quiet' \
       tmux='tmux -f ~/.config/tmux/tmux.conf' \
-      lf='lfub' \
-      buildenv='python3 -m venv .venv && echo "source .venv/bin/activate" > .envrc && direnv allow 2>/dev/null && mkdir .vscode && cp $XDG_DOCUMENTS_DIR/templates/vscode/settings.json .vscode/settings.json' \
-      tlmgr='tlmgr --usermode' \
       firefox='librewolf' \
+      lf='lfub' \
       zz='zathura' \
-      mm='micromamba' \
-      r2e='r2e -c $XDG_CONFIG_HOME/rss2email/rss2email.cfg -d $XDG_DATA_HOME/rss2email/rss2email.json' \
       exiftool='exiftool -config $XDG_CONFIG_HOME/exiftool/ExifTool_config' \
-      bb='BORG_REPO=rsync.net:Backup borg-backup' \
+      md2html='cmark -t html --unsafe'
+
+# Custom tools
+alias bb='BORG_REPO=rsync.net:Backup borg-backup' \
       music='soundcoreA1-mode music' \
       call='soundcoreA1-mode call'
+    
+
+
+# Python envirionment
+# alias buildenv='python3 -m venv .venv && echo "source .venv/bin/activate" > .envrc && direnv allow 2>/dev/null && mkdir .vscode && cp $XDG_TEMPLATES_DIR/vscode/settings.json .vscode/settings.json'

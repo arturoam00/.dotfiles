@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/bin/sh
+
+set -euo pipefail
 
 # Load passphrase
 export BORG_PASSCOMMAND="cat $XDG_CONFIG_HOME/borg/.secrets"

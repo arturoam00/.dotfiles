@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -euo pipefail
+
+iwctl station wlan0 scan
+
+iwctl station wlan0 get-networks | tail -n 10 | tofi

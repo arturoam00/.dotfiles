@@ -1,5 +1,0 @@
-#! /bin/bash
-
-set -euo pipefail
-
-systemctl --user enable --now $XDG_CONFIG_HOME/systemd/user/*.timer

@@ -191,7 +191,7 @@
 	# Padding between borders and text. Can be pixels or a percentage.
 	padding-top = 25%
 	padding-bottom = 25%
-	padding-left = 35%
+	padding-left = 30%
 	padding-right = 25%
 
 	# Whether to clip text drawing to be within the specified padding. This

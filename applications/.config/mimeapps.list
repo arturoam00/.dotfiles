@@ -6,4 +6,5 @@ inode/directory=file.desktop;
 text/*=editor.desktop;
 text/html=browser.desktop;
 video/*=video.desktop;
+x-scheme-handler/mailto=mail.desktop;
 x-scheme-handler/terminal=terminal.desktop;

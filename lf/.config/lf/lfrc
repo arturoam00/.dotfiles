@@ -90,6 +90,7 @@ cmd extract ${{
 # Custom opener
 cmd open &{{
     case $(file --mime-type -Lb $f) in
+        text/html) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
         text/*) lf -remote "send $id \$$EDITOR \$fx";;
         *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
     esac

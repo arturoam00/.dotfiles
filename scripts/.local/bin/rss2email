@@ -1,3 +1,0 @@
-#! /bin/bash
-
-r2e -d $XDG_DATA_HOME/rss2email/rss2email.json -c $XDG_CONFIG_HOME/rss2email/rss2email.cfg run

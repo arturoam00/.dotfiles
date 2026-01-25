@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Date and time
+date=$(date +'%d-%B %I:%M %p')
+
+# Battery percentage
+battery=$(cat /sys/class/power_supply/BAT0/capacity)%
+status=$(cat /sys/class/power_supply/BAT0/status)
+if [[ $status == "Discharging" ]]; then
+    battery_icon="󰁹"
+else
+    battery_icon="󰂄"
+fi
+
+# WiFi
+iw=$(iwctl station wlan0 show 2>/dev/null)
+state=$(printf '%s\n' "$iw" | awk '/State/ {print $2}')
+case $state in
+    connected)
+        ssid=$(printf '%s\n' "$iw" | sed -n 's/.*Connected network[[:space:]]\+//p' | xargs)
+        wifi="$ssid 󰖩"
+        ;;
+    *)
+        wifi='󰖪'
+        ;;
+esac
+
+# Bluetooth
+bluetooth_devices=$(bluetoothctl devices Connected 2>/dev/null| wc -l)
+
+echo "$bluetooth_devices  : $wifi : $battery $battery_icon : $date  "

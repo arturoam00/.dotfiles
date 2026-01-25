@@ -2,5 +2,5 @@
 Type=Application
 Name=Gmail Mailto Handler
 Terminal=false
-Exec=sh -c "$HOME/.local/bin/mailto %u"
+Exec=mailto %u
 NoDisplay=true
