@@ -33,7 +33,7 @@ case $1 in
         icon="audio-volume-medium"
         msg="Volume unmuted"
     fi
-    dunstify -a "volume" -i $icon -h string:x-dunst-stack-tag:$tag "$msg"
+    dunstify -a "volume" -i $icon -h string:x-dunst-stack-tag:$tag "Audio" "$msg"
     exit 0
     ;;
   *)
@@ -56,5 +56,5 @@ dunstify \
     -u normal \
     -i $icon \
     -h string:x-dunst-stack-tag:$tag \
-    "Volume: $vol"%
+    "Audio" "Volume: $vol"%
 

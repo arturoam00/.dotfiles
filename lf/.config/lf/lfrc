@@ -42,12 +42,9 @@ map o &xdg-open $f
 map . set hidden!
 
 # Move around
-map gd cd "~/Dls"
-map gc cd "~/.config"
-map gl cd "~/.local"
-map gb ${{
-    lf -remote "send $id cd $OLDPWD"
-}}
+map gd $lf -remote "send $id cd $XDG_DOWNLOAD_DIR"
+map gc $lf -remote "send $id cd $XDG_CONFIG_HOME"
+map gb $lf -remote "send $id cd $OLDPWD"
 map <c-f> :fzf_jump
 
 map <enter> :push $
@@ -73,6 +70,15 @@ map A :rename; cmd-end
 map c :rename; cmd-delete-home
 map C :rename; cmd-end; cmd-delete-home
 
+# Custom opener
+cmd open &{{
+    case $(file --mime-type -Lb $f) in
+        text/html) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+        text/*) lf -remote "send $id \$$EDITOR \$fx";;
+        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+    esac
+}}
+
 # extract the current file with the right command
 cmd extract ${{
     set -f
@@ -84,15 +90,6 @@ cmd extract ${{
         *.rar) unrar x $f;;
         *.7z) 7z x $f;;
 	*.gz) gunzip -k $f;;
-    esac
-}}
-
-# Custom opener
-cmd open &{{
-    case $(file --mime-type -Lb $f) in
-        text/html) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
-        text/*) lf -remote "send $id \$$EDITOR \$fx";;
-        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
     esac
 }}
 
