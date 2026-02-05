@@ -1,0 +1,13 @@
+#!/bin/sh
+
+case $1 in
+    work)
+        swaymsg output HDMI-A-1 enable pos 0 0 res 3840x2160 scale 2.0
+        swaymsg output eDP-1 enable pos 0 1080 res 1920x1200 scale 1.0
+        ;;
+    unpluged)
+        swaymsg output eDP-1 enable pos 0 0 res 1920x1200 scale 1.0
+        ;;
+    *)
+        echo "Unrecognized profile" && exit 1
+esac

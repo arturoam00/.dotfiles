@@ -108,11 +108,11 @@
     # Advanced screenshots
     mode "special" {
         # Color picker
-        bindsym c exec grim -g "$(slurp -p)" -t ppm - | magick - -format '%[pixel:p{0,0}]' txt:- | awk 'END{print $3}' | wl-copy; mode "default"
+        bindsym c exec screenshot colorpicker; mode "default"
         # Copy selection to clipboard
-        bindsym s exec grim -g "$(slurp)" - | wl-copy --type image/png; mode "default"
+        bindsym s exec screenshot selection-copy; mode "default"
         # Save selection to screenshots dir
-        bindsym a exec grim -g "$(slurp -o -f '%x,%y %wx%h')" "$XDG_PICTURES_DIR/screenshot-$(date +%Y%m%d-%H%M%S).png"; mode "default"
+        bindsym a exec screenshot selection; mode "default"
         # Cancel mode
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -124,7 +124,7 @@
     # Lock the screen
     bindsym $mod+Shift+z exec 'playerctl -a pause; swaylock -f -c 000000'
     # Screenshot full screen
-    bindsym Print exec grim
+    bindsym Print exec screenshot screen
 
 ### Moving around
     # Move your focus around
@@ -211,6 +211,7 @@
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    bindsym --locked F9 exec playerctl -a play-pause
 
 ### Status Bar:
     # Read `man 5 sway-bar` for more information about this section.
@@ -219,7 +220,6 @@
         position top
         font pango:JetBrains Mono Nerd Font 14
         # When the status_command prints a new line to stdout, swaybar updates.
-        # The default just shows the current date and time.
         status_command while ~/.config/sway/bar; do sleep 3; done
         colors {
             statusline #ffffff

@@ -1,0 +1,34 @@
+#!/bin/bash
+
+file=${GRIM_DEFAULT_DIR:-$HOME}/$(date +%Y%m%d-%H%M%S).png
+
+case $1 in
+    colorpicker)
+        color=$(grim -g "$(slurp -p)" -t ppm - | magick - -format '%[pixel:p{0,0}]' txt:- | awk 'END{print $3}')
+        wl-copy "$color"
+        msg="Color $color copied to clipboard"
+        ;;
+    selection-copy)
+        grim -g "$(slurp)" - | wl-copy --type image/png
+        msg="Selction copied to clipboard"
+        ;;
+    selection)
+        grim -g "$(slurp -o -f '%x,%y %wx%h')" "$file"
+        msg="Selection saved to $file"
+        wl-copy "$file"
+        ;;
+    screen)
+        grim "$file"
+        msg="Screen capture save to $file"
+        wl-copy "$file"
+        ;;
+    *)
+       echo 'Unrecognized option' && exit 1 
+esac
+
+dunstify \
+    -a "screenshot" \
+    -i "applets-screenshooter" \
+    -u normal \
+    "Grim" "$msg"
+

@@ -1,8 +1,6 @@
 #!/bin/bash
 set -eu
 
-tag="bluetooth_tag"
-
 choice=$(bluetoothctl devices Trusted 2>/dev/null | tofi)
 
 [ -z "$choice" ] && echo "Cancel operation" && exit 0
@@ -15,12 +13,10 @@ if bluetoothctl connect "$uuid"; then
         -a "bluetooth" \
         -i "bluetooth-active" \
         -u normal \
-        -h string:x-dunst-stack-tag:"$tag" \
-        "$label connected ✓"
+        "Bluetooth" "$label connected ✓"
 else
     dunstify \
         -a "bluetooth" \
         -u critical \
-        -h string:x-dunst-stack-tag:"$tag" \
-        "Couldn't connect to $label "
+        "Bluetooth" "Couldn't connect to $label "
 fi

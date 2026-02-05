@@ -1,1 +1,1 @@
-eval $(dircolors -p | sed '$a .heic 01;35' | dircolors - )
+command -v vivid >/dev/null && export LS_COLORS="$(vivid generate gruvbox-sway)"

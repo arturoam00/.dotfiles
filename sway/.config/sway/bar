@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Date and time
-date=$(date +'%d-%B %I:%M %p')
+date=$(date +'%a, %d %B  | %I:%M %p')
 
 # Battery percentage
 battery=$(cat /sys/class/power_supply/BAT0/capacity)%
@@ -28,4 +28,4 @@ esac
 # Bluetooth
 bluetooth_devices=$(bluetoothctl devices Connected 2>/dev/null| wc -l)
 
-echo "$bluetooth_devices  : $wifi : $battery $battery_icon : $date  "
+echo "$bluetooth_devices  | $wifi | $battery $battery_icon | $date  "

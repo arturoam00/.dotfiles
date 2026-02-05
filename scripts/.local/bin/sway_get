@@ -1,0 +1,6 @@
+#!/bin/sh
+
+swaymsg -t get_outputs -r \
+  | jq -r '.[] | select(.active) |
+    "swaymsg output \(.name) enable pos \(.rect.x) \(.rect.y) res \(.current_mode.width)x\(.current_mode.height) scale \(.scale)"'
+

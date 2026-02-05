@@ -1,0 +1,8 @@
+#!/bin/sh
+
+command -v /usr/bin/tofi >/dev/null || exit 1
+
+output=$(swaymsg -t get_outputs -r | jq -r '.[] | select (.focused) | .name')
+
+/usr/bin/tofi --output "$output" "$@"
+
