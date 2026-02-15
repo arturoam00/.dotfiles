@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# todo: only notify if main command was successful
+# todo: add option to copy whole screen to clipboard
+
 file=${GRIM_DEFAULT_DIR:-$HOME}/$(date +%Y%m%d-%H%M%S).png
 
 case $1 in

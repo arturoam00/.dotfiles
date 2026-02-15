@@ -40,7 +40,8 @@ alias r='Rscript' \
       lf='lfub' \
       zz='zathura' \
       exiftool='exiftool -config $XDG_CONFIG_HOME/exiftool/ExifTool_config' \
-      md2html='cmark -t html --unsafe'
+      md2html='cmark -t html --unsafe' \
+      ho='handlr open'
 
 # Custom tools
 alias bb='BORG_REPO=rsync.net:Backup borg-backup' \

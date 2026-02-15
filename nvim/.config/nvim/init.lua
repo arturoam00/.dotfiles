@@ -20,3 +20,4 @@ vim.keymap.set("v", "<C-c>", '"*y', { silent = true })         -- Copy to system
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.opt.relativenumber = true

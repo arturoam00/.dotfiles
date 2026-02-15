@@ -29,7 +29,7 @@ colors:
   alt_purple: "d3869b"
   alt_aqua:   "8ec07c"
   alt_orange: "fe8019"
-  alt_gray:   "928374"
+  alt_gray:   "d4d4d4"
 
 core:
   normal_text:
@@ -43,7 +43,7 @@ core:
   reset_to_normal: {}
 
   directory:
-    foreground: blue
+    foreground: alt_gray
 
   symlink:
     foreground: alt_blue

@@ -5,6 +5,14 @@ case $1 in
         swaymsg output HDMI-A-1 enable pos 0 0 res 3840x2160 scale 2.0
         swaymsg output eDP-1 enable pos 0 1080 res 1920x1200 scale 1.0
         ;;
+    home)
+        swaymsg output HDMI-A-1 enable pos 0 0 res 2560x1080 scale 1.0
+        swaymsg output eDP-1 disable
+        ;;
+    home-dual)
+        swaymsg output HDMI-A-1 enable pos 0 0 res 2560x1080 scale 1.0
+        swaymsg output eDP-1 enable pos 0 1080 res 1920x1200 scale 1.0
+        ;;
     unpluged)
         swaymsg output eDP-1 enable pos 0 0 res 1920x1200 scale 1.0
         ;;
