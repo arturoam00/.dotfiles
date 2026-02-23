@@ -1,2 +1,2 @@
-PS1='\w$(__git_ps1 " 󰊢 %s") > '
+PS1='${DIRENV_PROMPT_MODIFIER:+$DIRENV_PROMPT_MODIFIER}\w$(__git_ps1 " 󰊢 %s") > '
 

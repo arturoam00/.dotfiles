@@ -118,6 +118,8 @@
         bindsym c exec screenshot colorpicker; mode "default"
         # Copy selection to clipboard
         bindsym s exec screenshot selection-copy; mode "default"
+        # Copy screen to clipboard
+        bindsym Shift+s exec screenshot screen-copy; mode "default"
         # Save selection to screenshots dir
         bindsym a exec screenshot selection; mode "default"
         # Cancel mode

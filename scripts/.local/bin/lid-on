@@ -1,14 +1,14 @@
 #!/bin/sh
 
-laptop="eDP-1"
-monitor="HDMI-A-1"
+laptop=eDP-1
+monitor=HDMI-A-1
 
-active=$(swaymsg -t get_outputs -r | jq -r '.[] | select(.active) | (.name)' | tr '[:space:]' ' ')
+active=$(swaymsg -t get_outputs -r | jq -r '.[] | select(.active) | .name')
 
-if grep -q "$monitor" <(echo "$active"); then
+if [[ $active == *$monitor* ]]; then
     swaymsg output "$laptop" disable
-elif grep -qv "$monitor" <(echo "$active"); then
-    playerctl -a pause; swaylock -f -c 000000 && systemctl sleep
+else
+    playerctl -a pause
+    swaylock -f -c 000000 && systemctl sleep
 fi
-
 

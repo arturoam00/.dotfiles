@@ -3,3 +3,4 @@ channels:
   - nodefaults
 channel_priority: strict
 always_yes: true
+changeps1: true

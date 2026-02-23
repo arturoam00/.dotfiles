@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# todo: only notify if main command was successful
 # todo: add option to copy whole screen to clipboard
+
+set -euo pipefail
 
 file=${GRIM_DEFAULT_DIR:-$HOME}/$(date +%Y%m%d-%H%M%S).png
 
@@ -24,6 +25,10 @@ case $1 in
         grim "$file"
         msg="Screen capture save to $file"
         wl-copy "$file"
+        ;;
+    screen-copy)
+        grim - | wl-copy --type image/png
+        msg="Screen capture copied to clipboard"
         ;;
     *)
        echo 'Unrecognized option' && exit 1 

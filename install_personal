@@ -11,7 +11,9 @@ mkdir -vp \
     ~/.local \
     ~/.librewolf \
     "$DATA_HOME" \
-    "$CONFIG_HOME/systemd/user/"
+    "$CONFIG_HOME/systemd/user/" \
+    ~/.config/borg
+    
 
 # I want the ~/.local/bin dir to be symlinked to my scripts
 [[ -d ~/.local/bin ]] && [[ ! -L ~/.local/bin ]] && mv ~/.local/bin/ ~/.local/bin-backup

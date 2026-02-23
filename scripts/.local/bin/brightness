@@ -1,6 +1,0 @@
-#!/bin/sh
-
-current=$(brightnessctl)
-case $1 in)
-    up)
-        brightnessctl

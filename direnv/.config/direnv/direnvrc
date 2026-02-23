@@ -1,8 +1,11 @@
 use_micromamba() {
-  local env_name=$1
-  eval "$("$MAMBA_EXE" shell hook --shell bash --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
-  micromamba activate "$env_name"
-
-  export VIRTUAL_ENV_PROMPT="$CONDA_PROMPT_MODIFIER"
+  [[ -z "$1" ]] && { echo "Usage: use_micromamba <env>"; return 1; }
+  eval "$(micromamba shell activate "$1" --shell=bash)"
+  export DIRENV_PROMPT_MODIFIER="$CONDA_PROMPT_MODIFIER"
 }
 
+use_venv() {
+  [[ -z "$1" ]] && { echo "Usage: use_venv <path/to/activate>"; return 1; }
+  source "$1"
+  export DIRENV_PROMPT_MODIFIER="($VIRTUAL_ENV_PROMPT) "
+}

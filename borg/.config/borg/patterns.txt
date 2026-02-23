@@ -1,7 +1,7 @@
 P sh
 
 # Include
-+ pf:home/aabril/.ssh/config
++ pf:home/artu/.ssh/config
 
 # Hidden files and folders
 - **/.*
@@ -54,7 +54,7 @@ P sh
 - fm:*.safetensors
 
 # Downloads / large files
-- fm:home/aabril/Dls/
+- **/Dls
 
 # Media (optional, can comment out if you want to keep)
 - fm:*.tar
@@ -63,7 +63,3 @@ P sh
 - fm:*.bin
 - fm:*.img
 - fm:*.gz
-
-# Misc
-- **/snap
-- fm:home/aabril/Code/watch/

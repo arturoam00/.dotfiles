@@ -10,11 +10,11 @@ vim.opt.number = true
 -- vim.api.nvim_set_hl(0, "ColorColumn", { ctermbg = "lightblue", guibg = "lightblue" })
 
 -- Key mappings
-vim.keymap.set("i", "jj", "<Esc>", { silent = true })          -- Exit insert mode with 'jj'
+-- vim.keymap.set("i", "jj", "<Esc>", { silent = true })          -- Exit insert mode with 'jj'
 vim.keymap.set("n", "<leader>w", ":w<CR>", { silent = true })  -- Save file with <leader>w
 vim.keymap.set("n", "K", "i<Enter><Esc>", { silent = true })   -- Insert newline in normal mode
 vim.keymap.set("n", "<C-n>", ":nohl<CR>", { silent = true })   -- Clear search highlighting
-vim.keymap.set("v", "<C-c>", '"*y', { silent = true })         -- Copy to system clipboard in visual mode
+vim.keymap.set("v", "<C-c>", '"+y', { silent = true })         -- Copy to system clipboard in visual mode
 
 -- Tab settings
 vim.opt.tabstop = 4
