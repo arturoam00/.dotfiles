@@ -4,7 +4,6 @@ set -euo pipefail
 
 # Load passphrase
 export BORG_PASSCOMMAND="cat $XDG_CONFIG_HOME/borg/.secrets"
-[ -f "$SECRETS_FILE" ] && . "$SECRETS_FILE"
 
 # some helpers and error handling:
 info() { printf "\n%s %s\n\n" "$( date )" "$*" >&2; }
@@ -65,13 +64,13 @@ global_exit=$(( compact_exit > global_exit ? compact_exit : global_exit ))
 
 if [ ${global_exit} -eq 0 ]; then
     info "Backup, Prune, and Compact finished successfully"
-    notify-send " Backup to $BORG_REPO finished successfully"
+    dunstify --icon "drive-harddisk" --urgency normal "Borg Backup" " Backup to $BORG_REPO finished successfully"
 elif [ ${global_exit} -eq 1 ]; then
     info "Backup, Prune, and/or Compact finished with warnings"
-    notify-send " Backup to $BORG_REPO finished with warnings"
+    dunstify --icon "drive-harddisk" --urgency critical "Borg Backup" " Backup to $BORG_REPO finished with warnings"
 else
     info "Backup, Prune, and/or Compact finished with errors"
-    notify-send " Backup to $BORG_REPO failed – check logs"
+    notify-send --icon "drive-harddisk" --urgency critical "Borg Backup" " Backup to $BORG_REPO failed – check logs"
 fi
 
 exit ${global_exit}

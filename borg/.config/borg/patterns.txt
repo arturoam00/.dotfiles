@@ -1,24 +1,29 @@
 P sh
 
-# Include
+# Include ssh config
 + pf:home/artu/.ssh/config
+
+# Downloads / large files
+- pf:home/artu/Dls
 
 # Hidden files and folders
 - **/.*
-- **/Thumbs.db
 
 # Build, dist, data and cache directories
 - **/build
 - **/dist
 - **/__pycache__
 - **/node_modules
-- **/.venv
 - **/env
 - **/venv
 - **/__pypackages__
-- **/[Dd]ata/
-- **/[Tt]emp
-- **/[Tt]mp
+- **/Thumbs.db
+
+# Directories you never want to backup
+- re:[Dd]ata
+- re:[Tt]emp
+- re:[Tt]mp
+- re:outputs?
 
 # Shared libraries and executables
 - fm:*.jar
@@ -47,14 +52,12 @@ P sh
 - fm:*.npy
 - fm:*.egg-info
 - fm:*.egg
+- fm:*.pygtex
 
 # Pytorch model checkpoints
 - fm:*.pt
 - fm:*.pth
 - fm:*.safetensors
-
-# Downloads / large files
-- **/Dls
 
 # Media (optional, can comment out if you want to keep)
 - fm:*.tar

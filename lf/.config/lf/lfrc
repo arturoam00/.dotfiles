@@ -58,7 +58,7 @@ map <a-x> $chmod -x $fx
 # Misc mappings
 map D :delete
 map E :extract
-map Y $echo $f | wl-copy 
+map Y $echo $f |  wl-copy -n
 map a :push %mkdir<space>
 map T :push %touch<space>
 

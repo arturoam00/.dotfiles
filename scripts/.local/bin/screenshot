@@ -19,12 +19,12 @@ case $1 in
     selection)
         grim -g "$(slurp -o -f '%x,%y %wx%h')" "$file"
         msg="Selection saved to $file"
-        wl-copy "$file"
+        wl-copy -n "$file"
         ;;
     screen)
         grim "$file"
         msg="Screen capture save to $file"
-        wl-copy "$file"
+        wl-copy -n "$file"
         ;;
     screen-copy)
         grim - | wl-copy --type image/png
