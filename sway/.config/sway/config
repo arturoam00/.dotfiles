@@ -27,11 +27,14 @@
     bindswitch --reload --locked lid:on exec ~/.local/bin/lid-on
 
 ### Idle configuration
-    # Swayidle config
+    # Swayidle config - repeated `systemctl sleep` timeouts are useful in the 
+    # event that earlier timeouts are missed because of an inhibitor (e.g. backup job) 
     exec swayidle -w -d \
-             timeout 10 'if pgrep swaylock; then systemctl sleep; fi' \
+             timeout 25 'if pgrep swaylock; then systemctl sleep; fi' \
              timeout 300 'playerctl -a pause; swaylock -f -c 000000' \
-             timeout 305 'systemctl sleep'
+             timeout 310 'systemctl sleep' \
+             timeout 900 'systemctl sleep' \
+             timeout 7200 'systemctl sleep'
 
 ### Input configuration
     # Touchpad
@@ -229,7 +232,7 @@
         position top
         font pango:JetBrains Mono Nerd Font 14
         # When the status_command prints a new line to stdout, swaybar updates.
-        status_command while ~/.config/sway/bar; do sleep 3; done
+        status_command 'while ~/.config/sway/bar; do sleep 3; done'
         colors {
             statusline #ffffff
             background #323232
@@ -237,8 +240,11 @@
         }
     }
 
-### Startup apps
+### Startup scripts
+    exec_always 'sleep 5 && while ~/.local/bin/battery-check >/dev/null; do sleep 60; done'
     exec_always ~/.local/bin/sway_clamshell
+
+### Startup apps
     exec --no-startup-id gammastep
     exec --no-startup-id wl-paste --watch cliphist store
 

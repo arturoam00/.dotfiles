@@ -1,0 +1,13 @@
+#!/bin/bash
+
+tag="battery-check"
+capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+status=$(cat /sys/class/power_supply/BAT0/status)
+
+if [ "$status" = "Discharging" ] && [ "$capacity" -le 15 ]; then
+  dunstify -a "battery-check" \
+      -u critical \
+      -h string:x-dunst-stack-tag:$tag \
+      "Low Battery" "Battery at ${capacity}%!"
+fi
+

@@ -47,8 +47,3 @@ alias r='Rscript' \
 alias bb='BORG_REPO=rsync.net:Backup borg-backup' \
       music='soundcoreA1-mode music' \
       call='soundcoreA1-mode call'
-    
-
-
-# Python envirionment
-# alias buildenv='python3 -m venv .venv && echo "source .venv/bin/activate" > .envrc && direnv allow 2>/dev/null && mkdir .vscode && cp $XDG_TEMPLATES_DIR/vscode/settings.json .vscode/settings.json'

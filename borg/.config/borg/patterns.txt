@@ -3,6 +3,9 @@ P sh
 # Include ssh config
 + pf:home/artu/.ssh/config
 
+# Include my dotfiles
++ pf:home/artu/.dotfiles
+
 # Downloads / large files
 - pf:home/artu/Dls
 
