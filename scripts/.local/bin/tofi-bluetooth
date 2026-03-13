@@ -1,22 +1,45 @@
 #!/bin/bash
 set -eu
 
-choice=$(bluetoothctl devices Trusted 2>/dev/null | tofi)
+# Get all trusted devices that are disconnected
+trusted_disconnected=$(comm -3 <(bluetoothctl devices Trusted | sort) <(bluetoothctl devices Connected | sort))
 
-[ -z "$choice" ] && echo "Cancel operation" && exit 0
+# Get only connected devices and append an connection identifier string
+connected="$(bluetoothctl devices Connected | sed 's/$/ (c)/')"
 
-uuid=$(printf "%s\n" "$choice" | awk '{print $2}')
-label=$(printf "%s\n" "$choice" | cut -d' ' -f3-)
+# Group all devices and prepend id string
+devices=$(echo -e "$trusted_disconnected\n$connected" | sort | awk '{print NR": "$0}')
 
-if bluetoothctl connect "$uuid"; then
+# Get the id of the device to connect/disconnect
+id=$(echo "$devices" | cut -d' ' -f1,4- | tofi | grep -oP '^\d{1,2}')
+
+# Get the full string, including the uuid
+target=$(echo "$devices" | grep -P "^$id")
+
+# Extract the uuid from the target
+uuid=$(echo "$target" | cut -d' ' -f3)
+
+# Prepare label string for notification message
+label=$(echo "$target" | cut -d' ' -f4- | sed 's/ (c)//')
+
+# Decide operation based on current state
+if [[ $target == *\(c\)* ]]; then 
+    action=disconnect
+else
+    action=connect
+fi
+
+# Perform operation
+if bluetoothctl $action "$uuid"> /dev/null; then
     dunstify \
         -a "bluetooth" \
         -i "bluetooth-active" \
         -u normal \
-        "Bluetooth" "$label connected ✓"
+        "Bluetooth" "$label ${action}ed ✓"
 else
     dunstify \
         -a "bluetooth" \
         -u critical \
-        "Bluetooth" "Couldn't connect to $label "
+        "Bluetooth" "Couldn't $action $label "
 fi
+

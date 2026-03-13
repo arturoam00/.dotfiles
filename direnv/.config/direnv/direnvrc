@@ -1,11 +1,10 @@
 use_micromamba() {
   [[ -z "$1" ]] && { echo "Usage: use_micromamba <env>"; return 1; }
   eval "$(micromamba shell activate "$1" --shell=bash)"
-  export DIRENV_PROMPT_MODIFIER="$CONDA_PROMPT_MODIFIER"
 }
 
 use_venv() {
-  [[ -z "$1" ]] && { echo "Usage: use_venv <path/to/activate>"; return 1; }
-  source "$1"
-  export DIRENV_PROMPT_MODIFIER="($VIRTUAL_ENV_PROMPT) "
+  VENV=${1:-.venv}
+  source "$VENV"/bin/activate
+  # [[ -z "$1" ]] && { echo "Usage: use_venv <path/to/activate>"; return 1; }
 }
