@@ -28,4 +28,18 @@ esac
 # Bluetooth
 bluetooth_devices=$(bluetoothctl devices Connected 2>/dev/null| wc -l)
 
-echo "$bluetooth_devices  | $wifi | $battery $battery_icon | $date  "
+# Microphone
+if wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q "MUTED"; then
+    micro=" "
+else
+    micro=""
+fi
+
+# Speaker
+if wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q "MUTED"; then
+    speaker="󰖁"
+else 
+    speaker="󰕾"
+fi
+
+echo "$speaker | $micro | $bluetooth_devices  | $wifi | $battery $battery_icon | $date  "

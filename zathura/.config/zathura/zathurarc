@@ -4,5 +4,5 @@ map <Space> navigate next
 map <C-b> navigate previous
 
 set selection-clipboard clipboard
-set sandbox none
 
+set font "adwaita mono 15"

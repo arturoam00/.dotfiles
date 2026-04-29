@@ -1,16 +1,9 @@
 # Enable color support for ls and add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    eval "$(dircolors -b ~/.dircolors 2>/dev/null || dircolors -b)"
-    alias ls='ls --color=auto --hide=__pycache__ --hide=*.egg-info' \
-          diff='diff --color=auto' \
-          grep='grep --color=auto' \
-          fgrep='fgrep --color=auto' \
-          egrep='egrep --color=auto'
-else
-    alias ls='ls --hide=__pycache__ \ 
-          --hide=build \
-          '
-fi
+alias ls='ls --color=auto --hide=__pycache__ --hide=*.egg-info --hide=build --hide=dist' \
+      diff='diff --color=auto' \
+      grep='grep --color=auto' \
+      fgrep='fgrep --color=auto' \
+      egrep='egrep --color=auto'
 
 # Some more ls aliases
 alias ll='ls -alF' \

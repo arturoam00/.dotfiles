@@ -26,7 +26,7 @@ set cursorpreviewfmt "\033[7;2m"
 # appearance settings
 set icons true
 set promptfmt "%d"
-set hiddenfiles .*:__pycache__:*.egg-info:build
+set hiddenfiles .*:__pycache__:*.egg-info:build:dist
 set previewer "~/.config/lf/previewer"
 set cleaner "~/.config/lf/cleaner"
 

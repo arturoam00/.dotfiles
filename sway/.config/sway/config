@@ -31,6 +31,8 @@
     # event that earlier timeouts are missed because of an inhibitor (e.g. backup job) 
     exec swayidle -w -d \
              timeout 25 'if pgrep swaylock; then systemctl sleep; fi' \
+             timeout 290 'dunstify -r 9999 "Idle" "Going to sleep due to inactivity"' \
+                 resume 'dunstctl close 9999' \
              timeout 300 'playerctl -a pause; swaylock -f -c 000000' \
              timeout 310 'systemctl sleep' \
              timeout 900 'systemctl sleep' \
@@ -215,15 +217,19 @@
     bindsym $mod+minus scratchpad show
 
 ### Media 
-    # Special keys to adjust volume via PipeWire
-    bindsym --locked XF86AudioMute exec volume mute
-    bindsym --locked XF86AudioLowerVolume exec volume down
-    bindsym --locked XF86AudioRaiseVolume exec volume up
-    bindsym --locked XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
-    # Special keys to adjust brightness via brightnessctl
-    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    bindsym --locked Shift+F9 exec playerctl -a play-pause
+    # Special keys to adjust volume (via PipeWire)
+    bindsym --locked XF86AudioMute exec volumectl mute
+    bindsym --locked XF86AudioLowerVolume exec volumectl down
+    bindsym --locked XF86AudioRaiseVolume exec volumectl up
+    bindsym --locked XF86AudioMicMute exec volumectl mute-mic
+    # Special keys to adjust brightness (via brightnessctl)
+    bindsym --locked XF86MonBrightnessDown exec iluminacion down
+    bindsym --locked XF86MonBrightnessUp exec iluminacion up
+    # Keys to manage media playing (via playerctl)
+    bindsym --locked Shift+F9 exec playpause
+    bindsym --locked XF86AudioPlay exec playpause
+    bindsym --locked XF86AudioPrev exec 'playerctl -s next'
+    bindsym --locked XF86AudioNext exec 'playerctl -s previous'
 
 ### Status Bar:
     # Read `man 5 sway-bar` for more information about this section.

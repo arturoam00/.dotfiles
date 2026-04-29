@@ -1,0 +1,14 @@
+#!/bin/sh
+
+status=$(playerctl -s status)
+playerctl -s play-pause
+tag="media"
+
+case "$status" in
+    Playing) msg="Media is now paused"; icon="media-playback-pause" ;;
+    Paused) msg="Media is now playing"; icon="media-playback-start" ;;
+    *) msg="No media found"; icon="dialog-warning" ;;
+esac
+
+dunstify -a "$tag" -i "$icon" -h string:x-dunst-stack-tag:$tag "Media" "$msg"
+

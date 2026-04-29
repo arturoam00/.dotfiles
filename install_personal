@@ -16,7 +16,7 @@ mkdir -vp \
     
 
 # I want the ~/.local/bin dir to be symlinked to my scripts
-[[ -d ~/.local/bin ]] && [[ ! -L ~/.local/bin ]] && mv ~/.local/bin/ ~/.local/bin-backup
+[[ -d ~/.local/bin ]] && [[ ! -L ~/.local/bin ]] && mv ~/.local/bin/ ~/.local/bin-backup && echo 'Old ~/.local/bin dir backedup!'
 
 stow -v \
   alacritty \
@@ -38,6 +38,7 @@ stow -v \
   R \
   scripts \
   shell \
+  sounds \
   sway \
   swaynag \
   systemd \

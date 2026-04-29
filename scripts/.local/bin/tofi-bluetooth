@@ -1,6 +1,8 @@
 #!/bin/bash
 set -eu
 
+tag="bluetooth_tag"
+
 # Get all trusted devices that are disconnected
 trusted_disconnected=$(comm -3 <(bluetoothctl devices Trusted | sort) <(bluetoothctl devices Connected | sort))
 
@@ -8,7 +10,7 @@ trusted_disconnected=$(comm -3 <(bluetoothctl devices Trusted | sort) <(bluetoot
 connected="$(bluetoothctl devices Connected | sed 's/$/ (c)/')"
 
 # Group all devices and prepend id string
-devices=$(echo -e "$trusted_disconnected\n$connected" | sort | awk '{print NR": "$0}')
+devices=$(printf "%s\n" "$trusted_disconnected" "$connected" | awk 'NF' | sort | awk '{print NR": "$0}')
 
 # Get the id of the device to connect/disconnect
 id=$(echo "$devices" | cut -d' ' -f1,4- | tofi | grep -oP '^\d{1,2}')
@@ -35,11 +37,13 @@ if bluetoothctl $action "$uuid"> /dev/null; then
         -a "bluetooth" \
         -i "bluetooth-active" \
         -u normal \
-        "Bluetooth" "$label ${action}ed ✓"
+        -h string:x-dunst-stack-tag:$tag \
+        "Bluetooth" "$label <b>${action}ed</b> ✓"
 else
     dunstify \
         -a "bluetooth" \
         -u critical \
+        -h string:x-dunst-stack-tag:$tag \
         "Bluetooth" "Couldn't $action $label "
 fi
 

@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -e
+
+tag="brightness_tag"
+delta=5
+
+[[ "$#" -ne 1 ]] && echo "Provide one argument" && exit 1
+
+case "$1" in
+    up) sign="+"; action="up" ;;
+    down) sign="-"; action="down" ;;
+    *) echo "Invalid value. Only 'up' or 'down' available" && exit 1
+esac
+    
+if brightnessctl -q -n -c backlight set "${delta}%${sign}"; then
+    current=$(($(brightnessctl g) * 100 / $(brightnessctl m)))
+    dunstify \
+        -a "brightness" \
+        -u "normal" \
+        -i "display-brightness-symbolic" \
+        -h string:x-dunst-stack-tag:"$tag" \
+        "Brightness" "Brightness at ${current}%"
+else
+    echo "Couldent update brightness" 
+    exit 1
+fi
