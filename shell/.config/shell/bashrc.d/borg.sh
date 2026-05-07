@@ -1,5 +1,0 @@
-BORG_SECRETS="$XDG_CONFIG_HOME/borg/.secrets"
-
-[[ -f $BORG_SECRETS ]] && export BORG_PASSCOMMAND="cat $BORG_SECRETS"
-
-unset BORG_SECRETS

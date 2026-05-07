@@ -73,4 +73,7 @@ else
     notify-send --icon "drive-harddisk" --urgency critical "Borg Backup" " Backup to $BORG_REPO failed – check logs"
 fi
 
+unset BORG_PASSCOMMAND
+
 exit ${global_exit}
+
