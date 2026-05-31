@@ -38,34 +38,20 @@ case $1 in
     dunstify -a "volume" -i $icon -h string:x-dunst-stack-tag:$tag "Audio" "$msg"
     exit 0
     ;;
-  mute-mic)
-      wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
-      if wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q "MUTED"; then
-          status="muted"; icon="microphone-sensitivity-muted"
-      else
-          status="unmuted"; icon="audio-input-microphone"
-      fi
-      dunstify -a "volume" \
-          -u "normal" \
-          -i "$icon" \
-          -h string:x-dunst-stack-tag:$tag \
-          "Audio" "Micro $status"
-      exit 0
-      ;;
   *)
     echo 'unrecognized argument'
     exit 1
 esac
-
-if [[ $vol -eq 0 || $muted -eq 1 ]]; then
-    icon="audio-volume-muted"
-fi
 
 vol=$(awk -v vol=$vol 'BEGIN {
     if (vol < 0) vol = 0
     if (vol > 150) vol = 150
     print vol
 }')
+
+if [[ $vol -eq 0 || $muted -eq 1 ]]; then
+    icon="audio-volume-muted"
+fi
 
 dunstify \
     -a "volume" \

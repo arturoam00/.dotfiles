@@ -1,0 +1,8 @@
+#!/bin/sh
+
+command -v /usr/bin/borg >/dev/null || exit 1
+
+export BORG_REPO='rsync.net:Backup'
+export BORG_PASSCOMMAND="cat $XDG_CONFIG_HOME/borg/.secrets"
+
+borg --remote-path borg14 "$@"

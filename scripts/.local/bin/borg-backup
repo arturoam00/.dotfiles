@@ -15,7 +15,7 @@ info "Starting backup"
 # the machine this script is currently running on:
 
 borg create                                      \
-    --remote-path borg12                         \
+    --remote-path borg14                         \
     --checkpoint-interval 600                    \
     --verbose                                    \
     --filter AME                                 \
@@ -40,7 +40,7 @@ info "Pruning repository"
 # other machines' archives also:
 
 borg prune                          \
-    --remote-path borg12            \
+    --remote-path borg14            \
     --list                          \
     --glob-archives '{hostname}-*'  \
     --show-rc                       \
@@ -54,7 +54,7 @@ prune_exit=$?
 
 info "Compacting repository"
 
-borg compact --remote-path borg12
+borg compact --remote-path borg14
 
 compact_exit=$?
 

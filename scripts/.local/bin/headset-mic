@@ -1,0 +1,11 @@
+#!/bin/bash
+
+SOURCE="alsa_input.pci-0000_00_1f.3.analog-stereo"
+
+case "$1" in
+    on) PORT="analog-input-headset-mic" ;;
+    off) PORT="analog-input-internal-mic" ;;
+    *) echo "invalid argument. choose between [on/off]" && exit 1 ;;
+esac
+
+pactl set-source-port "$SOURCE" "$PORT"

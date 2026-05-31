@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Jack Microphone ON
+Terminal=false
+Exec=headset-mic on
+NoDisplay=false

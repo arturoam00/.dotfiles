@@ -1,6 +1,7 @@
 export EDITOR="nvim"
-export BROWSER="librewolf"
+export BROWSER="brave"
 export OPENER="xdg-open"
+export PRINTER="GrwNxtPrinter"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 

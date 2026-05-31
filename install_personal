@@ -32,6 +32,7 @@ stow -v \
   lf \
   librewolf \
   mamba \
+  newsboat \
   nvim \
   personal \
   python \
@@ -47,6 +48,7 @@ stow -v \
   vivid \
   wget \
   xdg-user-dirs \
+  xdg-desktop-portal-wlr \
   zathura
 
 echo 'done!'
