@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=Brave
+Name=Librewolf
 Terminal=false
-Exec=brave %u
+Exec=/usr/bin/librewolf %u
 NoDisplay=true
 

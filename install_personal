@@ -9,10 +9,10 @@ DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 mkdir -vp \
     ~/.config \
     ~/.local \
-    ~/.librewolf \
     "$DATA_HOME" \
     "$CONFIG_HOME/systemd/user/" \
-    ~/.config/borg
+    "$CONFIG_HOME/librewolf" \
+    "$CONFIG_HOME/borg"
     
 
 # I want the ~/.local/bin dir to be symlinked to my scripts
@@ -45,6 +45,7 @@ stow -v \
   systemd \
   tmux \
   tofi \
+  urlview \
   vivid \
   wget \
   xdg-user-dirs \

@@ -1,5 +1,5 @@
 export EDITOR="nvim"
-export BROWSER="brave"
+export BROWSER="librewolf"
 export OPENER="xdg-open"
 export PRINTER="GrwNxtPrinter"
 
