@@ -1,1 +1,2 @@
+# COMMAND /usr/bin/url_handler.sh %s
 COMMAND "$BROWSER" %s

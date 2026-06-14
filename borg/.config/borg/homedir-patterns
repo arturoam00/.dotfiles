@@ -4,6 +4,7 @@ P sh
 
 + pf:home/artu/.ssh/config
 + pp:home/artu/.mozilla
++ pp:home/artu/.pacman.pkglist
 
 ## EXCLUDE ##
 

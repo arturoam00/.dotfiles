@@ -4,6 +4,9 @@ export OPENER="xdg-open"
 export PRINTER="GrwNxtPrinter"
 
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
 
 [[ -f $XDG_CONFIG_HOME/user-dirs.dirs ]] && . $XDG_CONFIG_HOME/user-dirs.dirs
 
@@ -11,10 +14,6 @@ export XDG_PICTURES_DIR
 export XDG_VIDEOS_DIR
 export XDG_DOWNLOAD_DIR
 export XDG_DOCUMENTS_DIR
-
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_STATE_HOME="$HOME/.local/state"
 
 export GRIM_DEFAULT_DIR=${XDG_PICTURES_DIR:-~/Pix}/Screenshots 
 mkdir -p "$GRIM_DEFAULT_DIR"

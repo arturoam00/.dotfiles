@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -euo pipefail
+
+command -v /usr/bin/cmark >/dev/null || exit 1
+
+[[ "$#" -ne 1 ]] && echo 'provide one argument' && exit 1
+
+file="$1"
+tempfile=$(mktemp --suffix .html)
+
+cmark -t html --unsafe "$file" > "$tempfile"
+
+"$BROWSER" "$tempfile"
+
+

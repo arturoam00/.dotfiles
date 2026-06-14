@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Markdown opener
+Name=Markdown Viewer
 Terminal=false
-Exec=firefox %f
+Exec=viewmd %f
 NoDisplay=true

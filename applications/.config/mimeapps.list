@@ -5,6 +5,7 @@ image/*=image.desktop;
 inode/directory=file.desktop;
 text/*=editor.desktop;
 text/html=browser.desktop;
+text/markdown=markdown.desktop;
 video/*=video.desktop;
 x-scheme-handler/mailto=mail.desktop;
 x-scheme-handler/terminal=terminal.desktop;

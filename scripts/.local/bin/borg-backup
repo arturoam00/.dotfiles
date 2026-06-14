@@ -26,7 +26,7 @@ borg create                                      \
     --exclude-caches                             \
     -x                                           \
     --numeric-ids                                \
-    --patterns-from ~/.config/borg/patterns.txt  \
+    --patterns-from ~/.config/borg/homedir-patterns  \
     ::'{hostname}-{now}'                         \
     ~
 
@@ -64,13 +64,13 @@ global_exit=$(( compact_exit > global_exit ? compact_exit : global_exit ))
 
 if [ ${global_exit} -eq 0 ]; then
     info "Backup, Prune, and Compact finished successfully"
-    dunstify --icon "drive-harddisk" --urgency normal "Borg Backup" " Backup to $BORG_REPO finished successfully"
+    dunstify --icon "drive-harddisk" --urgency normal "Home Backup" " Backup to $BORG_REPO finished successfully"
 elif [ ${global_exit} -eq 1 ]; then
     info "Backup, Prune, and/or Compact finished with warnings"
-    dunstify --icon "drive-harddisk" --urgency critical "Borg Backup" " Backup to $BORG_REPO finished with warnings"
+    dunstify --icon "drive-harddisk" --urgency critical "Home Backup" " Backup to $BORG_REPO finished with warnings"
 else
     info "Backup, Prune, and/or Compact finished with errors"
-    notify-send --icon "drive-harddisk" --urgency critical "Borg Backup" " Backup to $BORG_REPO failed – check logs"
+    dunstify --icon "drive-harddisk" --urgency critical "Home Backup" " Backup to $BORG_REPO failed – check logs"
 fi
 
 unset BORG_PASSCOMMAND
