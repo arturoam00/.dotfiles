@@ -13,33 +13,23 @@ else
 fi
 
 # WiFi
-iw=$(iwctl station wlan0 show 2>/dev/null)
-state=$(printf '%s\n' "$iw" | awk '/State/ {print $2}')
-case $state in
-    connected)
-        ssid=$(printf '%s\n' "$iw" | sed -n 's/.*Connected network[[:space:]]\+//p' | xargs)
-        wifi="$ssid 󰖩"
-        ;;
-    *)
-        wifi='󰖪'
-        ;;
-esac
+network="$(network_state)"
 
 # Bluetooth
-bluetooth_devices=$(bluetoothctl devices Connected 2>/dev/null| wc -l)
+bluetooth_devices=$(bluetoothctl devices Connected 2>/dev/null | wc -l)
 
 # Microphone
-if wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q "MUTED"; then
+if wpctl get-volume @DEFAULT_AUDIO_SOURCE@ 2>/dev/null | grep -q "MUTED"; then
     micro=" "
 else
     micro=""
 fi
 
 # Speaker
-if wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q "MUTED"; then
+if wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q "MUTED"; then
     speaker="󰖁"
 else 
     speaker="󰕾"
 fi
 
-echo "$speaker | $micro | $bluetooth_devices  | $wifi | $battery $battery_icon | $date  "
+echo "$speaker | $micro | $bluetooth_devices  | $network | $battery $battery_icon | $date  "

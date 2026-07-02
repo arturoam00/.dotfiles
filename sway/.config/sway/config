@@ -256,7 +256,7 @@
 ### Startup apps
     exec --no-startup-id gammastep
     exec --no-startup-id wl-paste --watch cliphist store
-    exec --no-startup-id 'sleep 15 && /usr/local/bin/OS-backup-notify'
+    exec --no-startup-id 'sleep 20 && /usr/local/bin/OS-backup-notify'
 
 
 ### Extras

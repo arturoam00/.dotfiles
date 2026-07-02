@@ -19,4 +19,5 @@ lfcd () {
     cd "$(command lf -print-last-dir "$@")"
 }
 
-bind '"\C-o":"\C-ulfcd\C-m"'  # bash
+# bind '"\C-o":"\C-ulfcd\C-m"'  # bash
+bindkey -s '^o' '^U^Klfcd\n'  # zsh

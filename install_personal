@@ -11,7 +11,6 @@ mkdir -vp \
     ~/.local \
     "$DATA_HOME" \
     "$CONFIG_HOME/systemd/user/" \
-    "$CONFIG_HOME/librewolf" \
     "$CONFIG_HOME/borg"
     
 
@@ -30,7 +29,6 @@ stow -v \
   gammastep \
   handlr \
   lf \
-  librewolf \
   mamba \
   newsboat \
   nvim \
@@ -38,7 +36,6 @@ stow -v \
   python \
   R \
   scripts \
-  shell \
   sounds \
   sway \
   swaynag \
@@ -50,6 +47,7 @@ stow -v \
   wget \
   xdg-user-dirs \
   xdg-desktop-portal-wlr \
-  zathura
+  zathura \
+  zshell
 
 echo 'done!'
