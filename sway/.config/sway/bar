@@ -1,21 +1,47 @@
-#!/bin/bash
+#!/bin/sh
 
 # Date and time
 date=$(date +'%a, %d %B  | %I:%M %p')
 
-# Battery percentage
+# Battery percentage #
 battery=$(cat /sys/class/power_supply/BAT0/capacity)%
-status=$(cat /sys/class/power_supply/BAT0/status)
-if [[ $status == "Discharging" ]]; then
+bat_status=$(cat /sys/class/power_supply/BAT0/status)
+if [[ $bat_status == "Discharging" ]]; then
     battery_icon="󰁹"
 else
     battery_icon="󰂄"
 fi
 
-# WiFi
-network="$(network_state)"
+# Network state #
 
-# Bluetooth
+# networkctl output
+output=$(networkctl status --no-pager)
+
+# network state
+net_state=$(printf '%s\n' "$output" | awk '/State:/ {print $2}')
+
+case $net_state in
+    routable) net_state="online" ;;
+    *)        net_state="offline" ;;
+esac
+
+if [ "$net_state" = "offline" ]; then
+    network="󰖪" 
+fi
+
+nif=$(printf '%s\n' "$output" | awk '/Address:/ {print $4}')
+case $nif in
+    wlan*)
+        iw=$(iwctl station wlan0 show 2>/dev/null)
+        ssid=$(printf '%s\n' "$iw" | sed -n 's/.*Connected network[[:space:]]\+//p' | xargs)
+        network="$ssid 󰖩"
+        ;;
+    enp*)
+        network="Ethernet online 󰈀"
+        ;;
+esac
+
+# Bluetooth #
 bluetooth_devices=$(bluetoothctl devices Connected 2>/dev/null | wc -l)
 
 # Microphone

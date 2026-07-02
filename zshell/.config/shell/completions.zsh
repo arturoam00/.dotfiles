@@ -1,13 +1,13 @@
 # --- Completion ----------------------------------------------------------
+setopt EXTENDED_GLOB   # needed for the (#q...) qualifier below
 autoload -Uz compinit
 # Only rebuild the completion dump once a day - keeps shell startup fast.
-# (drop the -C-related cache check entirely if you'd rather always verify)
 zcompdump="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
 mkdir -p "${zcompdump:h}"
-if [[ -n ${zcompdump}(#qN.mh+24) ]]; then
-    compinit -d "$zcompdump"
+if [[ -f "$zcompdump"(#qNmh-24) ]]; then
+    compinit -C -d "$zcompdump"   # fresh enough, skip full verification
 else
-    compinit -C -d "$zcompdump"
+    compinit -d "$zcompdump"      # stale or missing, rebuild
 fi
 unset zcompdump
 

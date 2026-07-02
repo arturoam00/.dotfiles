@@ -1,16 +1,4 @@
-addToPath() {
-    if [[ "$PATH" != *"$1"* ]]; then
-        export PATH=$PATH:$1
-    fi
-}
-
-addToPathFront() {
-    if [[ "$PATH" != *"$1"* ]]; then
-        export PATH=$1:$PATH
-    fi
-}
-
-ssh_fzf() {
+function ssh_fzf {
   local ssh_config="$HOME/.ssh/config"
 
   if [[ ! -f "$ssh_config" ]]; then
