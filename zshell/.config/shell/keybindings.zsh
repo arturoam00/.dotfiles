@@ -3,6 +3,9 @@ bindkey -v   # vi mode (equivalent of `set -o vi`)
 bindkey -M viins '^L' clear-screen
 bindkey -M vicmd '^L' clear-screen
 
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-delete-char
+
 bindkey -M viins '^U' backward-kill-line
 bindkey -M vicmd '^U' backward-kill-line
 bindkey -M viins '^K' kill-line
