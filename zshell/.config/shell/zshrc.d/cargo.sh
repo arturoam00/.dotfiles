@@ -1,13 +1,9 @@
-CARGO="$CARGO_HOME/env"
-if [ -f "$CARGO" ]; then
-    case ":${PATH}:" in
-        *:"$CARGO_HOME/bin":*)
-            ;;
-        *)
-            # Prepending path in case a system-installed rustc needs to be overridden
-            export PATH="$CARGO_HOME/bin:$PATH"
-            ;;
-    esac
-fi
+typeset -U path PATH
 
-unset CARGO
+: "${CARGO_HOME:=$HOME/.cargo}"   # fall back to cargo's default install location
+
+if [[ -f "$CARGO_HOME/env" ]]; then
+    # Prepend so a system-installed rustc gets overridden.
+    # typeset -U above keeps PATH deduped, so no need to check for it first.
+    export PATH="$CARGO_HOME/bin:$PATH"
+fi

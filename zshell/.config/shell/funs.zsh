@@ -1,20 +1,11 @@
-function ssh_fzf {
+ssh_fzf() {
   local ssh_config="$HOME/.ssh/config"
-
-  if [[ ! -f "$ssh_config" ]]; then
-    echo "SSH config file not found at $ssh_config. Exiting."
-    return 1
-  fi
+  [[ -f "$ssh_config" ]] || { echo "SSH config file not found at $ssh_config."; return 1; }
 
   local host
   host=$(awk '/^Host / {for (i=2; i<=NF; i++) if ($i != "*") print $i}' "$ssh_config" | fzf --prompt="Select SSH host: ")
 
-  if [[ -n "$host" ]]; then
-    stty echo
-    ssh "$host"
-  else
-    echo "No host selected."
-  fi
+  [[ -n "$host" ]] && ssh "$host"
 }
 
 function command_not_found_handler {
