@@ -15,10 +15,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
     export XDG_DOWNLOAD_DIR
     export XDG_DOCUMENTS_DIR
 }
-mkdir -p $HOME/Docs $HOME/Dls $HOME/Code $HOME/Pix $HOME/Vids
 
-export GRIM_DEFAULT_DIR=${XDG_PICTURES_DIR:-~/Pix}/Screenshots 
-mkdir -p "$GRIM_DEFAULT_DIR"
 
 export TEXMFHOME="$XDG_DATA_HOME/texmf"
 export TEXMFVAR="$TEXMFHOME/var"
