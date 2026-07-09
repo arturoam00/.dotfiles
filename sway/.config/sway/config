@@ -12,6 +12,13 @@
     set $term alacritty
     # Application launcher
     set $menu tofi-drun --drun-launch=true
+
+### Gaps
+    gaps inner 10
+    gaps outer 5
+
+### Borders
+    default_border pixel 1
     
 ### Output configuration
     set $laptop "eDP-1"

@@ -37,10 +37,10 @@ style = "Bold"
 x = 0
 y = 0
 
-[colors.primary]
-foreground = "#cac3ba"
-background = "#121212"
-
+# [colors.primary]
+# foreground = "#cac3ba"
+# background = "#121212"
+#
 [font.italic]
 family = "JetBrainsMono Nerd Font"
 style = "Italic" 
@@ -52,3 +52,6 @@ style = "Regular"
 [font.offset]
 x = 1
 y = 0
+
+[general]
+import = ["themes/default.toml",]
