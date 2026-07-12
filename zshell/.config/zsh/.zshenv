@@ -38,3 +38,4 @@ export MAMBA_ROOT_PREFIX="$XDG_DATA_HOME/micromamba"
 export MANPAGER="bat -plman"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 41%" # --preview 'bat --color=always --style=numbers --line-range=:500 {} '"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#7f7970"
