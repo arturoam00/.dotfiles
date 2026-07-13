@@ -12,14 +12,14 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 # --- Core config drop-ins -----------------------------------------------
 [[ -f $XDG_CONFIG_HOME/shell/completions.zsh ]] && source $XDG_CONFIG_HOME/shell/completions.zsh
-[[ -f $XDG_CONFIG_HOME/shell/aliases.sh ]] && source $XDG_CONFIG_HOME/shell/aliases.sh
+# [[ -f $XDG_CONFIG_HOME/shell/aliases.sh ]] && source $XDG_CONFIG_HOME/shell/aliases.sh
 [[ -f $XDG_CONFIG_HOME/shell/funs.zsh ]] && source $XDG_CONFIG_HOME/shell/funs.zsh
 [[ -f $XDG_CONFIG_HOME/shell/keybindings.zsh ]] && source $XDG_CONFIG_HOME/shell/keybindings.zsh
 
-for file in $XDG_CONFIG_HOME/shell/zshrc.d/*.sh(N); do
-    source "$file"
-done
-
+# for file in $XDG_CONFIG_HOME/shell/zshrc.d/*.sh(N); do
+#     source "$file"
+# done
+#
 # --- Prompt (needs vcs_info loaded first) --------------------------------
 [[ -f $XDG_CONFIG_HOME/shell/prompt.zsh ]] && source $XDG_CONFIG_HOME/shell/prompt.zsh
 
@@ -28,7 +28,7 @@ done
 ZSH_AUTOSUGGEST_PATH="${ZSH_AUTOSUGGEST_PATH:-/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh}"
 [[ -f "$ZSH_AUTOSUGGEST_PATH" ]] && source "$ZSH_AUTOSUGGEST_PATH"
 
-ZSH_HIGHLIGHT_PATH="${ZSH_HIGHLIGHT_PATH:-/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh}"
+ZSH_HIGHLIGHT_PATH="${ZSH_HIGHLIGHT_PATH:-/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh}"
 [[ -f "$ZSH_HIGHLIGHT_PATH" ]] && source "$ZSH_HIGHLIGHT_PATH"
 
 unset ZSH_AUTOSUGGEST_PATH ZSH_HIGHLIGHT_PATH

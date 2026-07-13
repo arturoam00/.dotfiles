@@ -2,7 +2,7 @@
 # This is better done in either `.env` or `.profile`, the first always takes precedence.
 
 if [ -z "$MAMBA_EXE" ] || [ -z "$MAMBA_ROOT_PREFIX" ]; then
-    exit 0
+    return 0
 fi
 
 # >>> mamba initialize >>>
