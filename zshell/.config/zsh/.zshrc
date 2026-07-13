@@ -12,7 +12,7 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 # --- Core config drop-ins -----------------------------------------------
 [[ -f $XDG_CONFIG_HOME/shell/completions.zsh ]] && source $XDG_CONFIG_HOME/shell/completions.zsh
-# [[ -f $XDG_CONFIG_HOME/shell/aliases.sh ]] && source $XDG_CONFIG_HOME/shell/aliases.sh
+[[ -f $XDG_CONFIG_HOME/shell/aliases.sh ]] && source $XDG_CONFIG_HOME/shell/aliases.sh
 [[ -f $XDG_CONFIG_HOME/shell/funs.zsh ]] && source $XDG_CONFIG_HOME/shell/funs.zsh
 [[ -f $XDG_CONFIG_HOME/shell/keybindings.zsh ]] && source $XDG_CONFIG_HOME/shell/keybindings.zsh
 

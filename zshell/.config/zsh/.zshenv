@@ -12,6 +12,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
     export XDG_DOCUMENTS_DIR
 }
 
+export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
 export TEXMFHOME="$XDG_DATA_HOME/texmf"
 export TEXMFVAR="$TEXMFHOME/var"
 export TEXMFCONFIG="$XDG_CONFIG_HOME/texmf"
