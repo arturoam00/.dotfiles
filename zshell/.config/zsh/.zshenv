@@ -1,3 +1,8 @@
+export EDITOR="nvim"
+export BROWSER="librewolf"
+export OPENER="xdg-open"
+export PRINTER="GrwNxtPrinter"
+
 # XDG dirs
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -31,3 +36,7 @@ export MANPAGER="bat -plman"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 41%" # --preview 'bat --color=always --style=numbers --line-range=:500 {} '"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#7f7970"
+export MAMBA_EXE="/usr/bin/micromamba"
+export MAMBARC="$XDG_CONFIG_HOME/mamba/mambarc"
+export GRIM_DEFAULT_DIR=${XDG_PICTURES_DIR:-~/Pix}/Screenshots 
+mkdir -p "$GRIM_DEFAULT_DIR"
