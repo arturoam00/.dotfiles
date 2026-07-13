@@ -16,10 +16,10 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 [[ -f $XDG_CONFIG_HOME/shell/funs.zsh ]] && source $XDG_CONFIG_HOME/shell/funs.zsh
 [[ -f $XDG_CONFIG_HOME/shell/keybindings.zsh ]] && source $XDG_CONFIG_HOME/shell/keybindings.zsh
 
-# for file in $XDG_CONFIG_HOME/shell/zshrc.d/*.sh(N); do
-#     source "$file"
-# done
-#
+for file in $XDG_CONFIG_HOME/shell/zshrc.d/*.sh(N); do
+    source "$file"
+done
+
 # --- Prompt (needs vcs_info loaded first) --------------------------------
 [[ -f $XDG_CONFIG_HOME/shell/prompt.zsh ]] && source $XDG_CONFIG_HOME/shell/prompt.zsh
 
