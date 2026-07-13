@@ -29,13 +29,11 @@ alias r='Rscript' \
       py='python3 -q' \
       R='R --vanilla --quiet' \
       tmux='tmux -f ~/.config/tmux/tmux.conf' \
-      firefox='librewolf' \
       lf='lfub' \
       zz='zathura' \
       exiftool='exiftool -config $XDG_CONFIG_HOME/exiftool/ExifTool_config' \
       md2html='cmark -t html --unsafe' \
-      ho='handlr open' \
-      code='codium'
+      ho='handlr open'
 
 # Custom tools
 alias bb='BORG_REPO=rsync.net:Backup borg-backup' \
