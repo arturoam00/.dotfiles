@@ -8,6 +8,8 @@ setopt APPEND_HISTORY         # bash's shopt histappend
 setopt INC_APPEND_HISTORY     # write as you go, not just on exit
 setopt AUTO_CD                # bash's shopt autocd
 
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+
 # --- Core config drop-ins -----------------------------------------------
 [[ -f $XDG_CONFIG_HOME/shell/completions.zsh ]] && source $XDG_CONFIG_HOME/shell/completions.zsh
 [[ -f $XDG_CONFIG_HOME/shell/aliases.sh ]] && source $XDG_CONFIG_HOME/shell/aliases.sh
