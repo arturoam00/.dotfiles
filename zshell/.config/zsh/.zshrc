@@ -1,5 +1,5 @@
 # --- History -----------------------------------------------------------
-# HISTFILE is already exported from exports.sh .
+HISTFILE="${XDG_STATE_HOME:-$HOME}"/histfile
 HISTSIZE=10000
 SAVEHIST=10000
 setopt HIST_IGNORE_ALL_DUPS   # bash's HISTCONTROL=ignoreboth (dupes half)

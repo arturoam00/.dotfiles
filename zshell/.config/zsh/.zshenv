@@ -15,7 +15,6 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export TEXMFHOME="$XDG_DATA_HOME/texmf"
 export TEXMFVAR="$TEXMFHOME/var"
 export TEXMFCONFIG="$XDG_CONFIG_HOME/texmf"
-export HISTFILE="$XDG_STATE_HOME/histfile"
 export LESSHISTFILE=-
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
