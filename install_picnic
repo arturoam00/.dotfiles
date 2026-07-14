@@ -9,41 +9,20 @@ mkdir -vp \
     ~/.config \
     ~/.local \
     "$DATA_HOME" \
-    "$CONFIG_HOME/systemd/user/" \
-    "$CONFIG_HOME/borg"
 
 [[ -d ~/.local/bin ]] && [[ ! -L ~/.local/bin ]] && mv ~/.local/bin/ ~/.local/bin-backup && echo 'Old ~/.local/bin dir backedup!'
 
 stow -v \
   alacritty \
-  applications \
-  bkgs \
-  borg \
-  direnv \
-  dunst \
-  exiftool \
-  fonts \
-  gammastep \
-  handlr \
   lf \
-  mamba \
-  newsboat \
   nvim \
-  personal \
+  picnic \
   python \
-  R \
   scripts \
-  sounds \
-  sway \
-  swaynag \
-  systemd \
   tmux \
-  tofi \
   urlview \
   vivid \
   wget \
-  xdg-user-dirs \
-  xdg-desktop-portal-wlr \
   zathura \
   zshell
 
