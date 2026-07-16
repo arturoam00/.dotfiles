@@ -1,6 +1,7 @@
 # --- Completion ----------------------------------------------------------
 setopt EXTENDED_GLOB   # needed for the (#q...) qualifier below
 autoload -Uz compinit
+
 # Only rebuild the completion dump once a day - keeps shell startup fast.
 zcompdump="${ZSH_CACHE_DIR:-$HOME/.cache/zsh}/zcompdump"
 mkdir -p "${zcompdump:h}"

@@ -4,3 +4,4 @@ systemd/.config/systemd/user/*.wants
 borg/**/security
 borg/**/keys
 .secrets
+**/.zcompcache
