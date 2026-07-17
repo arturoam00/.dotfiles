@@ -43,6 +43,8 @@ stow -v \
   vivid \
   wget \
   xdg-user-dirs \
+  xdg-desktop-portal \
+  xdg-desktop-portal-termfilechooser \
   xdg-desktop-portal-wlr \
   zathura \
   zshell
