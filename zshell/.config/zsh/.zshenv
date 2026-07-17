@@ -38,5 +38,3 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#7f7970"
 export MAMBA_EXE="/usr/bin/micromamba"
 export MAMBARC="$XDG_CONFIG_HOME/mamba/mambarc"
-export GRIM_DEFAULT_DIR=${XDG_PICTURES_DIR:-~/Pix}/Screenshots 
-mkdir -p "$GRIM_DEFAULT_DIR"
