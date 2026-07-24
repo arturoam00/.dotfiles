@@ -95,13 +95,23 @@ cmd extract ${{
 
 # compress current file or selected files with tar and gunzip
 cmd tar ${{
-    set -f
-    mkdir $1
-    cp -r $fx $1
-    tar czf $1.tar.gz $1
-    rm -rf $1
+    [ -n "$1" ] || {
+        printf '%s\n' "usage: tar <archive-name>"
+        exit 1
+    }
+
+    IFS="$(printf '\n\t')"
+    tar czf "$1.tar.gz" -- $fx
 }}
 
+# cmd tar ${{
+#     set -f
+#     mkdir $1
+#     cp -r $fx $1
+#     tar czf $1.tar.gz $1
+#     rm -rf $1
+# }}
+#
 # compress current file or selected files with zip
 cmd zip ${{
     set -f
