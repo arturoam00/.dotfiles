@@ -1,0 +1,155 @@
+# interpreter for shell commands
+set shell sh
+
+# set '-eu' options for shell commands
+# These options are used to have safer shell commands. Option '-e' is used to
+# exit on error and option '-u' is used to give error for unset variables.
+# Option '-f' disables pathname expansion which can be useful when $f, $fs, and
+# $fx variables contain names with '*' or '?' characters. However, this option
+# is used selectively within individual commands as it can be limiting at
+# times.
+set shellopts '-eu'
+
+# set internal field separator (IFS) to "\n" for shell commands
+# This is useful to automatically split file names in $fs and $fx properly
+# since default file separator used in these variables (i.e. 'filesep' option)
+# is newline. You need to consider the values of these options and create your
+# commands accordingly.
+set ifs "\n"
+
+# leave some space at the top and the bottom of the screen
+set scrolloff 10
+
+# Use the `dim` attribute instead of underline for the cursor in the preview pane
+set cursorpreviewfmt "\033[7;2m"
+
+# appearance settings
+set icons true
+set promptfmt "%d"
+set hiddenfiles .*:__pycache__:*.egg-info:build:dist
+set previewer "~/.config/lf/previewer"
+set cleaner "~/.config/lf/cleaner"
+
+# use enter for shell commands
+map <enter> shell
+
+# execute current file (must be executable)
+map x $$f
+map X !$f
+map o &$OPENER $f
+
+# Hidden files
+map . set hidden!
+
+# Move around
+map gd $lf -remote "send $id cd $XDG_DOWNLOAD_DIR"
+map gc $lf -remote "send $id cd $XDG_CONFIG_HOME"
+map gb $lf -remote "send $id cd $OLDPWD"
+map <c-f> :fzf_jump
+
+map <enter> :push $
+map <esc> :quit
+map <c-c> :clear
+
+# Change modes of files
+map <c-x> $chmod u+x $fx
+map <a-x> $chmod -x $fx
+
+# Misc mappings
+map D :delete
+map E :extract
+map Y $echo $f |  wl-copy -n
+map a :push %mkdir<space>
+map T :push %touch<space>
+
+# Custom rename mappings
+map r
+map i rename
+map I :rename; cmd-home
+map A :rename; cmd-end
+map c :rename; cmd-delete-home
+map C :rename; cmd-end; cmd-delete-home
+
+# Custom opener
+cmd open &{{
+    case $(file --mime-type -Lb $f) in
+        text/html) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+        text/*) lf -remote "send $id \$$EDITOR \$fx";;
+        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+    esac
+}}
+
+# extract the current file with the right command
+cmd extract ${{
+    set -f
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.zip) unzip $f -d "${f%%.zip}";;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+	*.gz) gunzip -k $f;;
+    esac
+}}
+
+# compress current file or selected files with tar and gunzip
+cmd tar ${{
+    [ -n "$1" ] || {
+        printf '%s\n' "usage: tar <archive-name>"
+        exit 1
+    }
+
+    IFS="$(printf '\n\t')"
+    tar czf "$1.tar.gz" -- $fx
+}}
+
+# cmd tar ${{
+#     set -f
+#     mkdir $1
+#     cp -r $fx $1
+#     tar czf $1.tar.gz $1
+#     rm -rf $1
+# }}
+#
+# compress current file or selected files with zip
+cmd zip ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    zip -r $1.zip $1
+    rm -rf $1
+}}
+
+cmd fzf_jump ${{
+    res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location')"
+    if [ -n "$res" ]; then
+        if [ -d "$res" ]; then
+            cmd="cd"
+        else
+            cmd="select"
+        fi
+        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+        lf -remote "send $id $cmd \"$res\""
+    fi
+}}
+
+cmd edit-config ${{
+    $EDITOR ~/.config/lf/lfrc
+    lf -remote "send $id source ~/.config/lf/lfrc"
+}}
+
+# zoxide integration
+cmd z %{{
+    result="$(zoxide query --exclude "$PWD" "$@" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    lf -remote "send $id cd \"$result\""
+}}
+
+cmd zi ${{
+    result="$(zoxide query -i | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    lf -remote "send $id cd \"$result\""
+}}
+
+cmd on-cd &{{
+    zoxide add "$PWD"
+}}

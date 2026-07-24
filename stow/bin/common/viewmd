@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -eu
+
+command -v cmark >/dev/null 2>&1 || {
+    echo "viewmd: cmark is not installed" >&2
+    exit 127
+}
+
+[ "$#" -eq 1 ] || {
+    echo "Usage: viewmd FILE" >&2
+    exit 2
+}
+
+file="$1"
+tempfile="$(mktemp "${TMPDIR:-/tmp}/viewmd.XXXXXX")"
+trap 'rm -f "$tempfile"' EXIT HUP INT TERM
+
+cmark -t html --unsafe "$file" > "$tempfile"
+
+"${BROWSER:-xdg-open}" "$tempfile"

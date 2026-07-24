@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+handlr mime --json "${@: -1}" | jq -r '.[0].mime'

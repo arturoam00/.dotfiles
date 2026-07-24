@@ -1,0 +1,12 @@
+#!/bin/sh
+
+command -v borg >/dev/null 2>&1 || {
+    echo "brg: borg is not installed" >&2
+    exit 127
+}
+
+: "${BORG_REPO:=rsync.net:Backup}"
+: "${BORG_PASSCOMMAND:=cat \"${XDG_CONFIG_HOME:-$HOME/.config}/borg/.secrets\"}"
+export BORG_REPO BORG_PASSCOMMAND
+
+borg --remote-path borg14 "$@"

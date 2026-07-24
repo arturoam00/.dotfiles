@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+repo_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+micromamba_version="${MICROMAMBA_VERSION:-2.6.2-1}"
+install_dir="$HOME/.local/bin"
+micromamba="$install_dir/micromamba"
+export MAMBA_ROOT_PREFIX="${MAMBA_ROOT_PREFIX:-$HOME/.local/share/micromamba}"
+
+[[ "$(uname -s)" == Linux ]] || {
+    echo "bootstrap: the remote profile currently targets Linux" >&2
+    exit 1
+}
+
+mkdir -p "$install_dir"
+
+if [[ ! -x "$micromamba" ]]; then
+    command -v curl >/dev/null 2>&1 || {
+        echo "bootstrap: curl is required to install micromamba" >&2
+        exit 1
+    }
+
+    BIN_FOLDER="$install_dir" \
+    INIT_YES=no \
+    CONDA_FORGE_YES=no \
+    VERSION="$micromamba_version" \
+        "${SHELL:-bash}" <(curl --fail --location --silent --show-error micro.mamba.pm)
+fi
+
+"$micromamba" create \
+    --yes \
+    --no-rc \
+    --name dotfiles \
+    --file "$repo_dir/environments/remote.yml"
+
+export PATH="$MAMBA_ROOT_PREFIX/envs/dotfiles/bin:$install_dir:$PATH"
+"$repo_dir/bin/dotfiles" install remote
+
+printf '\nRemote environment installed. Start a new login shell or run:\n'
+printf '  source %q\n' "$HOME/.bash_profile"

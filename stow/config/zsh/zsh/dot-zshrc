@@ -1,0 +1,49 @@
+HISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/zsh/history"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt AUTO_CD
+
+: "${XDG_CONFIG_HOME:=$HOME/.config}"
+export XDG_CONFIG_HOME
+
+[[ -r "$XDG_CONFIG_HOME/shell/functions.sh" ]] &&
+    source "$XDG_CONFIG_HOME/shell/functions.sh"
+[[ -r "$XDG_CONFIG_HOME/shell/paths.sh" ]] &&
+    source "$XDG_CONFIG_HOME/shell/paths.sh"
+[[ -r "$XDG_CONFIG_HOME/shell/completions.zsh" ]] &&
+    source "$XDG_CONFIG_HOME/shell/completions.zsh"
+[[ -r "$XDG_CONFIG_HOME/shell/aliases.sh" ]] &&
+    source "$XDG_CONFIG_HOME/shell/aliases.sh"
+for alias_file in "$XDG_CONFIG_HOME"/shell/aliases.d/*.sh(N); do
+    source "$alias_file"
+done
+unset alias_file
+
+[[ -r "$XDG_CONFIG_HOME/shell/keybindings.zsh" ]] &&
+    source "$XDG_CONFIG_HOME/shell/keybindings.zsh"
+
+DOTFILES_SHELL=zsh
+for shell_file in \
+    "$XDG_CONFIG_HOME"/shell/common.d/*.sh(N) \
+    "$XDG_CONFIG_HOME"/shell/zsh.d/*.{sh,zsh}(N)
+do
+    source "$shell_file"
+done
+unset shell_file
+
+[[ -r "$XDG_CONFIG_HOME/shell/prompt.zsh" ]] &&
+    source "$XDG_CONFIG_HOME/shell/prompt.zsh"
+
+ZSH_AUTOSUGGEST_PATH="${ZSH_AUTOSUGGEST_PATH:-/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh}"
+[[ -r "$ZSH_AUTOSUGGEST_PATH" ]] && source "$ZSH_AUTOSUGGEST_PATH"
+
+# Syntax highlighting must be sourced after other widget-wrapping integrations.
+ZSH_HIGHLIGHT_PATH="${ZSH_HIGHLIGHT_PATH:-/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh}"
+[[ -r "$ZSH_HIGHLIGHT_PATH" ]] && source "$ZSH_HIGHLIGHT_PATH"
+
+unset ZSH_AUTOSUGGEST_PATH ZSH_HIGHLIGHT_PATH
+

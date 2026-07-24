@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+laptop=eDP-1
+monitor=HDMI-A-1
+
+active=$(swaymsg -t get_outputs -r | jq -r '.[] | select(.active) | .name')
+
+if [[ "$active" == *"$monitor"* ]]; then
+    swaymsg output "$laptop" disable
+else
+    playerctl -a pause
+    swaylock -f -c 000000 && systemctl sleep
+fi

@@ -1,0 +1,5 @@
+# Remote terminal plus host-specific environment variables.
+common
+bash
+nikhef
+

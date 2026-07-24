@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+[[ $# -eq 1 ]] || {
+    echo "Usage: cpls DESTINATION" >&2
+    exit 2
+}
+
+# Define the source directory
+SOURCE_DIR="$(xdg-user-dir PICTURES)"
+
+shopt -s nullglob
+screenshots=("$SOURCE_DIR"/*.png)
+if ((${#screenshots[@]} == 0)); then
+  echo "No screenshots found in $SOURCE_DIR"
+  exit 1
+fi
+
+sorted_screenshots="$(ls -t -- "${screenshots[@]}")"
+LATEST_SCREENSHOT="${sorted_screenshots%%$'\n'*}"
+
+# Copy the latest screenshot to the destination provided in the argument
+cp "$LATEST_SCREENSHOT" "$1"
+
+# Notify the user
+echo "Copied $LATEST_SCREENSHOT to $1"
