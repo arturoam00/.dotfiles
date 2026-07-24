@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+
+set -uo pipefail
+
+config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
+patterns_file="$config_home/borg-backup/homedir-patterns"
+: "${BORG_PASSCOMMAND:=cat \"$config_home/borg/.secrets\"}"
+export BORG_PASSCOMMAND
+
+info() { printf '\n%s %s\n\n' "$(date)" "$*" >&2; }
+trap 'printf "%s Backup interrupted\n" "$(date)" >&2; exit 2' INT TERM
+
+[[ -r "$patterns_file" ]] || {
+    printf 'Borg patterns file not found: %s\n' "$patterns_file" >&2
+    exit 2
+}
+
+info "Starting backup"
+
+# Backup the most important directories into an archive named after
+# the machine this script is currently running on:
+
+borg create                                      \
+    --remote-path borg14                         \
+    --checkpoint-interval 600                    \
+    --verbose                                    \
+    --filter AME                                 \
+    --list                                       \
+    --stats                                      \
+    --show-rc                                    \
+    --compression lz4                            \
+    --exclude-caches                             \
+    -x                                           \
+    --numeric-ids                                \
+    --patterns-from "$patterns_file"                \
+    ::'{hostname}-{now}'                         \
+    ~
+
+backup_exit=$?
+
+info "Pruning repository"
+
+# Use the `prune` subcommand to maintain 7 daily, 4 weekly and 6 monthly
+# archives of THIS machine. The '{hostname}-*' matching is very important to
+# limit prune's operation to this machine's archives and not apply to
+# other machines' archives also:
+
+borg prune                          \
+    --remote-path borg14            \
+    --list                          \
+    --glob-archives '{hostname}-*'  \
+    --show-rc                       \
+    --keep-daily    7               \
+    --keep-weekly   4               \
+    --keep-monthly  6
+
+prune_exit=$?
+
+# actually free repo disk space by compacting segments
+
+info "Compacting repository"
+
+borg compact --remote-path borg14
+
+compact_exit=$?
+
+# use highest exit code as global exit code
+global_exit=$(( backup_exit > prune_exit ? backup_exit : prune_exit ))
+global_exit=$(( compact_exit > global_exit ? compact_exit : global_exit ))
+
+if ((global_exit == 0)); then
+    info "Backup, Prune, and Compact finished successfully"
+    notification=" Backup to ${BORG_REPO:-repository} finished successfully"
+    urgency=normal
+elif ((global_exit == 1)); then
+    info "Backup, Prune, and/or Compact finished with warnings"
+    notification=" Backup to ${BORG_REPO:-repository} finished with warnings"
+    urgency=critical
+else
+    info "Backup, Prune, and/or Compact finished with errors"
+    notification=" Backup to ${BORG_REPO:-repository} failed – check logs"
+    urgency=critical
+fi
+
+if command -v dunstify >/dev/null 2>&1; then
+    dunstify \
+        --icon drive-harddisk \
+        --urgency "$urgency" \
+        "Home Backup" "$notification"
+fi
+
+unset BORG_PASSCOMMAND
+
+exit "$global_exit"

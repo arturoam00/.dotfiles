@@ -1,5 +1,0 @@
-#!/bin/sh
-
-set -euo pipefail
-
-cat ~/.local/share/symbols/all | tofi | awk '{print $1}' | tr -d '\n'| wl-copy

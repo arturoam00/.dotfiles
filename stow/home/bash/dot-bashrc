@@ -1,0 +1,40 @@
+[[ $- != *i* ]] && return
+
+: "${XDG_CONFIG_HOME:=$HOME/.config}"
+export XDG_CONFIG_HOME
+
+[[ -r "$XDG_CONFIG_HOME/shell/env.sh" ]] &&
+    source "$XDG_CONFIG_HOME/shell/env.sh"
+[[ -r "$XDG_CONFIG_HOME/shell/functions.sh" ]] &&
+    source "$XDG_CONFIG_HOME/shell/functions.sh"
+[[ -r "$XDG_CONFIG_HOME/shell/paths.sh" ]] &&
+    source "$XDG_CONFIG_HOME/shell/paths.sh"
+
+HISTCONTROL=ignoreboth
+HISTSIZE=10000
+HISTFILESIZE=2000
+HISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/bash/history"
+shopt -s histappend
+shopt -s autocd 2>/dev/null || true
+
+[[ -r "$XDG_CONFIG_HOME/shell/aliases.sh" ]] &&
+    source "$XDG_CONFIG_HOME/shell/aliases.sh"
+for alias_file in "$XDG_CONFIG_HOME"/shell/aliases.d/*.sh; do
+    [[ -r "$alias_file" ]] && source "$alias_file"
+done
+unset alias_file
+
+[[ -r "$XDG_CONFIG_HOME/shell/keybindings.bash" ]] &&
+    source "$XDG_CONFIG_HOME/shell/keybindings.bash"
+
+DOTFILES_SHELL=bash
+for shell_file in \
+    "$XDG_CONFIG_HOME"/shell/common.d/*.sh \
+    "$XDG_CONFIG_HOME"/shell/bash.d/*.sh
+do
+    [[ -r "$shell_file" ]] && source "$shell_file"
+done
+unset shell_file
+
+[[ -r "$XDG_CONFIG_HOME/shell/prompt.bash" ]] &&
+    source "$XDG_CONFIG_HOME/shell/prompt.bash"

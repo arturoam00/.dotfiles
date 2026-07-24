@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import urllib.parse
+
+def main(url):
+    to, _, params = url.partition("?")
+    to = to.replace("mailto:", "")
+    query = urllib.parse.parse_qs(params)
+    compose = urllib.parse.urlencode({
+        "view": "cm",
+        "fs": "1",
+        "to": to,
+        "su": query.get("subject", [""])[0],
+        "body": query.get("body", [""])[0],
+    })
+    os.execvp("xdg-open", ["xdg-open", f"https://mail.google.com/mail/?{compose}"])
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        raise SystemExit("Usage: mailto MAILTO_URL")
+    main(sys.argv[1])

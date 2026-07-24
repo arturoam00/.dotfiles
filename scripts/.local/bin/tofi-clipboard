@@ -1,5 +1,0 @@
-#!/bin/sh
-
-set -euo pipefail
-
-cliphist list | tofi | cliphist decode | wl-copy

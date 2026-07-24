@@ -1,0 +1,195 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+repo_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)"
+profiles_dir="$repo_dir/profiles"
+stow_dir="$repo_dir/stow"
+
+usage() {
+    cat <<'EOF'
+Usage:
+  dotfiles install PROFILE [--dry-run] [--verbose]
+  dotfiles restow PROFILE [--dry-run] [--verbose]
+  dotfiles remove PROFILE [--dry-run] [--verbose]
+  dotfiles list
+  dotfiles doctor
+EOF
+}
+
+die() {
+    printf 'dotfiles: %s\n' "$*" >&2
+    exit 1
+}
+
+bundle_exists() {
+    local bundle="$1" root
+    for root in home config bin data; do
+        [[ -d "$stow_dir/$root/$bundle" ]] && return 0
+    done
+    return 1
+}
+
+load_profile() {
+    local profile_file="$profiles_dir/$1" line
+    [[ -f "$profile_file" ]] || die "unknown profile: $1"
+
+    bundles=()
+    while IFS= read -r line || [[ -n "$line" ]]; do
+        line="${line%%#*}"
+        line="${line#"${line%%[![:space:]]*}"}"
+        line="${line%"${line##*[![:space:]]}"}"
+        [[ -z "$line" ]] && continue
+        [[ "$line" =~ ^[a-z0-9][a-z0-9-]*$ ]] ||
+            die "invalid bundle '$line' in profile $1"
+        bundle_exists "$line" ||
+            die "profile $1 references unknown bundle: $line"
+        bundles+=("$line")
+    done < "$profile_file"
+}
+
+run_stow_root() {
+    local root_name="$1" target="$2" package
+    local packages=()
+
+    for package in "${bundles[@]}"; do
+        [[ -d "$stow_dir/$root_name/$package" ]] && packages+=("$package")
+    done
+    ((${#packages[@]})) || return 0
+
+    local command=(
+        "$stow_bin"
+        "$stow_action"
+        --dir "$stow_dir/$root_name"
+        --target "$target"
+        --dotfiles
+        --no-folding
+    )
+    ((dry_run)) && command+=(--simulate)
+    ((verbose)) && command+=(--verbose)
+    command+=("${packages[@]}")
+
+    printf '%-7s %s\n' "$root_name" "${packages[*]}"
+    "${command[@]}"
+}
+
+doctor() {
+    local failed=0 profile script interpreter
+
+    command -v stow >/dev/null 2>&1 ||
+        { printf 'missing command: stow\n' >&2; failed=1; }
+
+    for profile in "$profiles_dir"/*; do
+        [[ -f "$profile" ]] || continue
+        if ! load_profile "${profile##*/}"; then
+            failed=1
+        fi
+    done
+
+    while IFS= read -r script; do
+        IFS= read -r interpreter < "$script" || true
+        case "$interpreter" in
+            *bash)
+                if ! bash -n "$script"; then
+                    printf 'invalid Bash syntax: %s\n' "$script" >&2
+                    failed=1
+                fi
+                ;;
+            *'/sh')
+                if ! sh -n "$script"; then
+                    printf 'invalid sh syntax: %s\n' "$script" >&2
+                    failed=1
+                fi
+                ;;
+        esac
+    done < <(
+        find "$repo_dir/bin" "$repo_dir/stow/bin" "$repo_dir/stow/home/bash" \
+            -type f -print
+    )
+
+    if command -v zsh >/dev/null 2>&1; then
+        while IFS= read -r script; do
+            if ! zsh -n "$script"; then
+                printf 'invalid Zsh syntax: %s\n' "$script" >&2
+                failed=1
+            fi
+        done < <(
+            find "$repo_dir/stow/config/zsh" "$repo_dir/stow/config/macos" \
+                -type f \( -name '*.zsh' -o -name 'dot-z*' \) -print
+        )
+    fi
+
+    ((failed == 0)) || return 1
+    printf 'All profiles and shell files passed validation.\n'
+}
+
+action="${1:-}"
+case "$action" in
+    install) stow_action=--stow ;;
+    restow) stow_action=--restow ;;
+    remove) stow_action=--delete ;;
+    list)
+        find "$profiles_dir" -maxdepth 1 -type f -exec basename {} \; | sort
+        exit 0
+        ;;
+    doctor)
+        doctor
+        exit
+        ;;
+    -h|--help|'')
+        usage
+        exit 0
+        ;;
+    *)
+        usage >&2
+        die "unknown action: $action"
+        ;;
+esac
+
+profile="${2:-}"
+[[ -n "$profile" ]] || die "a profile is required"
+shift 2
+
+dry_run=0
+verbose=0
+while (($#)); do
+    case "$1" in
+        -n|--dry-run) dry_run=1 ;;
+        -v|--verbose) verbose=1 ;;
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        *) die "unknown option: $1" ;;
+    esac
+    shift
+done
+
+stow_bin="${STOW_BIN:-}"
+if [[ -z "$stow_bin" ]]; then
+    stow_bin="$(command -v stow || true)"
+fi
+[[ -x "$stow_bin" ]] || die "GNU Stow is required"
+
+load_profile "$profile"
+
+config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
+data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
+state_home="${XDG_STATE_HOME:-$HOME/.local/state}"
+bin_home="$HOME/.local/bin"
+
+if [[ "$action" != remove ]]; then
+    mkdir -p \
+        "$config_home" \
+        "$data_home" \
+        "$state_home/bash" \
+        "$state_home/zsh" \
+        "$bin_home"
+fi
+
+run_stow_root home "$HOME"
+run_stow_root config "$config_home"
+run_stow_root bin "$bin_home"
+run_stow_root data "$data_home"
+
+printf '%s profile %s complete.\n' "$action" "$profile"

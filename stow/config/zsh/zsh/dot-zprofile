@@ -1,0 +1,10 @@
+[[ -r "$HOME/.env" ]] && source "$HOME/.env"
+[[ -r "$HOME/.secrets" ]] && source "$HOME/.secrets"
+[[ -r "$XDG_CONFIG_HOME/shell/functions.sh" ]] &&
+    source "$XDG_CONFIG_HOME/shell/functions.sh"
+[[ -r "$XDG_CONFIG_HOME/shell/paths.sh" ]] &&
+    source "$XDG_CONFIG_HOME/shell/paths.sh"
+
+export GRIM_DEFAULT_DIR="${XDG_PICTURES_DIR:-$HOME/Pix}/Screenshots"
+mkdir -p "$GRIM_DEFAULT_DIR"
+

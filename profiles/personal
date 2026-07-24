@@ -1,0 +1,9 @@
+# Main Linux desktop.
+common
+bash
+zsh
+desktop
+linux-desktop
+personal
+borg-backup
+

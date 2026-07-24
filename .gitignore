@@ -1,7 +1,3 @@
-tmux/.config/tmux/plugins
-scripts/.local/bin/micromamba
-systemd/.config/systemd/user/*.wants
-borg/**/security
-borg/**/keys
+stow/config/linux-desktop/systemd/user/*.wants
 .secrets
 **/.zcompcache
