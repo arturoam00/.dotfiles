@@ -100,12 +100,14 @@ vscodium-bin
 wev
 wl-clipboard
 xdg-desktop-portal
+xdg-desktop-portal-termfilechooser-hunkyburrito-git
 xdg-desktop-portal-wlr
 xdg-user-dirs
 xorg-xwayland
 zathura
 zathura-pdf-mupdf
 zip
+zoxide
 zsh
 zsh-autosuggestions
 zsh-completions

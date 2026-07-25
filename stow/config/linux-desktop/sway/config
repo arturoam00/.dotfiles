@@ -13,6 +13,12 @@
     # Application launcher
     set $menu tofi-drun --drun-launch=true
 
+    # Make these apps float by default
+    for_window [app_id="^firefox$|^librewolf$" title="^Picture-in-Picture$"] floating enable
+    for_window [app_id="^firefox$|^librewolf$" title="Bitwarden"] floating enable
+    for_window [app_id="^firefox$|^librewolf$" title="Library"] floating enable
+    for_window [app_id="^Alacritty$" title="File chooser"] floating enable
+
 ### Gaps
     gaps inner 10
     gaps outer 5
