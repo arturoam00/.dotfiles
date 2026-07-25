@@ -1,0 +1,48 @@
+#!/usr/bin/env sh
+
+# Keep the scripting addition available after Dock restarts.  -n prevents yabai
+# from hanging at login when the sudoers hash needs updating after an upgrade.
+yabai -m signal --add event=dock_did_restart \
+  action="sudo -n yabai --load-sa"
+sudo -n yabai --load-sa 2>/dev/null || true
+
+# Sway-like BSP defaults: 10px inner gaps, 5px outer gaps, no animation, and
+# room for the 32px SketchyBar at the top of every display.
+yabai -m config \
+  external_bar                 all:32:0 \
+  menubar_opacity              0.0 \
+  mouse_follows_focus          off \
+  focus_follows_mouse          autofocus \
+  display_arrangement_order    default \
+  window_origin_display        default \
+  window_placement             second_child \
+  window_insertion_point       focused \
+  window_zoom_persist          on \
+  window_shadow                on \
+  skip_window_focus_animation  on \
+  window_animation_duration    0.0 \
+  window_opacity               off \
+  insert_feedback_color        0xff5c5c5c \
+  split_ratio                  0.50 \
+  split_type                   auto \
+  auto_balance                 off \
+  top_padding                  5 \
+  bottom_padding               5 \
+  left_padding                 5 \
+  right_padding                5 \
+  window_gap                   10 \
+  layout                       bsp \
+  mouse_modifier               alt \
+  mouse_action1                move \
+  mouse_action2                resize \
+  mouse_drop_action            swap
+
+
+# yabai intentionally has no built-in borders. JankyBorders is installed on
+# this machine and provides the one-pixel outline used by the Sway config.
+if command -v borders >/dev/null 2>&1; then
+  borders style=round width=1.0 hidpi=off \
+    active_color=0xffffffff inactive_color=0xff5c5c5c &
+fi
+
+yabai -m rule --add app="^System Settings$" manage=off

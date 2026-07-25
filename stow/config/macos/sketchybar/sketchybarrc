@@ -1,0 +1,95 @@
+#!/usr/bin/env sh
+
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+# Match the Sway bar: opaque #323232, at the top, with a 14pt Nerd Font.
+sketchybar --bar \
+  position=top \
+  height=32 \
+  color=0xff323232 \
+  border_width=0 \
+  blur_radius=0 \
+  shadow=off \
+  sticky=on \
+  padding_left=0 \
+  padding_right=4
+
+default=(
+  padding_left=3
+  padding_right=3
+  icon.font="Hack Nerd Font:Regular:14.0"
+  label.font="Hack Nerd Font:Regular:14.0"
+  icon.color=0xffffffff
+  label.color=0xffffffff
+  icon.padding_left=4
+  icon.padding_right=4
+  label.padding_left=2
+  label.padding_right=2
+  background.color=0xff323232
+  background.height=32
+)
+sketchybar --default "${default[@]}"
+
+# Mission Control spaces are the macOS equivalent of Sway workspaces. The
+# focused color uses Sway's default focused-workspace palette; inactive spaces
+# use the colors explicitly set in the original Sway config.
+i=1
+while [ "$i" -le 10 ]; do
+  space=(
+    space="$i"
+    icon="$i"
+    icon.padding_left=9
+    icon.padding_right=9
+    label.drawing=off
+    background.corner_radius=0
+    script="$PLUGIN_DIR/space.sh"
+    click_script="yabai -m space --focus $i"
+  )
+  sketchybar --add space "space.$i" left \
+             --set "space.$i" "${space[@]}"
+  i=$((i + 1))
+done
+
+# Swaybar displays the active binding mode; skhd's mode hooks show this item.
+sketchybar --add item mode left \
+           --set mode drawing=off \
+                      icon.drawing=off \
+                      label.color=0xffffffff \
+                      background.color=0xff900000 \
+                      background.drawing=on \
+                      padding_left=8 \
+                      padding_right=8
+
+# Right side follows the Sway status order:
+# speaker | microphone | bluetooth | network | battery | date/time
+sketchybar \
+           --add item clock right \
+           --set clock update_freq=10 icon.drawing=off script="$PLUGIN_DIR/clock.sh" \
+           --add item separator.clock right \
+           --set separator.clock icon="|" label.drawing=off icon.color=0xffffffff \
+           --add item battery right \
+           --set battery update_freq=60 script="$PLUGIN_DIR/battery.sh" icon.drawing=off \
+           --subscribe battery system_woke power_source_change \
+           --add item separator.battery right \
+           --set separator.battery icon="|" label.drawing=off icon.color=0xffffffff \
+           --add item network right \
+           --set network update_freq=15 script="$PLUGIN_DIR/network.sh" icon.drawing=off \
+           --subscribe network system_woke wifi_change \
+           --add item separator.network right \
+           --set separator.network icon="|" label.drawing=off icon.color=0xffffffff \
+           --add item bluetooth right \
+           --set bluetooth update_freq=15 script="$PLUGIN_DIR/bluetooth.sh" icon.drawing=off \
+           --subscribe bluetooth system_woke \
+           --add item separator.bluetooth right \
+           --set separator.bluetooth icon="|" label.drawing=off icon.color=0xffffffff \
+           --add item microphone right \
+           --set microphone update_freq=10 script="$PLUGIN_DIR/microphone.sh" \
+                            label.drawing=off \
+           --add item separator.microphone right \
+           --set separator.microphone icon="|" label.drawing=off icon.color=0xffffffff \
+           --add item volume right \
+           --set volume script="$PLUGIN_DIR/volume.sh" \
+                        label.drawing=off \
+           --subscribe volume volume_change system_woke \
+
+sketchybar --update
