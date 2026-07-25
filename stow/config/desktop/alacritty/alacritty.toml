@@ -8,6 +8,11 @@ action = "Paste"
 key = "V"
 mods = "Control|Shift"
 
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
+
 [mouse]
 hide_when_typing = false
 
@@ -37,10 +42,6 @@ style = "Bold"
 x = 0
 y = 0
 
-# [colors.primary]
-# foreground = "#cac3ba"
-# background = "#121212"
-#
 [font.italic]
 family = "JetBrainsMono Nerd Font"
 style = "Italic" 
