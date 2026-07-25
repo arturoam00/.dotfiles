@@ -19,8 +19,7 @@ brew() {
   if (( result == 0 )); then
     case "$1" in
       install|uninstall|remove|rm|reinstall|tap|untap)
-        command brew bundle dump \
-          --file="$HOME/.Brewfile" \
+        command brew bundle dump --global --force
         ;;
     esac
   fi

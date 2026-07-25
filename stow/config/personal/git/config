@@ -1,0 +1,7 @@
+[user]
+	email = arturoabrilm@gmail.com
+	name = Arturo Abril
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false

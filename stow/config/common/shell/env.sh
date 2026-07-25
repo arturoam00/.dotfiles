@@ -20,25 +20,26 @@ if [ -r "$XDG_CONFIG_HOME/user-dirs.dirs" ]; then
 fi
 export XDG_PICTURES_DIR XDG_VIDEOS_DIR XDG_DOWNLOAD_DIR XDG_DOCUMENTS_DIR
 
-export TEXMFHOME="$XDG_DATA_HOME/texmf"
-export TEXMFVAR="$TEXMFHOME/var"
-export TEXMFCONFIG="$XDG_CONFIG_HOME/texmf"
-export LESSHISTFILE=-
-export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
-export TMUX_TMPDIR="${XDG_RUNTIME_DIR:-$XDG_CACHE_HOME/tmux}"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export FZF_DEFAULT_OPTS="--layout=reverse --height 41%"
+export GIT_CONFIG_GLOBAL="$XDG_CONFIG_HOME/git/config"
 export GOPATH="$XDG_DATA_HOME/go"
-export R_LIBS_USER="$HOME/.local/lib/R"
-export TMUX_PLUGIN_MANAGER_PATH="$XDG_CONFIG_HOME/tmux/plugins"
-export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+export GRIM_DEFAULT_DIR="${XDG_PICTURES_DIR:-$HOME/Pix}/Screenshots"
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
-export NLTK_DATA="$XDG_DATA_HOME/nltk_data"
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+export LESSHISTFILE=-
 export MAMBARC="$XDG_CONFIG_HOME/mamba/mambarc"
 export MAMBA_ROOT_PREFIX="$XDG_DATA_HOME/micromamba"
 export MANPAGER="bat -plman"
-export FZF_DEFAULT_OPTS="--layout=reverse --height 41%"
+export NLTK_DATA="$XDG_DATA_HOME/nltk_data"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
+export R_LIBS_USER="$HOME/.local/lib/R"
+export TEXMFCONFIG="$XDG_CONFIG_HOME/texmf"
+export TEXMFHOME="$XDG_DATA_HOME/texmf"
+export TEXMFVAR="$TEXMFHOME/var"
+export TMUX_PLUGIN_MANAGER_PATH="$XDG_CONFIG_HOME/tmux/plugins"
+export TMUX_TMPDIR="${XDG_RUNTIME_DIR:-$XDG_CACHE_HOME/tmux}"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-export GRIM_DEFAULT_DIR="${XDG_PICTURES_DIR:-$HOME/Pix}/Screenshots"
 
 if command -v micromamba >/dev/null 2>&1; then
     MAMBA_EXE="$(command -v micromamba)"

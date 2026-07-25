@@ -14,6 +14,8 @@ brew "coreutils"
 brew "dust"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Collection of GNU find, xargs, and locate
+brew "findutils"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GitHub command-line tool
@@ -92,6 +94,7 @@ cask "font-jetbrains-mono-nerd-font"
 cask "karabiner-elements"
 # Tool to invert scroll direction for physical scroll wheels
 cask "unnaturalscrollwheels"
+vscode "coder.coder-remote"
 vscode "mechatroner.rainbow-csv"
 vscode "ms-python.black-formatter"
 vscode "ms-python.debugpy"
@@ -104,4 +107,7 @@ vscode "ms-toolsai.jupyter-keymap"
 vscode "ms-toolsai.jupyter-renderers"
 vscode "ms-toolsai.vscode-jupyter-cell-tags"
 vscode "ms-toolsai.vscode-jupyter-slideshow"
+vscode "ms-vscode-remote.remote-ssh"
+vscode "ms-vscode-remote.remote-ssh-edit"
+vscode "ms-vscode.remote-explorer"
 vscode "vscodevim.vim"
