@@ -12,10 +12,11 @@ dependencies:
   - git
   - less
   - lf
+  - make
   - neovim
+  - perl
   - python
   - ripgrep
-  - stow
   - tmux
   - tree
   - unzip

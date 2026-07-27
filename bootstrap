@@ -32,6 +32,28 @@ fi
     --file "$repo_dir/environments/remote.yml"
 
 export PATH="$MAMBA_ROOT_PREFIX/envs/dotfiles/bin:$install_dir:$PATH"
+
+stow_version=2.4.1
+
+if ! command -v stow >/dev/null 2>&1; then
+    stow_src="$(mktemp -d)"
+    trap 'rm -rf "$stow_src"' EXIT
+
+    curl --fail --location --silent --show-error \
+        "https://ftp.gnu.org/gnu/stow/stow-$stow_version.tar.gz" \
+        | tar -xz -C "$stow_src" --strip-components=1
+
+    (
+        cd "$stow_src"
+        ./configure --prefix="$HOME/.local"
+        make
+        make install
+    )
+
+    rm -rf "$stow_src"
+    trap - EXIT
+fi
+
 "$repo_dir/bin/dotfiles" install remote
 
 printf '\nRemote environment installed. Start a new login shell or run:\n'

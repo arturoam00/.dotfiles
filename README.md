@@ -25,13 +25,14 @@ For a machine without sudo access, clone or copy this repository and run:
 ./bootstrap
 ```
 
-This uses micromamba's official installation script to install a pinned
+This uses micromamba's official installation script to install an
 executable under `~/.local/bin`, creates the `dotfiles` tools environment, and
-installs the `remote` profile. GNU Stow is part of that conda-forge environment,
-so it is available before the profile is linked. The bootstrap deliberately
-skips micromamba's generated shell initialization because the shared shell
-integration already handles it. Override the micromamba release with
-`MICROMAMBA_VERSION` when intentionally upgrading it.
+installs the `remote` profile. GNU Stow isn't available for every platform on
+conda-forge, so the bootstrap builds it from the official GNU release tarball
+into `~/.local` using the `perl` and `make` from that conda-forge environment,
+before the profile is linked. The bootstrap deliberately skips micromamba's
+generated shell initialization because the shared shell integration already
+handles it.
 
 The bootstrap currently targets Linux remote hosts. On regular Linux and macOS
 workstations, install GNU Stow with the system package manager before using
