@@ -3,7 +3,6 @@
 set -Eeuo pipefail
 
 repo_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
-micromamba_version="${MICROMAMBA_VERSION:-2.6.2-1}"
 install_dir="$HOME/.local/bin"
 micromamba="$install_dir/micromamba"
 export MAMBA_ROOT_PREFIX="${MAMBA_ROOT_PREFIX:-$HOME/.local/share/micromamba}"
@@ -20,11 +19,9 @@ if [[ ! -x "$micromamba" ]]; then
         echo "bootstrap: curl is required to install micromamba" >&2
         exit 1
     }
-
     BIN_FOLDER="$install_dir" \
     INIT_YES=no \
     CONDA_FORGE_YES=no \
-    VERSION="$micromamba_version" \
         "${SHELL:-bash}" <(curl --fail --location --silent --show-error micro.mamba.pm)
 fi
 
