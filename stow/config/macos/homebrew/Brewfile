@@ -38,6 +38,8 @@ brew "mpv"
 brew "neovim"
 # OpenBSD freely-licensed SSH connectivity tools
 brew "openssh"
+# Python package management tool
+brew "poetry"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Utility that provides fast incremental file transfer

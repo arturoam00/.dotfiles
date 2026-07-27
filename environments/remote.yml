@@ -14,7 +14,7 @@ dependencies:
   - less
   - lf
   - make
-  - neovim
+  - nvim
   - perl
   - python
   - ripgrep
