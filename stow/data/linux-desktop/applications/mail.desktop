@@ -2,5 +2,5 @@
 Type=Application
 Name=Gmail Mailto Handler
 Terminal=false
-Exec=mailto %u
+Exec=/home/artu/.local/bin/mailto %u
 NoDisplay=true

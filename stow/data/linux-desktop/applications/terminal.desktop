@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
 Name=Terminal
-Exec=alacritty
+Exec=/usr/bin/alacritty
 Terminal=false
 NoDisplay=true
