@@ -8,6 +8,7 @@ dependencies:
   - coreutils
   - direnv
   - fd-find
+  - file
   - fzf
   - git
   - less

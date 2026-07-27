@@ -10,9 +10,5 @@ export XDG_CONFIG_HOME
 [[ -r "$XDG_CONFIG_HOME/shell/paths.sh" ]] &&
     source "$XDG_CONFIG_HOME/shell/paths.sh"
 
-if [[ -n "${GRIM_DEFAULT_DIR:-}" ]]; then
-    mkdir -p "$GRIM_DEFAULT_DIR"
-fi
-
 [[ -r "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
 
