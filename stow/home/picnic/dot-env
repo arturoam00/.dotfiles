@@ -1,6 +1,7 @@
 export EDITOR=nvim
 export OPENER=open
 export BROWSER=firefox
+export CLIPBOARD=pbcopy
 export ZSH_AUTOSUGGEST_PATH="/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 export ZSH_HIGHLIGHT_PATH="/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 export HOMEBREW_NO_ENV_HINTS=1
