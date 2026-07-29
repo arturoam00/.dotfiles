@@ -14,7 +14,6 @@ command -v cmark >/dev/null 2>&1 || {
 
 file="$1"
 tempfile="$(mktemp "${TMPDIR:-/tmp}/viewmd.XXXXXX")"
-trap 'rm -f "$tempfile"' EXIT HUP INT TERM
 
 cmark -t html --unsafe "$file" > "$tempfile"
 

@@ -2,5 +2,5 @@
 Type=Application
 Name=Image viewer
 Terminal=false
-Exec=swayimg %f
+Exec=/usr/bin/swayimg %f
 NoDisplay=true

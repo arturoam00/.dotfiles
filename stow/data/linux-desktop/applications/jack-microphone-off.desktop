@@ -2,5 +2,5 @@
 Type=Application
 Name=Jack Microphone OFF
 Terminal=false
-Exec=headset-mic off
+Exec=sh -c '$HOME/.local/bin/headset-mic off'
 NoDisplay=false

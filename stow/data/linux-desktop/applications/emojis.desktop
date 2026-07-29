@@ -2,5 +2,5 @@
 Type=Application
 Name=Emojis
 Terminal=false
-Exec=tofi-emoji
+Exec=sh -c '$HOME/.local/bin/tofi-emoji'
 NoDisplay=false

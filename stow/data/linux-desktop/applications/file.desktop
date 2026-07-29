@@ -2,5 +2,5 @@
 Type=Application
 Name=File Manager
 Terminal=false
-Exec=alacritty -e lf %f
+Exec=/usr/bin/alacritty -e lf %f
 NoDisplay=true
