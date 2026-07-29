@@ -23,6 +23,7 @@ semantic_escape_chars = ''',│`|:"' ()[]{}<>	'''
 [window]
 opacity = 1
 decorations = "none"
+option_as_alt = "OnlyLeft"
 
 [window.padding]
 x = 10

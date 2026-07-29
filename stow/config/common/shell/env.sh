@@ -21,7 +21,9 @@ fi
 export XDG_PICTURES_DIR XDG_VIDEOS_DIR XDG_DOWNLOAD_DIR XDG_DOCUMENTS_DIR
 
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
-export FZF_DEFAULT_OPTS="--layout=reverse --height 41%"
+export FZF_ALT_C_COMMAND='fd --hidden --follow --exclude .git --exclude .cache --type d'
+export FZF_CTRL_T_COMMAND='fd --hidden --follow --exclude .git --exclude .cache --type f --type d'
+export FZF_DEFAULT_OPTS='--layout=reverse --height=41% --border --cycle --info=inline --prompt="❯ " --pointer="▶" --marker="✓"'
 export GIT_CONFIG_GLOBAL="$XDG_CONFIG_HOME/git/config"
 export GOPATH="$XDG_DATA_HOME/go"
 export GRIM_DEFAULT_DIR="${XDG_PICTURES_DIR:-$HOME/Pix}/Screenshots"
