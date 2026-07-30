@@ -8,6 +8,7 @@ export HOMEBREW_NO_ENV_HINTS=1
 export XDG_DOWNLOAD_DIR="$HOME/Downloads"
 export XDG_DOCUMENTS_DIR="$HOME/Documents"
 export XDG_PICTURES_DIR="$HOME/Pictures"
+export KUBECONFIG="$XDG_CONFIG_HOME/kube/config"
 
 notes_dir="$XDG_DOCUMENTS_DIR/notes"
 mkdir -p "$notes_dir"
