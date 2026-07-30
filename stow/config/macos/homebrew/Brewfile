@@ -1,5 +1,6 @@
 tap "asmvik/formulae"
 tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae", trusted: true
+tap "int128/kubelogin"
 tap "jstkdng/programs"
 tap "nikitabobko/tap", trusted: { casks: ["aerospace"] }
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -28,6 +29,8 @@ brew "htop"
 brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Kubernetes command-line interface
+brew "kubernetes-cli"
 # Pager program similar to more
 brew "less"
 # Terminal file manager
@@ -80,6 +83,8 @@ brew "asmvik/formulae/yabai", trusted: true
 brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
+# A kubectl plugin for Kubernetes OpenID Connect authentication
+brew "int128/kubelogin/kubelogin", trusted: true
 # Drop in replacement for ueberzug written in C++
 brew "jstkdng/programs/ueberzugpp", trusted: true
 # GPU-accelerated terminal emulator
