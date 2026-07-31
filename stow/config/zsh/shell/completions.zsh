@@ -1,4 +1,3 @@
-# --- Completion ----------------------------------------------------------
 setopt EXTENDED_GLOB   # needed for the (#q...) qualifier below
 autoload -Uz compinit
 
