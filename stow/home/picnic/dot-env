@@ -10,6 +10,7 @@ export XDG_DOCUMENTS_DIR="$HOME/Documents"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 export KUBECONFIG="$XDG_CONFIG_HOME/kube/config"
 export PAGER=
+export SNOWFLAKE_HOME="$XDG_CONFIG_HOME/snowflake"
 
 notes_dir="$XDG_DOCUMENTS_DIR/notes"
 mkdir -p "$notes_dir"
