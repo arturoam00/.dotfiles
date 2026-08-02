@@ -1,5 +1,5 @@
 [Unit]
-Description=Borg backup job
+Description=Home backup job
 
 [Service]
 Environment="BORG_REPO=rsync.net:Backup"

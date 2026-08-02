@@ -6,7 +6,7 @@
 # Usage: ./move-media.sh [source_dir]
 #
 
-set -euo pipefail
+# set -euo pipefail
 
 usage() {
   echo "Usage: $0 [source_dir]"

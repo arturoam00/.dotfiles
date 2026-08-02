@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+MEMORIES="$HOME/Code/mwh/memories.yaml"
+ORIGINALS="$HOME/Code/mwh/media/originals"
+
+die() {
+    printf 'mwh_dump: %s\n' "$*" >&2
+    dunstify --urgency critical "MWH" "$*"
+    exit 1
+}
+
+if [ "$#" != 1 ]; then
+    die "I need exactly one argument"
+fi
+
+[[ -e "$MEMORIES" ]] && [[ -e "$ORIGINALS" ]] || die "Memories or originals not found"
+
+filepath="$1"
+filename=$(basename "$filepath")
+
+if [ -e "$ORIGINALS"/"$filename" ]; then
+    die "The file "$filename" is already in the originals"
+fi
+
+image_id="$(echo '' | tofi --prompt-text='title: ' --require-match=false)"
+image_date="$(
+    exiftool \
+    -config "$XDG_CONFIG_HOME/exiftool/ExifTool_config" \
+    -d "%Y-%m-%dT%H:%M:%S%z" \
+    -BestDateTime "$filepath" | awk '{print $5}' 
+)"
+
+story="$(echo '' | tofi --ascii-input=true --font-size=15 --padding-left='0%' --padding-right='0%' --prompt-text='story: ' --require-match=false)"
+
+[[ "$image_id" ]] && [[ "$image_date" ]] && [[ "$story" ]] || die "All metadata fields must be non empty"
+
+metadata="- id: "$(printf '%s' "$image_id" | tr ' ' '-')"
+  image: "$filename"
+  date: "$image_date"
+  caption: $(printf '%s' "$image_id" | tr '-' ' ')
+  story: |
+    "$(printf "%s\n" "$story")"
+" 
+
+echo "$metadata"
+
+printf "%s\n" "$metadata" >> "$MEMORIES"
+cp "$filepath" "$ORIGINALS"
+
+dunstify \
+    --icon "media-floppy-symbolic" \
+    --urgency normal \
+    "MWH" ""$filename" saved with metadata"

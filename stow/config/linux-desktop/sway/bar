@@ -58,4 +58,7 @@ else
     speaker="󰕾"
 fi
 
-echo "$speaker | $micro | $bluetooth_devices  | $network | $battery $battery_icon | $date  "
+# Keyboard Layout
+layout="$(swaymsg -t get_inputs -r | jq -r '.[].xkb_active_layout_name // empty' | head -1)  "
+
+echo "$layout | $speaker | $micro | $bluetooth_devices  | $network | $battery $battery_icon | $date  "
