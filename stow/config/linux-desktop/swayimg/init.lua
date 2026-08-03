@@ -1,6 +1,6 @@
 -- VIEWER MODE --
 
-local mwh_dump = os.getenv("HOME") .. "/.local/bin/mwh_dump"
+swayimg.imagelist.order = "numeric"
 
 -- Exit with q
 swayimg.viewer.on_key("q", function()
@@ -17,6 +17,8 @@ swayimg.viewer.on_key("Delete", function()
 end)
 
 -- mwh script binding
+local mwh_dump = os.getenv("HOME") .. "/.local/bin/mwh_dump"
+
 swayimg.viewer.on_key("Ctrl-p", function()
     local image = swayimg.viewer.get_image()
     if image then
