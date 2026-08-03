@@ -19,6 +19,9 @@ export XDG_CONFIG_HOME
 [[ -r "$XDG_CONFIG_HOME/shell/aliases.sh" ]] &&
     source "$XDG_CONFIG_HOME/shell/aliases.sh"
 
+[[ -r "$XDG_CONFIG_HOME/shell/completions.zsh" ]] &&
+    source "$XDG_CONFIG_HOME/shell/completions.zsh"
+
 for alias_file in "$XDG_CONFIG_HOME"/shell/aliases.d/*.sh(N); do
     source "$alias_file"
 done
@@ -38,10 +41,6 @@ unset shell_file
 
 [[ -r "$XDG_CONFIG_HOME/shell/prompt.zsh" ]] &&
     source "$XDG_CONFIG_HOME/shell/prompt.zsh"
-
-# Load completions after application specific scripts have been sourced
-[[ -r "$XDG_CONFIG_HOME/shell/completions.zsh" ]] &&
-    source "$XDG_CONFIG_HOME/shell/completions.zsh"
 
 ZSH_AUTOSUGGEST_PATH="${ZSH_AUTOSUGGEST_PATH:-/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh}"
 [[ -r "$ZSH_AUTOSUGGEST_PATH" ]] && source "$ZSH_AUTOSUGGEST_PATH"
