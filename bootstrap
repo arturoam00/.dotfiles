@@ -35,7 +35,7 @@ export PATH="$MAMBA_ROOT_PREFIX/envs/dotfiles/bin:$install_dir:$PATH"
 
 stow_version=2.4.1
 
-if ! command -v stow >/dev/null 2>&1; then
+if ! stow --version >/dev/null 2>&1; then
     stow_src="$(mktemp -d)"
     trap 'rm -rf "$stow_src"' EXIT
 
