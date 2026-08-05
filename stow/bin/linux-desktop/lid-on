@@ -10,6 +10,6 @@ active=$(swaymsg -t get_outputs -r | jq -r '.[] | select(.active) | .name')
 if [[ "$active" == *"$monitor"* ]]; then
     swaymsg output "$laptop" disable
 else
-    playerctl -a pause
+    playerctl -a pause || true
     swaylock -f -c 000000 && systemctl sleep
 fi
