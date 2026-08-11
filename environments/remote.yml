@@ -19,6 +19,7 @@ dependencies:
   - perl
   - python
   - ripgrep
+  - rsync
   - tmux
   - tree
   - unzip
