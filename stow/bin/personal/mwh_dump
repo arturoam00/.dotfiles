@@ -32,7 +32,7 @@ image_date="$(
     -BestDateTime "$filepath" | awk '{print $5}' 
 )"
 
-story="$(echo '' | tofi --ascii-input=true --font-size=15 --padding-left='0%' --padding-right='0%' --prompt-text='story: ' --require-match=false)"
+story="$(echo '' | tofi --ascii-input=true --font-size=10 --padding-left='0%' --padding-right='0%' --prompt-text='story: ' --require-match=false)"
 
 [[ "$image_id" ]] && [[ "$image_date" ]] && [[ "$story" ]] || die "All metadata fields must be non empty"
 

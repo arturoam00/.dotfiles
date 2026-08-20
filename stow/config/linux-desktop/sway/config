@@ -46,7 +46,7 @@ bindswitch --reload --locked lid:on exec $scripts/lid-on
 # Swayidle config - repeated `systemctl sleep` timeouts are useful in the 
 # event that earlier timeouts are missed because of an inhibitor (e.g. backup job) 
 exec swayidle -w -d \
-         timeout 25 'if pgrep swaylock; then systemctl sleep; fi' \
+         # timeout 25 'if pgrep swaylock; then systemctl sleep; fi' \
          timeout 290 'dunstify -r 9999 "Idle" "Going to sleep due to inactivity"' \
              resume 'dunstctl close 9999' \
          timeout 300 'playerctl -a pause; swaylock -f -c 000000' \
@@ -270,6 +270,7 @@ exec_always 'sleep 5 && while ~/.local/bin/battery-check >/dev/null; do sleep 60
 exec_always $scripts/sway_clamshell
 
 ### Startup apps
+exec sway-audio-idle-inhibit
 exec --no-startup-id gammastep
 exec --no-startup-id wl-paste --watch cliphist store
 exec --no-startup-id 'sleep 20 && /usr/local/bin/OS-backup-notify'
