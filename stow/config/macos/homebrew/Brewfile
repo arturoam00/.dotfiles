@@ -5,6 +5,10 @@ tap "jstkdng/programs"
 tap "nikitabobko/tap", trusted: { casks: ["aerospace"] }
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Command-line interface for SQLite
+brew "sqlite"
+# Extremely fast non-cryptographic hash algorithm
+brew "xxhash"
 # Deduplicating archiver with compression and authenticated encryption
 brew "borgbackup"
 # XML-based font configuration API for X Windows
@@ -21,22 +25,38 @@ brew "findutils"
 brew "fzf"
 # GitHub command-line tool
 brew "gh"
+# Common components for zathura
+brew "girara"
 # Distributed revision control system
 brew "git"
+# Toolkit for creating graphical user interfaces
+brew "gtk4"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # Improved top (interactive process viewer)
 brew "htop"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Library for JSON, based on GLib
+brew "json-glib"
 # Kubernetes command-line interface
 brew "kubernetes-cli"
 # Pager program similar to more
 brew "less"
 # Terminal file manager
 brew "lf"
+# Implementation of the file(1) command
+brew "libmagic"
+# Small build system for use with gyp or CMake
+brew "ninja"
+# Fast and user friendly build system
+brew "meson"
 # Media player based on MPlayer and mplayer2
 brew "mpv"
+# Lightweight PDF and XPS viewer
+brew "mupdf"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # OpenBSD freely-licensed SSH connectivity tools
@@ -77,14 +97,6 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# Simple hotkey-daemon for macOS.
-brew "asmvik/formulae/skhd", trusted: true
-# A tiling window manager for macOS based on binary space partitioning.
-brew "asmvik/formulae/yabai", trusted: true
-# A window border system for macOS
-brew "felixkratz/formulae/borders"
-# Custom macOS statusbar with shell plugin, interaction and graph support
-brew "felixkratz/formulae/sketchybar"
 # A kubectl plugin for Kubernetes OpenID Connect authentication
 brew "int128/kubelogin/kubelogin", trusted: true
 # Drop in replacement for ueberzug written in C++
