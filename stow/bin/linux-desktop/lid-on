@@ -3,11 +3,10 @@
 set -euo pipefail
 
 laptop=eDP-1
-monitor=HDMI-A-1
-
+monitor_regex='\bDP-[12]\b|\bHDMI-A-1\b'
 active=$(swaymsg -t get_outputs -r | jq -r '.[] | select(.active) | .name')
 
-if [[ "$active" == *"$monitor"* ]]; then
+if echo "$active" | grep -Pq "$monitor_regex"; then
     swaymsg output "$laptop" disable
 else
     playerctl -a pause || true

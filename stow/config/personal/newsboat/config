@@ -1,1 +1,2 @@
 macro c set browser "alacritty -e systemd-inhibit --what=sleep --why=mpv-playing mpv --vid=no -- %u &"; one; set browser firefox
+macro v set browser "alacritty -e systemd-inhibit --what=sleep --why=mpv-playing mpv -- '%u' &"; one; set browser firefox

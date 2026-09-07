@@ -266,10 +266,10 @@ bar {
 }
 
 ### Startup scripts
-exec_always 'sleep 5 && while ~/.local/bin/battery-check >/dev/null; do sleep 60; done'
 exec_always $scripts/sway_clamshell
 
 ### Startup apps
+exec 'sleep 5 && while ~/.local/bin/battery-check >/dev/null; do sleep 60; done'
 exec sway-audio-idle-inhibit
 exec --no-startup-id gammastep
 exec --no-startup-id wl-paste --watch cliphist store

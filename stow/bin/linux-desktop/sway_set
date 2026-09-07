@@ -20,6 +20,10 @@ case $1 in
     unpluged)
         swaymsg output eDP-1 enable pos 0 0 res 1920x1200 scale 1.0
         ;;
+    picnic)
+        swaymsg output DP-1 enable pos 0 0 res 1920x1080 scale 1.0
+        swaymsg output eDP-1 enable pos 0 1080 res 1920x1200 scale 1.0
+        ;;
     *)
         echo "Unrecognized profile" && exit 1
 esac
