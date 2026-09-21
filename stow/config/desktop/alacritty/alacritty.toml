@@ -56,4 +56,4 @@ x = 1
 y = 0
 
 [general]
-import = ["themes/default.toml",]
+import = ["themes/default.toml", "system.toml"]

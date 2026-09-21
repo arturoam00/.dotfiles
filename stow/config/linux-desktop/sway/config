@@ -58,6 +58,7 @@ exec swayidle -w -d \
 # Touchpad
 input type:touchpad {
     tap disabld
+    click_method clickfinger
     dwt enabled
     natural_scroll enabled
     middle_emulation enabled

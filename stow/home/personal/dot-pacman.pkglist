@@ -7,6 +7,7 @@ bluez
 bluez-utils
 borg
 brightnessctl
+cadaver
 cliphist
 cmark
 cups
@@ -27,6 +28,7 @@ imagemagick
 iwd
 jq
 just
+keepass
 kepubify-bin
 less
 lf
@@ -95,6 +97,7 @@ unzip
 upower
 urlview
 uv
+vdirsyncer
 vim
 vivid
 vscodium-bin
