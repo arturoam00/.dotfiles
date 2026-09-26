@@ -1,0 +1,6 @@
+#!/bin/bash
+
+gitroot="$(git rev-parse --show-toplevel)"
+etcdir="$gitroot/etc"
+mkdir -p "$etcdir"
+systemctl list-unit-files --user --state=enabled --no-legend | awk '{print $1}' > "$etcdir/systemd-user"

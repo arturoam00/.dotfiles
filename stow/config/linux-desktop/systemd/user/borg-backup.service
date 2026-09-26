@@ -2,7 +2,9 @@
 Description=Home backup job
 
 [Service]
-Environment="BORG_REPO=rsync.net:Backup"
 Environment="XDG_CONFIG_HOME=%h/.config"
+Environment="BORG_REPO=rsync.net:Backup"
+Environment="PASSWORD_STORE_DIR=%h/.local/share/password-store"
+Environment="GNUPGHOME=%h/.local/share/gnupg"
 ExecStart=systemd-inhibit --what=sleep --why="Backup running" %h/.local/bin/borg-backup
 Type=oneshot

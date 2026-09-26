@@ -4,7 +4,7 @@ set -uo pipefail
 
 config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
 patterns_file="$config_home/borg-backup/homedir-patterns"
-: "${BORG_PASSCOMMAND:=cat \"$config_home/borg/.secrets\"}"
+BORG_PASSCOMMAND="/usr/bin/pass home.borg-backup"
 export BORG_PASSCOMMAND
 
 info() { printf '\n%s %s\n\n' "$(date)" "$*" >&2; }

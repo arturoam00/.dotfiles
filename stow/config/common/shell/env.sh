@@ -33,6 +33,8 @@ export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export LESSHISTFILE=-
 export MAMBARC="$XDG_CONFIG_HOME/mamba/mambarc"
 export MAMBA_ROOT_PREFIX="$XDG_DATA_HOME/micromamba"
+export CONDA_PKGS_DIRS="$XDG_DATA_HOME/conda/pkgs"
+export CONDA_ENVS_DIRS="$XDG_DATA_HOME/conda/envs"
 export MANPAGER="bat -plman"
 export NLTK_DATA="$XDG_DATA_HOME/nltk_data"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
@@ -43,6 +45,8 @@ export TEXMFVAR="$TEXMFHOME/var"
 export TMUX_PLUGIN_MANAGER_PATH="$XDG_CONFIG_HOME/tmux/plugins"
 export TMUX_TMPDIR="${XDG_RUNTIME_DIR:-$XDG_CACHE_HOME/tmux}"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 
 if command -v micromamba >/dev/null 2>&1; then
     MAMBA_EXE="$(command -v micromamba)"

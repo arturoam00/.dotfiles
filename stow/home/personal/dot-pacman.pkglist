@@ -28,8 +28,9 @@ imagemagick
 iwd
 jq
 just
-keepass
 kepubify-bin
+khal
+khard
 less
 lf
 libnotify
@@ -46,6 +47,7 @@ opencode
 openssh
 paru
 paru-debug
+pass
 perl-image-exiftool
 pipewire-libcamera
 pipewire-pulse
