@@ -1,0 +1,17 @@
+bluetooth.service
+getty@.service
+iwd.service
+systemd-network-generator.service
+systemd-networkd-wait-online.service
+systemd-networkd.service
+systemd-resolved.service
+systemd-timesyncd.service
+cups.socket
+systemd-networkd-resolve-hook.socket
+systemd-networkd-varlink.socket
+systemd-networkd.socket
+systemd-resolved-monitor.socket
+systemd-resolved-varlink.socket
+systemd-userdbd.socket
+remote-fs.target
+OS-backup.timer
