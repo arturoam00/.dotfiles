@@ -66,3 +66,40 @@ type = "caldav"
 url = "https://calendar.arturoam.com/"
 username = "artu"
 password.fetch = ["command", "pass", "calendar.arturoam.com"]
+
+[pair holidays_nl]
+a = "holidays_nl_public"
+b = "holidays_nl_private"
+collections = null
+
+[storage holidays_nl_public]
+type = "http"
+# The URL to your iCalendar file.
+url = "https://www.officeholidays.com/ics/netherlands"
+
+[storage holidays_nl_private]
+type = "caldav"
+# The direct URL to your calendar.
+url = "https://calendar.arturoam.com/artu/4f3e44c2-3095-323d-b495-0603cc190925"
+# The credentials to your CalDAV server
+username = "artu"
+password.fetch = ["command", "pass", "calendar.arturoam.com"]
+
+
+[pair italki]
+a = "italki_public"
+b = "italki_private"
+collections = null
+
+[storage italki_public]
+type = "http"
+# The URL to your iCalendar file.
+url = "https://www.italki.com/calendar/58KVDyCeAQGYDkxiI4Z6DB/ics"
+
+[storage italki_private]
+type = "caldav"
+# The direct URL to your calendar.
+url = "https://calendar.arturoam.com/artu/02d9b74a-61b3-d236-e74f-4ec6232a7515"
+# The credentials to your CalDAV server
+username = "artu"
+password.fetch = ["command", "pass", "calendar.arturoam.com"]

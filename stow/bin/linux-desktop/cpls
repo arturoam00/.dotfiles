@@ -8,7 +8,7 @@ set -euo pipefail
 }
 
 # Define the source directory
-SOURCE_DIR="$(xdg-user-dir PICTURES)"
+SOURCE_DIR="$(xdg-user-dir PICTURES)/Screenshots"
 
 shopt -s nullglob
 screenshots=("$SOURCE_DIR"/*.png)

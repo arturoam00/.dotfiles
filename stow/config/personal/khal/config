@@ -1,0 +1,17 @@
+[calendars]
+
+[[personal_calendar_local]]
+path = ~/Sync/Phone/calendars/*
+type = discover
+
+[locale]
+local_timezone= Europe/Amsterdam
+default_timezone= Europe/Amsterdam
+timeformat = %H:%M
+dateformat = %d/%m/%Y
+longdateformat = %d/%m/%Y
+datetimeformat = %d/%m/%Y %H:%M
+longdatetimeformat = %d/%m/%Y %H:%M
+
+[default]
+default_calendar = f12cf61c-87b4-4ca3-906d-99e5619e7477
