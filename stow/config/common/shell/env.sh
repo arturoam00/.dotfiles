@@ -10,7 +10,7 @@ fi
 export XDG_CONFIG_HOME XDG_DATA_HOME XDG_CACHE_HOME XDG_STATE_HOME
 
 : "${EDITOR:=nvim}"
-: "${BROWSER:=librewolf}"
+: "${BROWSER:=firefox}"
 : "${OPENER:=xdg-open}"
 : "${PRINTER:=GrwNxtPrinter}"
 export EDITOR BROWSER OPENER PRINTER

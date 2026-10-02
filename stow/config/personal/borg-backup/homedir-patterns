@@ -3,7 +3,7 @@ P sh
 ## INCLUDE ##
 
 + pf:home/artu/.ssh/config
-+ pp:home/artu/.mozilla
++ pp:'/home/artu/.config/mozilla/Restore Firefox'
 
 ## EXCLUDE ##
 

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=Librewolf
+Name=Browser
 Terminal=false
-Exec=/usr/bin/librewolf %u
+Exec=/usr/bin/firefox %u
 NoDisplay=true
 

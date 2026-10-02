@@ -7,5 +7,7 @@ text/*=editor.desktop;
 text/html=browser.desktop;
 text/markdown=markdown.desktop;
 video/*=video.desktop;
+x-scheme-handler/http=browser.desktop;
+x-scheme-handler/https=browser.desktop;
 x-scheme-handler/mailto=mail.desktop;
 x-scheme-handler/terminal=terminal.desktop;
