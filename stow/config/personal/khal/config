@@ -15,3 +15,8 @@ longdatetimeformat = %d/%m/%Y %H:%M
 
 [default]
 default_calendar = f12cf61c-87b4-4ca3-906d-99e5619e7477
+
+[keybindings]
+save = ctrl enter
+view = enter
+external_edit = ctrl e

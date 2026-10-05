@@ -71,6 +71,7 @@ password.fetch = ["command", "pass", "calendar.arturoam.com"]
 a = "holidays_nl_public"
 b = "holidays_nl_private"
 collections = null
+partial_sync = "ignore"
 
 [storage holidays_nl_public]
 type = "http"
@@ -90,6 +91,7 @@ password.fetch = ["command", "pass", "calendar.arturoam.com"]
 a = "italki_public"
 b = "italki_private"
 collections = null
+partial_sync = "ignore"
 
 [storage italki_public]
 type = "http"
