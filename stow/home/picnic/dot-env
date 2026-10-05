@@ -1,18 +1,13 @@
-export EDITOR=nvim
-export OPENER=open
 export BROWSER=firefox
 export CLIPBOARD=pbcopy
-export ZSH_AUTOSUGGEST_PATH="/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-export ZSH_HIGHLIGHT_PATH="/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+export EDITOR=nvim
 export HOMEBREW_NO_ENV_HINTS=1
-export XDG_DOWNLOAD_DIR="$HOME/Downloads"
-export XDG_DOCUMENTS_DIR="$HOME/Documents"
-export XDG_PICTURES_DIR="$HOME/Pictures"
 export KUBECONFIG="$XDG_CONFIG_HOME/kube/config"
+export OPENER=open
 export PAGER=
 export SNOWFLAKE_HOME="$XDG_CONFIG_HOME/snowflake"
-
-notes_dir="$XDG_DOCUMENTS_DIR/notes"
-mkdir -p "$notes_dir"
-touch "$notes_dir/$(date +'%Y-%m-%d').md"
-unset notes_dir
+export XDG_DOCUMENTS_DIR="$HOME/Documents"
+export XDG_DOWNLOAD_DIR="$HOME/Downloads"
+export XDG_PICTURES_DIR="$HOME/Pictures"
+export ZSH_AUTOSUGGEST_PATH="/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+export ZSH_HIGHLIGHT_PATH="/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
