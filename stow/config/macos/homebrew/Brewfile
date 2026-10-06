@@ -73,6 +73,7 @@ brew "int128/kubelogin/kubelogin", trusted: true
 cask "claude-code"
 # Web browser
 cask "firefox"
+# Nerd font
 cask "font-jetbrains-mono-nerd-font"
 # Team communication and collaboration software
 cask "slack"
