@@ -13,7 +13,7 @@
 	# characters not in the chosen font will fail to render.
 	#
 	# Otherwise, fonts are interpreted in Pango format.
-	font = "/usr/share/fonts/TTF/JetBrainsMonoNerdFont-Regular.ttf"
+    font = "JetBrains Mono Nerd Font"
 
 	# Point size of text.
 	font-size = 18
@@ -152,7 +152,7 @@
 
 	# Maximum number of results to display.
 	# If 0, tofi will draw as many results as it can fit in the window.
-	num-results = 10
+	num-results = 7
 
 	# Spacing between results in pixels. Can be negative.
 	result-spacing = 0

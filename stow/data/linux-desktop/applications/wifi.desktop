@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=  Wifi connector
+Terminal=false
+Exec=sh -c '$HOME/.local/bin/tofi-network 2&>/dev/null'
+NoDisplay=false
+

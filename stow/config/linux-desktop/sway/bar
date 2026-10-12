@@ -25,10 +25,6 @@ case $net_state in
     *)        net_state="offline" ;;
 esac
 
-if [ "$net_state" = "offline" ]; then
-    network="󰖪" 
-fi
-
 nif=$(printf '%s\n' "$output" | awk '/Address:/ {print $4}')
 case $nif in
     wlan*)
@@ -40,6 +36,10 @@ case $nif in
         network="Ethernet online 󰈀"
         ;;
 esac
+
+if [ "$net_state" = "offline" ]; then
+    network="󰖪" 
+fi
 
 # Bluetooth #
 bluetooth_devices=$(bluetoothctl devices Connected 2>/dev/null | wc -l)
