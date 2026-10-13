@@ -20,10 +20,6 @@ hide_when_typing = false
 save_to_clipboard = true
 semantic_escape_chars = ''',│`|:"' ()[]{}<>	'''
 
-[window.padding]
-x = 10
-y = 10
-
 [env]
 TERM = "xterm-256color"
 

@@ -1,4 +1,7 @@
+tap "dbt-labs/dbt", trusted: { formulae: ["dbt-core"] }
+tap "dimentium/autoraise"
 tap "int128/kubelogin"
+tap "jstkdng/programs"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # GNU File, Shell, and Text utilities
@@ -45,6 +48,8 @@ brew "stow"
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Parser generator tool
+brew "tree-sitter-cli"
 # Markup-based typesetting system
 brew "typst"
 # Extraction utility for .zip compressed archives
@@ -67,13 +72,30 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# Build analytics the way engineers build applications
+brew "dbt-labs/dbt/dbt", trusted: true
+# Focus-follows-mouse for MacOS
+brew "dimentium/autoraise/autoraise", trusted: true
 # A kubectl plugin for Kubernetes OpenID Connect authentication
 brew "int128/kubelogin/kubelogin", trusted: true
 # Terminal-based AI coding assistant
 cask "claude-code"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
 # Web browser
 cask "firefox"
-# Nerd font
 cask "font-jetbrains-mono-nerd-font"
+# Keyboard customiser
+cask "karabiner-elements"
+# Control your tools with a few keystrokes
+cask "raycast"
+# Tool to reverse the direction of scrolling
+cask "scroll-reverser"
 # Team communication and collaboration software
 cask "slack"
+uv "basedpyright"
+uv "black"
+uv "isort"
+uv "openlineage-dbt"
+uv "pyright"
+uv "ruff"
