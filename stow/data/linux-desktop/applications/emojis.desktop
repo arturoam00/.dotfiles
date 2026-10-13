@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Emojis
+Name= Emojis
 Terminal=false
 Exec=sh -c '$HOME/.local/bin/tofi-emoji'
 NoDisplay=false

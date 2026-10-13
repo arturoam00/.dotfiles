@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Jack Microphone ON
+Name=󱡬 Jack Microphone ON
 Terminal=false
 Exec=sh -c '$HOME/.local/bin/headset-mic on'
 NoDisplay=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=Browser
+Name= Browser
 Terminal=false
 Exec=/usr/bin/firefox %u
-NoDisplay=true
+NoDisplay=False
 

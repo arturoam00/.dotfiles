@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Bluetooth connector
+Name= Bluetooth connector
 Terminal=false
 Exec=sh -c '$HOME/.local/bin/tofi-bluetooth'
 NoDisplay=false

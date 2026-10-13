@@ -1,0 +1,119 @@
+#!/bin/bash
+set -euo pipefail
+
+tag="network_tag"
+iwd="net.connman.iwd"
+rescan="↻ Rescan"
+
+notify() { # urgency, icon, message
+    dunstify \
+        -a "network" \
+        -u "$1" \
+        -i "$2" \
+        -h string:x-dunst-stack-tag:$tag \
+        "Network" "$3"
+}
+
+# Everything iwd knows about, as JSON
+get_objects() {
+    busctl --json=short call "$iwd" / org.freedesktop.DBus.ObjectManager GetManagedObjects | jq '.data[0]'
+}
+
+# Ask iwd to scan and wait (up to ~10s) for it to finish
+scan() {
+    notify low "network-wireless-symbolic" "Scanning…"
+    busctl call "$iwd" "$station" "$iwd.Station" Scan > /dev/null || true
+    sleep 0.5
+    for _ in {1..38}; do
+        if [[ $(busctl get-property "$iwd" "$station" "$iwd.Station" Scanning) == "b false" ]]; then
+            break
+        fi
+        sleep 0.25
+    done
+}
+
+objects=$(get_objects)
+
+# Object path of the wireless station (e.g. /net/connman/iwd/0/3) and its device name (e.g. wlan0)
+station=$(jq -r 'first(to_entries[] | select(.value["net.connman.iwd.Station"]) | .key) // empty' <<< "$objects")
+if [[ -z $station ]]; then
+    notify critical "network-wireless-offline-symbolic" "No wireless station found"
+    exit 1
+fi
+device=$(jq -r --arg s "$station" '.[$s]["net.connman.iwd.Device"].Name.data' <<< "$objects")
+
+while true; do
+    objects=$(get_objects)
+
+    # Networks in range, strongest signal first
+    order=$(busctl --json=short call "$iwd" "$station" "$iwd.Station" GetOrderedNetworks | jq -c '[.data[0][][0]]')
+
+    # path, ssid, connected, known, security type; connected first, then known, then new
+    # (sort_by is stable, so signal strength order is kept within each group)
+    rows=$(jq -r --argjson order "$order" '
+        . as $o
+        | [ $order[] | . as $p
+            | $o[$p]["net.connman.iwd.Network"] // empty
+            | {p: $p, n: .Name.data, c: .Connected.data, k: (.KnownNetwork != null), t: .Type.data} ]
+        | sort_by(if .c then 0 elif .k then 1 else 2 end)
+        | .[] | [.p, .n, .c, .k, .t] | @tsv' <<< "$objects")
+
+    # Build the menu and remember the details behind each entry
+    declare -A net_path=() net_name=() net_conn=() net_known=() net_type=()
+    menu=("$rescan")
+    while IFS=$'\t' read -r path name conn known type; do
+        if [[ -z $path ]]; then continue; fi
+        if [[ $conn == true ]]; then
+            label="$name (c)"
+        elif [[ $known == true ]]; then
+            label="$name"
+        else
+            label="$name [$type]"
+        fi
+        menu+=("$label")
+        net_path[$label]=$path
+        net_name[$label]=$name
+        net_conn[$label]=$conn
+        net_known[$label]=$known
+        net_type[$label]=$type
+    done <<< "$rows"
+
+    # Pick an entry; exit quietly if cancelled (esc)
+    choice=$(printf '%s\n' "${menu[@]}" | tofi) || exit 0
+
+    if [[ $choice == "$rescan" ]]; then
+        scan
+        exit 0
+    fi
+
+    # Ignore anything typed that isn't in the list
+    [[ -n ${net_path[$choice]:-} ]] || exit 0
+    break
+done
+
+label=${net_name[$choice]}
+
+# Decide operation based on current state
+if [[ ${net_conn[$choice]} == true ]]; then
+    action=disconnect
+    cmd=(busctl call "$iwd" "$station" "$iwd.Station" Disconnect)
+elif [[ ${net_known[$choice]} == true || ${net_type[$choice]} == open ]]; then
+    # Known and open networks need no credentials
+    action=connect
+    cmd=(busctl call "$iwd" "${net_path[$choice]}" "$iwd.Network" Connect)
+elif [[ ${net_type[$choice]} == psk ]]; then
+    # New password-protected network: ask for the passphrase (hidden input, empty list)
+    action=connect
+    pass=$(tofi --hide-input=true --require-match=false --prompt-text "$label passphrase: " --padding-left='20%' < /dev/null) || exit 0
+    cmd=(iwctl --passphrase "$pass" station "$device" connect "$label" psk)
+else
+    notify critical "network-wireless-offline-symbolic" "$label uses ${net_type[$choice]}, which needs an iwd provisioning file"
+    exit 1
+fi
+
+# Perform operation
+if "${cmd[@]}" > /dev/null; then
+    notify normal "network-wireless-symbolic" "$label <b>${action}ed</b> ✓"
+else
+    notify critical "network-wireless-offline-symbolic" "Couldn't $action $label"
+fi

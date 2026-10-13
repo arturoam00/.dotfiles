@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Clipboard Manager
+Name= Clipboard Manager
 Terminal=false
 Exec=sh -c '$HOME/.local/bin/tofi-clipboard'
 NoDisplay=false
